@@ -1,0 +1,190 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import TrustBadges from "../../components/TrustBadges.astro";
+import ModelsTable from "../../components/ModelsTable.astro";
+import WhyChooseSection from "../../components/WhyChooseSection.astro";
+import TestimonialsGrid from "../../components/TestimonialsGrid.astro";
+import FAQSection from "../../components/FAQSection.astro";
+import CommonCTA from "../../components/CommonCTA.astro";
+import { commonData } from "../../data/locations-i18n.js";
+
+const pageTitle =
+  "भारत में सर्वश्रेष्ठ बोरिंग मशीन निर्माता | ASR ड्रिलर्स कानपुर";
+const pageDescription =
+  "ASR ड्रिलर्स - कानपुर का विश्वस्त ट्यूबवेल बोरिंग मशीन निर्माता। 22-38 HP जलभृत, हाइड्रॉलिक और पोर्टेबल बोरिंग मशीनें। ₹4.5-7.5 लाख। स्थल पर स्थापन और 24/7 समर्थन।";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "ASR ड्रिलर्स",
+  image: "https://asrdrillers.com/logo.png",
+  description:
+    "ट्यूबवेल और बोरवेल ड्रिलिंग के लिए उच्च गुणवत्ता की बोरिंग मशीनों का निर्माता",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "पुखरायन, कानपुर",
+    addressLocality: "कानपुर",
+    addressRegion: "UP",
+    postalCode: "208201",
+    addressCountry: "IN",
+  },
+  telephone: `+${commonData.phone}`,
+  priceRange: "₹450000-₹750000",
+  areaServed: ["UP", "Bihar", "Rajasthan", "MP", "Delhi-NCR"],
+  sameAs: ["https://www.facebook.com/asrdrillers"],
+};
+
+// Homepage testimonials (Hindi)
+const homepageTestimonials = [
+  {
+    name: "राम सिंह जी",
+    location: "लखनऊ, UP",
+    role: "बोरिंग ठेकेदार",
+    text: "मैं 20 साल से ड्रिलिंग कर रहा हूँ। ASR की 30 HP मशीन ने कठोर पत्थर में 450 फुट मात्र 2 दिन में ड्रिल किया। पुरानी मशीनें 5-6 दिन लेती थीं। ईंधन दक्षता 30% बेहतर है। स्पेयर पार्ट्स हमेशा स्थानीय रूप से उपलब्ध हैं।",
+    rating: 5,
+    project: "गहरे कुएं की ड्रिलिंग - लखनऊ",
+  },
+  {
+    name: "राजेश कुमार (किसान)",
+    location: "कानपुर जिला",
+    role: "खेत के मालिक",
+    text: "मेरे खेत में चिकनी मिट्टी और कठोर पत्थर है। ASR की 22 HP को 250 फुट के कुएं के लिए किराए पर लिया। बिल्कुल सही। उन्होंने व्यक्तिगत रूप से इसे स्थापित किया, मेरे ऑपरेटर को प्रशिक्षित किया, और वापस जाँचने आए। यह असली स्थानीय समर्थन है, केवल बिक्री नहीं।",
+    rating: 5,
+    project: "खेत का कुआँ - कानपुर",
+  },
+  {
+    name: "ठेकेदार अमित सिंह",
+    location: "जाजमऊ, कानपुर",
+    role: "ड्रिलिंग ठेकेदार",
+    text: "पहली बार खरीद था। ASR की 30 HP ने मेरी सभी अपेक्षाएँ पूरी कीं। अब मैं 12-15 कुएँ/वर्ष ड्रिल करता हूँ। डाउनटाइम लगभग शून्य। कानपुर कारखाने से स्पेयर पार्ट्स उसी दिन मिल जाते हैं।",
+    rating: 5,
+    project: "पेशेवर ड्रिलिंग - कानपुर",
+  },
+];
+
+const heroContent = {
+  headline: "भारत में सबसे विश्वस्त बोरिंग मशीन निर्माता",
+  subheading:
+    "कानपुर के स्थानीय कारखाने से सीधे ड्रिल करें। 22-38 HP मशीनें। उसी दिन स्थापन। ₹4.5-7.5 लाख।",
+  ctaText: "तुरंत व्हाट्सऐप करें",
+};
+
+const whyChooseData = [
+  {
+    title: "कारखाने से सीधी कीमत",
+    description:
+      "कोई बिचौलिया नहीं। पुखरायन कारखाने से सीधे खरीदें। डीलर से 15-20% सस्ता। पूरी पारदर्शिता।",
+    icon: "₹",
+  },
+  {
+    title: "उसी दिन स्थापन",
+    description:
+      "हमारे इंजीनियर कानपुर में हैं। सुबह ऑर्डर दें, दोपहर तक मशीन तैयार। ऑपरेटर को प्रशिक्षण शामिल है।",
+    icon: "⚡",
+  },
+  {
+    title: "24/7 व्हाट्सऐप समर्थन",
+    description:
+      "समस्या हो तो सीधे हमारे इंजीनियर से बात करें। 1-2 घंटे में समाधान। असली समर्थन, बकवास नहीं।",
+    icon: "💬",
+  },
+  {
+    title: "1 घंटे में स्पेयर पार्ट्स",
+    description:
+      "कानपुर कारखाना गोदाम में सब कुछ है। हाइड्रॉलिक सील? पिस्टन? 1-2 घंटे में आपके दरवाजे पर।",
+    icon: "📦",
+  },
+  {
+    title: "भारतीय किसानों के लिए डिज़ाइन किया",
+    description:
+      "UP, बिहार, राजस्थान की मिट्टी को समझते हैं। सस्ते आयातित कबाड़ से बेहतर। 14+ वर्ष विश्वास।",
+    icon: "🇮🇳",
+  },
+  {
+    title: "₹800-2000/दिन किराये की सुविधा",
+    description:
+      "सीधे खरीदना नहीं? किराए पर लें। 3 महीने में मुनाफा कमा सकते हैं। फिर अपना कर लें।",
+    icon: "🔄",
+  },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} schema={schema}>
+  <!-- Hero Section -->
+  <section
+    class="relative min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-700 via-teal-600 to-teal-500 text-white overflow-hidden"
+  >
+    <div class="absolute inset-0 opacity-20">
+      <div
+        class="absolute top-0 left-0 w-96 h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 right-0 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl"
+      >
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-6">
+        {heroContent.headline}
+      </h1>
+      <p class="text-lg sm:text-xl lg:text-2xl mb-8 font-light leading-relaxed">
+        {heroContent.subheading}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={`https://wa.me/${commonData.whatsapp.replace(/[^0-9]/g, "")}?text=नमस्ते%20ASR%20ड्रिलर्स%21%20मुझे%20बोरिंग%20मशीन%20के%20बारे%20में%20जानना%20है।`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block px-8 py-4 bg-white text-teal-700 font-bold rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+        >
+          ✓ व्हाट्सऐप पर संपर्क करें
+        </a>
+        <a
+          href={`tel:${commonData.phone}`}
+          class="inline-block px-8 py-4 bg-green-400 text-white font-bold rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+        >
+          📞 कॉल करें
+        </a>
+      </div>
+
+      <p class="text-sm mt-8 text-gray-200 font-light">
+        ⭐ 100+ किसान, ठेकेदार विश्वास करते हैं | उसी दिन डिलीवरी | कानपुर
+        कारखाना
+      </p>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <TrustBadges />
+
+  <!-- Models Table -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 text-center mb-12">
+        हमारी बोरिंग मशीन मॉडल
+      </h2>
+      <ModelsTable models={commonData.models} />
+    </div>
+  </section>
+
+  <!-- Why Choose Section -->
+  <WhyChooseSection items={whyChooseData} />
+
+  <!-- Testimonials -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 text-center mb-12">
+        किसानों और ठेकेदारों का विश्वास
+      </h2>
+      <TestimonialsGrid testimonials={homepageTestimonials} />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQSection faqs={commonData.commonFAQHi} />
+
+  <!-- Final CTA -->
+  <CommonCTA />
+</Layout>

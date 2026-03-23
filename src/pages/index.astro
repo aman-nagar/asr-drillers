@@ -1,5 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import TrustBadges from "../components/TrustBadges.astro";
+import ModelsTable from "../components/ModelsTable.astro";
+import WhyChooseSection from "../components/WhyChooseSection.astro";
+import TestimonialsGrid from "../components/TestimonialsGrid.astro";
+import FAQSection from "../components/FAQSection.astro";
+import CommonCTA from "../components/CommonCTA.astro";
+import { commonData } from "../data/locations-i18n.js";
 
 const pageTitle =
   "Best Boring Machine Manufacturer in India | ASR Drillers Kanpur";
@@ -20,11 +27,79 @@ const schema = {
     postalCode: "208201",
     addressCountry: "IN",
   },
-  telephone: "+91-9876543210",
+  telephone: `+${commonData.phone}`,
   priceRange: "₹450000-₹750000",
   areaServed: ["UP", "Bihar", "Rajasthan", "MP", "Delhi-NCR"],
   sameAs: ["https://www.facebook.com/asrdrillers"],
 };
+
+// Homepage testimonials
+const homepageTestimonials = [
+  {
+    name: "Mr. Ram Singh",
+    location: "Lucknow, UP",
+    role: "Boring Contractor",
+    text: "I've been drilling for 20 years. ASR's 30 HP machine drilled 450 feet in hard rock in just 2 days. Previous machines took 5-6 days. Fuel efficiency is 30% better. Spare parts are always available locally.",
+    rating: 5,
+    project: "Deep well drilling - Lucknow",
+  },
+  {
+    name: "Farmer Rajesh Kumar",
+    location: "Kanpur District",
+    role: "Farm Owner",
+    text: "My farm has clay and hard rock. Hired ASR's 22 HP for a 250-foot well. Perfect. They installed it personally, trained my operator, and checked back. This is real local support, not just a sale.",
+    rating: 5,
+    project: "Farm irrigation well - Kanpur",
+  },
+  {
+    name: "Contractor Akshay Verma",
+    location: "Rajasthan",
+    role: "Boring Business Owner",
+    text: "Running 3 ASR machines in Rajasthan for 2+ years. Reliability is 99%. When I had a question at 10 PM, their team answered on WhatsApp. That's why I trust them with my business.",
+    rating: 5,
+    project: "Multiple commercial projects",
+  },
+];
+
+// Homepage FAQs
+const homepageFAQs = [
+  {
+    question: "What is the maximum depth of ASR boring machines?",
+    answer:
+      "Our 38 HP model can drill 300–500+ feet depending on soil type. 30 HP handles 250–400 feet. 22 HP works well for 150–300 feet. Hard rock needs more power; sandy soil allows greater depths.",
+  },
+  {
+    question:
+      "Do you provide installation in other states like Bihar or Rajasthan?",
+    answer:
+      "Yes. We provide on-site installation and training across North India (UP, Bihar, Rajasthan, MP, Delhi-NCR). Travel & labor costs apply based on distance. Contact us for exact quote.",
+  },
+  {
+    question: "How much fuel does your boring machine use per day?",
+    answer:
+      "22 HP uses ~8–10 liters/day continuous operation. 30 HP uses ~12–14 liters. 38 HP uses ~16–20 liters. Actual consumption depends on soil hardness and drilling depth. Our engines are 20–30% more efficient than imports.",
+  },
+  {
+    question: "What warranty do you offer?",
+    answer:
+      "1–2 years from purchase, covering manufacturing defects. Free annual service maintenance camps across North India. Extended warranty available on request.",
+  },
+  {
+    question: "Can your machine drill through rock and hard soil?",
+    answer:
+      "Absolutely. Our machines are specifically designed for hard rock and clay-rich UP/Bihar soils. 30 HP and 38 HP models handle challenging terrain. Many contractors use us for rocky Rajasthan terrain.",
+  },
+  {
+    question: "What is the price difference between models?",
+    answer:
+      "22 HP Submersible: ₹4.8 Lakh. 30 HP Hydraulic: ₹5.8 Lakh. 38 HP Tractor-Mount: ₹7.2 Lakh. Custom configurations available based on depth/diameter requirements. Contact for exact pricing.",
+  },
+  {
+    question: "Do you provide financing or EMI options?",
+    answer:
+      "We work with 3–4 partner banks and NBFCs to offer EMI options at 9–12% interest. Typically 24–36 months tenure available for contractors. Contact our sales team for current offers.",
+  },
+];
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -32,7 +107,7 @@ const schema = {
 
   <!-- Hero Section -->
   <section
-    class="hero-section bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 md:py-24"
+    class="hero-section bg-gradient-to-r from-brand-teal to-brand-green text-white py-16 md:py-24"
   >
     <div class="container mx-auto px-4 md:px-8 max-w-6xl">
       <div class="grid md:grid-cols-2 gap-8 items-center">
@@ -48,20 +123,21 @@ const schema = {
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a
-              href="https://wa.me/919876543210"
-              class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded text-center"
+              href={`https://wa.me/${commonData.whatsapp.replace("+", "")}`}
+              class="bg-brand-green hover:opacity-90 text-white font-bold py-3 px-6 rounded text-center transition"
             >
               📱 WhatsApp Now
             </a>
-            <button
-              class="bg-white text-blue-900 hover:bg-gray-100 font-bold py-3 px-6 rounded"
+            <a
+              href={`tel:${commonData.phone}`}
+              class="bg-white text-brand-teal hover:bg-gray-100 font-bold py-3 px-6 rounded text-center transition"
             >
               Get Quote
-            </button>
+            </a>
           </div>
         </div>
         <div
-          class="bg-blue-800 h-96 rounded-lg flex items-center justify-center"
+          class="bg-gradient-to-br from-brand-teal/20 to-brand-green/20 h-96 rounded-lg flex items-center justify-center border-2 border-white/30"
         >
           <span class="text-white text-center">
             [Boring Machine Hero Image]

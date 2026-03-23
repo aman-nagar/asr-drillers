@@ -1,0 +1,107 @@
+---
+import { commonData } from "../data/locations-i18n.js";
+const { phone, whatsapp } = commonData;
+
+// Detect current locale from path
+const currentPath = Astro.url.pathname;
+const isHindi = currentPath.startsWith("/hi/");
+const basePathWithoutLocale = isHindi
+  ? currentPath.replace("/hi/", "/")
+  : currentPath;
+const cleanPath = basePathWithoutLocale === "/" ? "/" : basePathWithoutLocale;
+
+// Language toggle URLs
+const englishUrl = cleanPath === "/" ? "/" : cleanPath;
+const hindiUrl = cleanPath === "/" ? "/hi/" : `/hi${cleanPath}`;
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="flex items-center justify-between py-4">
+      <!-- Logo -->
+      <a href={isHindi ? "/hi/" : "/"} class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center text-white text-2xl font-bold"
+        >
+          ⚙️
+        </div>
+        <div>
+          <span class="text-2xl font-bold text-gray-900">ASR Drillers</span>
+          <p class="text-xs text-teal-600 -mt-1">Kanpur • Since 2015</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href={isHindi ? "/hi/" : "/"} class="hover:text-teal-600"
+          >{isHindi ? "होम" : "Home"}</a
+        >
+        <a href={isHindi ? "/hi/kanpur" : "/kanpur"} class="hover:text-teal-600"
+          >{isHindi ? "कानपुर" : "Kanpur"}</a
+        >
+        <a
+          href={isHindi ? "/hi/lucknow" : "/lucknow"}
+          class="hover:text-teal-600">{isHindi ? "लखनऊ" : "Lucknow"}</a
+        >
+        <a href={isHindi ? "/hi/bihar" : "/bihar"} class="hover:text-teal-600"
+          >{isHindi ? "बिहार" : "Bihar"}</a
+        >
+        <a
+          href={isHindi ? "/hi/kolkata" : "/kolkata"}
+          class="hover:text-teal-600">{isHindi ? "कोलकाता" : "Kolkata"}</a
+        >
+      </nav>
+
+      <!-- Language Switcher & Contact -->
+      <div class="flex items-center gap-4">
+        <!-- Language Toggle -->
+        <div class="flex items-center gap-2 border-l border-gray-300 pl-4">
+          {
+            isHindi ? (
+              <>
+                <a
+                  href={englishUrl}
+                  class="text-sm font-semibold px-2 py-1 text-gray-600 hover:text-teal-600"
+                >
+                  English
+                </a>
+                <span class="text-gray-300">|</span>
+                <span class="text-sm font-semibold px-2 py-1 text-teal-600">
+                  हिंदी
+                </span>
+              </>
+            ) : (
+              <>
+                <span class="text-sm font-semibold px-2 py-1 text-teal-600">
+                  English
+                </span>
+                <span class="text-gray-300">|</span>
+                <a
+                  href={hindiUrl}
+                  class="text-sm font-semibold px-2 py-1 text-gray-600 hover:text-teal-600"
+                >
+                  हिंदी
+                </a>
+              </>
+            )
+          }
+        </div>
+
+        <a
+          href={`tel:${phone}`}
+          class="hidden md:block text-sm font-semibold text-gray-700 hover:text-teal-600"
+        >
+          📞 {phone}
+        </a>
+        <a
+          href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2"
+        >
+          💬 WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

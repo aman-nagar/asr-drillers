@@ -1,0 +1,35 @@
+---
+interface Props {
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+  title?: string;
+}
+
+const { faqs, title = "Frequently Asked Questions" } = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4 md:px-8 max-w-4xl">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
+      {title}
+    </h2>
+
+    <div class="space-y-6">
+      {
+        faqs.map((faq, idx) => (
+          <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group border-l-4 border-brand-teal hover:border-brand-green transition">
+            <summary class="font-bold text-lg text-gray-900 flex items-center gap-3">
+              <span class="group-open:rotate-180 transition text-brand-teal text-xl">
+                ▼
+              </span>
+              {faq.question}
+            </summary>
+            <p class="mt-4 text-gray-700 ml-6 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
