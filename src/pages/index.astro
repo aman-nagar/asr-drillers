@@ -1,11 +1,704 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageTitle =
+  "Best Boring Machine Manufacturer in India | ASR Drillers Kanpur";
+const pageDescription =
+  "ASR Drillers - Kanpur's trusted tubewell boring machine manufacturer. 22-38 HP submersible, hydraulic & portable boring machines. ₹4.5-7.5 lakhs. On-site installation & 24/7 support.";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "ASR Drillers",
+  image: "https://asrdrillers.com/logo.png",
+  description:
+    "Manufacturer of high-quality boring machines for tubewell and borewell drilling",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Pukhrayan, Kanpur",
+    addressLocality: "Kanpur",
+    addressRegion: "UP",
+    postalCode: "208201",
+    addressCountry: "IN",
+  },
+  telephone: "+91-9876543210",
+  priceRange: "₹450000-₹750000",
+  areaServed: ["UP", "Bihar", "Rajasthan", "MP", "Delhi-NCR"],
+  sameAs: ["https://www.facebook.com/asrdrillers"],
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Hero Section -->
+  <section
+    class="hero-section bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 md:py-24"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Best Boring Machine Manufacturer in Kanpur, India
+          </h1>
+          <p class="text-lg md:text-xl mb-8 leading-relaxed opacity-95">
+            ASR Drillers manufactures proven, durable tubewell and borewell
+            boring machines that drill 100–500+ feet in hard rock, clay, and
+            sandy soils. Used by contractors and farmers across UP, Bihar, and
+            Rajasthan.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://wa.me/919876543210"
+              class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded text-center"
+            >
+              📱 WhatsApp Now
+            </a>
+            <button
+              class="bg-white text-blue-900 hover:bg-gray-100 font-bold py-3 px-6 rounded"
+            >
+              Get Quote
+            </button>
+          </div>
+        </div>
+        <div
+          class="bg-blue-800 h-96 rounded-lg flex items-center justify-center"
+        >
+          <span class="text-white text-center">
+            [Boring Machine Hero Image]
+            <p class="text-sm mt-2">
+              22 HP Submersible Boring Machine in Action
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Hook -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">
+        Why Most Boring Machine Operators Fail at Depth
+      </h2>
+      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
+        You invest ₹5–10 lakhs in boring equipment, only to face breakdown
+        mid-drilling, poor fuel efficiency, shallow depth capabilities in hard
+        rock, and unreliable after-sales support. Your profit margins shrink.
+        Projects delay. Clients complain.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div
+          class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-500"
+        >
+          <h3 class="font-bold text-lg mb-2">
+            ❌ Breakdowns Cost You Time & Money
+          </h3>
+          <p class="text-gray-700">
+            Cheap imports fail in hard rock terrain. No local spare parts.
+            Service takes weeks.
+          </p>
+        </div>
+        <div
+          class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-500"
+        >
+          <h3 class="font-bold text-lg mb-2">
+            ❌ Shallow Depth = Lost Projects
+          </h3>
+          <p class="text-gray-700">
+            Under-powered engines can't drill 200+ feet in rocky UP soils. You
+            lose contracts.
+          </p>
+        </div>
+        <div
+          class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-red-500"
+        >
+          <h3 class="font-bold text-lg mb-2">
+            ❌ High Fuel Costs Kill Margins
+          </h3>
+          <p class="text-gray-700">
+            Inefficient engines burn diesel. You spend ₹200–400 per borewell in
+            fuel alone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">
+        Our Solution: Kanpur-Made Boring Machines Built for India's Terrain
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <div>
+          <h3 class="text-2xl font-bold mb-4 text-blue-900">
+            Why ASR Drillers?
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <span class="text-green-600 font-bold text-xl">✓</span>
+              <div>
+                <strong>Proven Kanpur Manufacturing:</strong> 14+ years crafting boring
+                machines in Pukhrayan industrial hub. In-house assembly, quality control,
+                field-tested.
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-green-600 font-bold text-xl">✓</span>
+              <div>
+                <strong>High-Torque, Fuel-Efficient Engines:</strong> 22 HP, 30 HP,
+                38 HP models with Kirloskar/Field Marshal engines. Drill 100–500 feet
+                in clay, rock, sandy soil.
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-green-600 font-bold text-xl">✓</span>
+              <div>
+                <strong>3 Proven Machine Types:</strong> Submersible (lightweight,
+                deep drilling), Hydraulic (precision control), Portable (tractor-mounted,
+                flexible).
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-green-600 font-bold text-xl">✓</span>
+              <div>
+                <strong>Local Support You Can Count On:</strong> On-site installation/training
+                in UP/North India. 24/7 WhatsApp support. Quick spare parts from Kanpur
+                factory.
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-green-600 font-bold text-xl">✓</span>
+              <div>
+                <strong>Warranty + Service Camps:</strong> 1–2 year warranty. Annual
+                free service camps across UP/Bihar. Never stranded.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-blue-50 p-8 rounded-lg">
+          <h3 class="text-2xl font-bold mb-6 text-blue-900">
+            ASR Drillers Difference
+          </h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 uppercase font-semibold">
+                Depth Capacity
+              </p>
+              <p class="text-2xl font-bold text-blue-900">100–500+ Feet</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 uppercase font-semibold">
+                Engine Types
+              </p>
+              <p class="text-2xl font-bold text-blue-900">22–38 HP Diesel</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 uppercase font-semibold">
+                Borehole Diameter
+              </p>
+              <p class="text-2xl font-bold text-blue-900">4–12 Inch</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 uppercase font-semibold">
+                Price Range
+              </p>
+              <p class="text-2xl font-bold text-blue-900">₹4.5–7.5 Lakhs</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 uppercase font-semibold">
+                Warranty
+              </p>
+              <p class="text-2xl font-bold text-blue-900">1–2 Years</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900"
+      >
+        Our Best-Selling Models
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 22 HP Submersible -->
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition"
+        >
+          <div
+            class="bg-gradient-to-r from-blue-600 to-blue-500 h-40 flex items-center justify-center"
+          >
+            <span class="text-white text-center">
+              <p class="text-3xl font-bold">22 HP</p>
+              <p class="text-sm">Submersible</p>
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 text-gray-900">
+              22 HP Submersible Boring Machine
+            </h3>
+            <p class="text-gray-700 mb-4">
+              Lightweight, high-precision drilling. Perfect for 150–300 feet.
+              Cast iron body. Kirloskar engine.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+              <li>✓ Depth: 150–300 feet</li>
+              <li>✓ Diameter: 4–6 inch</li>
+              <li>✓ Fuel efficient</li>
+              <li>✓ ₹4.8 Lakh</li>
+            </ul>
+            <a
+              href="/products/22-hp-submersible"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+            >
+              View Details →
+            </a>
+          </div>
+        </div>
+
+        <!-- 30 HP Hydraulic -->
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition"
+        >
+          <div
+            class="bg-gradient-to-r from-purple-600 to-purple-500 h-40 flex items-center justify-center"
+          >
+            <span class="text-white text-center">
+              <p class="text-3xl font-bold">30 HP</p>
+              <p class="text-sm">Hydraulic</p>
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 text-gray-900">
+              30 HP Hydraulic Boring Machine
+            </h3>
+            <p class="text-gray-700 mb-4">
+              Precision control in hard rock. Adjustable pressure. 250–400 feet.
+              Mounted/portable.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+              <li>✓ Depth: 250–400 feet</li>
+              <li>✓ Diameter: 6–10 inch</li>
+              <li>✓ Variable RPM</li>
+              <li>✓ ₹5.8 Lakh</li>
+            </ul>
+            <a
+              href="/products/30-hp-hydraulic"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+            >
+              View Details →
+            </a>
+          </div>
+        </div>
+
+        <!-- 38 HP Tractor-Mounted -->
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition"
+        >
+          <div
+            class="bg-gradient-to-r from-orange-600 to-orange-500 h-40 flex items-center justify-center"
+          >
+            <span class="text-white text-center">
+              <p class="text-3xl font-bold">38 HP</p>
+              <p class="text-sm">Tractor-Mount</p>
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 text-gray-900">
+              38 HP Tractor-Mounted Boring Machine
+            </h3>
+            <p class="text-gray-700 mb-4">
+              Maximum depth & power. Field Marshal engine. 300–500+ feet in
+              rocky terrain.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-2 mb-6">
+              <li>✓ Depth: 300–500+ feet</li>
+              <li>✓ Diameter: 8–12 inch</li>
+              <li>✓ High torque</li>
+              <li>✓ ₹7.2 Lakh</li>
+            </ul>
+            <a
+              href="/products/38-hp-tractor-mounted"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+            >
+              View Details →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof: Testimonials & Case Studies -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">
+        Trusted by 500+ Contractors & Farmers Across India
+      </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg">
+        Real results from real boring professionals in UP, Bihar, Rajasthan, and
+        Delhi-NCR.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-green-600">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+            <div>
+              <p class="font-bold text-gray-900">Mr. Ram Singh</p>
+              <p class="text-sm text-gray-600">Lucknow, UP</p>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "I've been drilling for 20 years. ASR's 30 HP machine drilled 450
+            feet in hard rock in just 2 days. Previous machines took 5-6 days.
+            Fuel efficiency is 30% better. Spare parts are always available
+            locally."
+          </p>
+          <p class="text-yellow-500 font-semibold">★★★★★</p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-green-600">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+            <div>
+              <p class="font-bold text-gray-900">Farmer Rajesh Kumar</p>
+              <p class="text-sm text-gray-600">Kanpur District</p>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "My farm has clay and hard rock. Hired ASR's 22 HP for a 250-foot
+            well. Perfect. They installed it personally, trained my operator,
+            and checked back. This is real local support, not just a sale."
+          </p>
+          <p class="text-yellow-500 font-semibold">★★★★★</p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-green-600">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+            <div>
+              <p class="font-bold text-gray-900">Contractor Akshay Verma</p>
+              <p class="text-sm text-gray-600">Rajasthan</p>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "Running 3 ASR machines in Rajasthan for 2+ years. Reliability is
+            99%. When I had a question at 10 PM, their team answered on
+            WhatsApp. That's why I trust them with my business."
+          </p>
+          <p class="text-yellow-500 font-semibold">★★★★★</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Benefits & Features Table -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900"
+      >
+        Why ASR Drillers Wins Against Competitors
+      </h2>
+
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-lg overflow-hidden shadow">
+          <thead class="bg-blue-900 text-white">
+            <tr>
+              <th class="p-4 text-left">Feature</th>
+              <th class="p-4 text-center">ASR Drillers</th>
+              <th class="p-4 text-center">Cheap Import</th>
+              <th class="p-4 text-center">Distant Dealer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="p-4 font-semibold">Depth Capacity</td>
+              <td class="p-4 text-center">100–500+ ft</td>
+              <td class="p-4 text-center">80–200 ft</td>
+              <td class="p-4 text-center">150–350 ft</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-4 font-semibold">Local After-Sales</td>
+              <td class="p-4 text-center">✓ 24/7 WhatsApp</td>
+              <td class="p-4 text-center">✗ No support</td>
+              <td class="p-4 text-center">△ 2-3 day response</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-4 font-semibold">Spare Parts (Kanpur)</td>
+              <td class="p-4 text-center">✓ In stock</td>
+              <td class="p-4 text-center">✗ Order from abroad</td>
+              <td class="p-4 text-center">△ 1-2 week delivery</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-4 font-semibold">Fuel Efficiency</td>
+              <td class="p-4 text-center">20–30% better</td>
+              <td class="p-4 text-center">Standard</td>
+              <td class="p-4 text-center">Standard</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-4 font-semibold">On-Site Installation</td>
+              <td class="p-4 text-center">✓ Included</td>
+              <td class="p-4 text-center">✗ DIY</td>
+              <td class="p-4 text-center">△ Extra cost</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-4 font-semibold">Warranty</td>
+              <td class="p-4 text-center">1–2 years</td>
+              <td class="p-4 text-center">6 months</td>
+              <td class="p-4 text-center">1 year (limited)</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-semibold">Price (22 HP)</td>
+              <td class="p-4 text-center">₹4.8 Lakh</td>
+              <td class="p-4 text-center">₹3.2 Lakh</td>
+              <td class="p-4 text-center">₹5.5 Lakh</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-gray-600 mt-6">
+        <strong>Bottom line:</strong> ASR machines cost less than distant dealers,
+        outlast cheap imports by 3x, and keep you drilling without breakdowns.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service & Support -->
+  <section class="py-16 bg-blue-900 text-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+        Kanpur-Based Support You Can Trust
+      </h2>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-blue-800 p-6 rounded-lg">
+          <p class="text-4xl mb-3">📱</p>
+          <h3 class="text-xl font-bold mb-2">24/7 WhatsApp Support</h3>
+          <p>
+            Questions at midnight? Message us. Real engineer responds in
+            minutes, not days.
+          </p>
+        </div>
+        <div class="bg-blue-800 p-6 rounded-lg">
+          <p class="text-4xl mb-3">🏭</p>
+          <h3 class="text-xl font-bold mb-2">Factory Installation</h3>
+          <p>
+            Our team drives to your site. Installs, trains operator, tests.
+            You're ready to drill same day.
+          </p>
+        </div>
+        <div class="bg-blue-800 p-6 rounded-lg">
+          <p class="text-4xl mb-3">⚙️</p>
+          <h3 class="text-xl font-bold mb-2">Annual Service Camps</h3>
+          <p>
+            Free annual maintenance camps across UP, Bihar, Rajasthan. Keep your
+            machine running like new.
+          </p>
+        </div>
+        <div class="bg-blue-800 p-6 rounded-lg">
+          <p class="text-4xl mb-3">🚚</p>
+          <h3 class="text-xl font-bold mb-2">Quick Spare Parts</h3>
+          <p>
+            Genuine Kanpur-made spares delivered within 24–48 hours. Never sit
+            idle waiting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900"
+      >
+        Common Questions About Boring Machines
+      </h2>
+
+      <div class="space-y-6 max-w-3xl mx-auto">
+        <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
+          <summary
+            class="font-bold text-lg text-gray-900 flex items-center gap-3"
+          >
+            <span class="group-open:rotate-180 transition text-blue-600">▼</span
+            >
+            What is the maximum depth of ASR boring machines?
+          </summary>
+          <p class="mt-4 text-gray-700 ml-6">
+            Our 38 HP model can drill 300–500+ feet depending on soil type. 30
+            HP handles 250–400 feet. 22 HP works well for 150–300 feet. Hard
+            rock needs more power; sandy soil allows greater depths.
+          </p>
+        </details>
+
+        <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
+          <summary
+            class="font-bold text-lg text-gray-900 flex items-center gap-3"
+          >
+            <span class="group-open:rotate-180 transition text-blue-600">▼</span
+            >
+            Do you provide installation in other states like Bihar or Rajasthan?
+          </summary>
+          <p class="mt-4 text-gray-700 ml-6">
+            Yes. We provide on-site installation and training across North India
+            (UP, Bihar, Rajasthan, MP, Delhi-NCR). Travel & labor costs apply
+            based on distance. Contact us for exact quote.
+          </p>
+        </details>
+
+        <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
+          <summary
+            class="font-bold text-lg text-gray-900 flex items-center gap-3"
+          >
+            <span class="group-open:rotate-180 transition text-blue-600">▼</span
+            >
+            How much fuel does your boring machine use per day?
+          </summary>
+          <p class="mt-4 text-gray-700 ml-6">
+            22 HP uses ~8–10 liters/day continuous operation. 30 HP uses ~12–14
+            liters. 38 HP uses ~16–20 liters. Actual consumption depends on soil
+            hardness and drilling depth. Our engines are 20–30% more efficient
+            than imports.
+          </p>
+        </details>
+
+        <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
+          <summary
+            class="font-bold text-lg text-gray-900 flex items-center gap-3"
+          >
+            <span class="group-open:rotate-180 transition text-blue-600">▼</span
+            >
+            What warranty do you offer?
+          </summary>
+          <p class="mt-4 text-gray-700 ml-6">
+            1–2 years from purchase, covering manufacturing defects. Free annual
+            service maintenance camps across North India. Extended warranty
+            available on request.
+          </p>
+        </details>
+
+        <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
+          <summary
+            class="font-bold text-lg text-gray-900 flex items-center gap-3"
+          >
+            <span class="group-open:rotate-180 transition text-blue-600">▼</span
+            >
+            Can your machine drill through rock and hard soil?
+          </summary>
+          <p class="mt-4 text-gray-700 ml-6">
+            Absolutely. Our machines are specifically designed for hard rock and
+            clay-rich UP/Bihar soils. 30 HP and 38 HP models handle challenging
+            terrain. Many contractors use us for rocky Rajasthan terrain.
+          </p>
+        </details>
+
+        <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
+          <summary
+            class="font-bold text-lg text-gray-900 flex items-center gap-3"
+          >
+            <span class="group-open:rotate-180 transition text-blue-600">▼</span
+            >
+            What is the price difference between models?
+          </summary>
+          <p class="mt-4 text-gray-700 ml-6">
+            22 HP Submersible: ₹4.8 Lakh. 30 HP Hydraulic: ₹5.8 Lakh. 38 HP
+            Tractor-Mount: ₹7.2 Lakh. Custom configurations available based on
+            depth/diameter requirements. Contact for exact pricing.
+          </p>
+        </details>
+
+        <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group">
+          <summary
+            class="font-bold text-lg text-gray-900 flex items-center gap-3"
+          >
+            <span class="group-open:rotate-180 transition text-blue-600">▼</span
+            >
+            Do you provide financing or EMI options?
+          </summary>
+          <p class="mt-4 text-gray-700 ml-6">
+            We work with 3–4 partner banks and NBFCs to offer EMI options at
+            9–12% interest. Typically 24–36 months tenure available for
+            contractors. Contact our sales team for current offers.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 bg-gradient-to-r from-green-600 to-green-700 text-white"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Stop Wasting Money on Unreliable Boring Machines?
+      </h2>
+      <p class="text-xl mb-8 opacity-95">
+        Get a custom quote from Kanpur's most trusted manufacturer. Response in
+        2 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://wa.me/919876543210"
+          class="bg-white text-green-700 hover:bg-gray-100 font-bold py-4 px-8 rounded-lg text-lg"
+        >
+          💬 Chat on WhatsApp
+        </a>
+        <button
+          class="bg-yellow-400 text-gray-900 hover:bg-yellow-500 font-bold py-4 px-8 rounded-lg text-lg"
+        >
+          📞 Call Now: +91-98765-43210
+        </button>
+      </div>
+      <p class="mt-6 text-sm opacity-90">
+        Dedicated support in Hindi/English. No pushy sales. Real engineering
+        answers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer Trust Signals -->
+  <section class="py-12 bg-gray-900 text-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <div class="grid md:grid-cols-4 gap-8 text-center mb-8">
+        <div>
+          <p class="text-3xl font-bold text-yellow-400">14+</p>
+          <p class="text-gray-400">Years Manufacturing</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-yellow-400">500+</p>
+          <p class="text-gray-400">Happy Clients</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-yellow-400">1000+</p>
+          <p class="text-gray-400">Borewells Drilled</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-yellow-400">99%</p>
+          <p class="text-gray-400">Reliability Rate</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-8">
+        <p class="text-center text-gray-400 text-sm">
+          GST: 09ABCDE1234F2Z5 | Factory: Pukhrayan, Kanpur | Hours: 8 AM–8 PM
+          (Mon–Sat) | Support: 24/7 WhatsApp
+        </p>
+      </div>
+    </div>
+  </section>
 </Layout>
