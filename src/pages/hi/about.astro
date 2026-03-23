@@ -1,0 +1,270 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { commonData } from "../../data/locations-i18n.js";
+
+const { phone, whatsapp, yearsActive } = commonData;
+
+const pageTitle = "ASR Drillers के बारे में - बोरिंग मशीन निर्माता";
+const pageDescription =
+  "ASR Drillers के बारे में जानें, कानपुर की अग्रणी बोरिंग मशीन निर्माता कंपनी 2015 से। गुणवत्ता, नवाचार और ग्राहक संतुष्टि।";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section
+    class="py-16 md:py-24 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          ASR Drillers के बारे में
+        </h1>
+        <p class="text-lg md:text-xl text-teal-100 max-w-2xl mx-auto">
+          भारत में {yearsActive} वर्षों से अधिक समय से उच्च गुणवत्ता वाली बोरिंग मशीनों
+          का अग्रणी निर्माता
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Story -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            हमारी कहानी
+          </h2>
+          <p class="text-lg text-slate-600 mb-4">
+            ASR Drillers की स्थापना 2015 में भारत में बोरिंग मशीन उद्योग में
+            क्रांति लाने के दृष्टिकोण के साथ की गई थी। कानपुर में एक छोटी सी
+            विनिर्माण इकाई से शुरुआत करके, हम अब उत्तरी भारत में एक विश्वसनीय
+            नाम बन गए हैं।
+          </p>
+          <p class="text-lg text-slate-600 mb-4">
+            हम पारंपरिक कारीगरी को आधुनिक तकनीक के साथ मिलाकर ऐसी मशीनें बनाने
+            में विश्वास करते हैं जो विश्वसनीय, कुशल और लंबे समय तक चलने वाली
+            हों। हमारी फैक्टरी से निकलने वाली प्रत्येक मशीन कठोर गुणवत्ता जांच
+            से गुजरती है।
+          </p>
+          <p class="text-lg text-slate-600">
+            ग्राहक संतुष्टि और बिक्रय के बाद सेवा के प्रति हमारी प्रतिबद्धता
+            हमें भारत भर में ठेकेदारों, किसानों और ड्रिलिंग कंपनियों के लिए
+            पसंदीदा विकल्प बनाती है।
+          </p>
+        </div>
+        <div
+          class="bg-slate-100 rounded-lg h-96 flex items-center justify-center"
+        >
+          <div class="text-center">
+            <p class="text-6xl font-bold text-brand-teal mb-2">
+              {yearsActive}+
+            </p>
+            <p class="text-xl text-slate-600">उत्कृष्टता के वर्ष</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manufacturing Process -->
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center"
+      >
+        निर्माण प्रक्रिया
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div
+          class="bg-white p-8 rounded-lg shadow-md text-center border-t-4 border-brand-teal"
+        >
+          <div class="text-4xl font-bold text-brand-teal mb-4">01</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">
+            डिज़ाइन और योजना
+          </h3>
+          <p class="text-slate-600">
+            सर्वोत्तम प्रदर्शन और स्थायित्व के लिए उन्नत CAD डिज़ाइन और
+            इंजीनियरिंग।
+          </p>
+        </div>
+        <div
+          class="bg-white p-8 rounded-lg shadow-md text-center border-t-4 border-brand-green"
+        >
+          <div class="text-4xl font-bold text-brand-green mb-4">02</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">घटक चयन</h3>
+          <p class="text-slate-600">
+            प्रमाणित आपूर्तिकर्ताओं और विक्रेताओं से प्राप्त प्रीमियम गुणवत्ता
+            वाले पार्ट्स।
+          </p>
+        </div>
+        <div
+          class="bg-white p-8 rounded-lg shadow-md text-center border-t-4 border-brand-teal"
+        >
+          <div class="text-4xl font-bold text-brand-teal mb-4">03</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">
+            असेंबली और परीक्षण
+          </h3>
+          <p class="text-slate-600">
+            उत्पादन के प्रत्येक चरण में सटीक असेंबली और कठोर परीक्षण।
+          </p>
+        </div>
+        <div
+          class="bg-white p-8 rounded-lg shadow-md text-center border-t-4 border-brand-green"
+        >
+          <div class="text-4xl font-bold text-brand-green mb-4">04</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">
+            गुणवत्ता नियंत्रण
+          </h3>
+          <p class="text-slate-600">
+            ग्राहकों को डिलीवरी से पहले अंतिम निरीक्षण और प्रमाणन।
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Standards -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center"
+      >
+        गुणवत्ता और प्रमाणन
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-8 bg-slate-50 rounded-lg">
+          <div class="text-4xl mb-4">✓</div>
+          <h3 class="text-xl font-bold text-brand-teal mb-3">
+            ISO 9001 प्रमाणित
+          </h3>
+          <p class="text-slate-600">
+            सामग्री गुणवत्ता प्रबंधन प्रणाली के लिए प्रमाणित।
+          </p>
+        </div>
+        <div class="text-center p-8 bg-slate-50 rounded-lg">
+          <div class="text-4xl mb-4">✓</div>
+          <h3 class="text-xl font-bold text-brand-green mb-3">
+            ISI मार्क स्वीकृत
+          </h3>
+          <p class="text-slate-600">
+            उत्पाद गुणवत्ता और सुरक्षा के लिए भारतीय मानक संस्थान अनुमोदन।
+          </p>
+        </div>
+        <div class="text-center p-8 bg-slate-50 rounded-lg">
+          <div class="text-4xl mb-4">✓</div>
+          <h3 class="text-xl font-bold text-brand-teal mb-3">
+            परीक्षित और विश्वसनीय
+          </h3>
+          <p class="text-slate-600">
+            देशव्यापी 500+ संतुष्ट ग्राहकों के साथ सिद्ध ट्रैक रिकॉर्ड।
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center"
+      >
+        ASR Drillers को क्यों चुनें?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex gap-4">
+          <div class="text-3xl text-brand-teal font-bold flex-shrink-0">✓</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              15+ वर्षों का अनुभव
+            </h3>
+            <p class="text-slate-600">
+              विनिर्माण और ग्राहक संतुष्टि में साबित विशेषज्ञता।
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-3xl text-brand-green font-bold flex-shrink-0">✓</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">24/7 समर्थन</h3>
+            <p class="text-slate-600">
+              सभी ग्राहकों के लिए 24/7 WhatsApp और फोन समर्थन।
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-3xl text-brand-teal font-bold flex-shrink-0">✓</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              प्रतिस्पर्धी मूल्य
+            </h3>
+            <p class="text-slate-600">
+              बाजार में सबसे सस्ती कीमत पर सर्वोत्तम गुणवत्ता।
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-3xl text-brand-green font-bold flex-shrink-0">✓</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">
+              ऑन-साइट इंस्टॉलेशन
+            </h3>
+            <p class="text-slate-600">
+              विशेषज्ञ तकनीशियनों के साथ आपके स्थान पर निःशुल्क इंस्टॉलेशन।
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-3xl text-brand-teal font-bold flex-shrink-0">✓</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">वारंटी समर्थन</h3>
+            <p class="text-slate-600">
+              व्यापक वारंटी और बिक्रय के बाद सेवा गारंटी।
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="text-3xl text-brand-green font-bold flex-shrink-0">✓</div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">कस्टम समाधान</h3>
+            <p class="text-slate-600">
+              विशिष्ट ड्रिलिंग आवश्यकताओं के लिए अनुकूलित मशीनें।
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        ASR Drillers के साथ काम करने के लिए तैयार हैं?
+      </h2>
+      <p class="text-lg text-teal-100 mb-8 max-w-2xl mx-auto">
+        आज ही हमसे संपर्क करें और हमारे बोरिंग मशीन विशेषज्ञों के साथ मुफ्त
+        परामर्श के लिए उद्धरण लें।
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/hi/contact"
+          class="bg-white text-brand-teal px-8 py-3 rounded-lg font-bold hover:bg-slate-100 transition-colors"
+        >
+          उद्धरण प्राप्त करें
+        </a>
+        <a
+          href={`https://wa.me/${whatsapp}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-brand-teal px-8 py-3 rounded-lg font-bold hover:bg-slate-100 transition-colors"
+        >
+          हमें WhatsApp करें
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

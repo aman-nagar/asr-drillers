@@ -1,0 +1,304 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { commonData } from "../data/locations-i18n.js";
+
+const { phone, whatsapp } = commonData;
+
+const pageTitle = "Gallery - ASR Drillers Boring Machines";
+const pageDescription =
+  "View our collection of boring machines, factory setup, installations, and drilling equipment at ASR Drillers.";
+
+// Sample gallery items - in production these would come from a CMS
+const galleryItems = [
+  {
+    title: "22 HP Submersible Boring Machine",
+    category: "Machines",
+    image: "🏗️",
+  },
+  {
+    title: "30 HP Hydraulic Boring Machine",
+    category: "Machines",
+    image: "⚙️",
+  },
+  {
+    title: "38 HP Heavy Duty Boring Machine",
+    category: "Machines",
+    image: "🔧",
+  },
+  {
+    title: "Factory Production Line",
+    category: "Factory",
+    image: "🏭",
+  },
+  {
+    title: "Quality Control Testing",
+    category: "Factory",
+    image: "✓",
+  },
+  {
+    title: "On-Site Installation",
+    category: "Installation",
+    image: "📍",
+  },
+  {
+    title: "Customer Installation in Kanpur",
+    category: "Installation",
+    image: "🚚",
+  },
+  {
+    title: "Drilling in Progress",
+    category: "Installation",
+    image: "💧",
+  },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section
+    class="py-16 md:py-24 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Gallery</h1>
+        <p class="text-lg md:text-xl text-teal-100">
+          Explore our boring machines, manufacturing facilities, and successful
+          installations
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <!-- Filters (Optional) -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button
+          class="px-6 py-2 bg-brand-teal text-white rounded-lg font-medium hover:bg-brand-green transition-colors"
+        >
+          All
+        </button>
+        <button
+          class="px-6 py-2 border-2 border-brand-teal text-brand-teal rounded-lg font-medium hover:bg-brand-teal hover:text-white transition-colors"
+        >
+          Machines
+        </button>
+        <button
+          class="px-6 py-2 border-2 border-brand-teal text-brand-teal rounded-lg font-medium hover:bg-brand-teal hover:text-white transition-colors"
+        >
+          Factory
+        </button>
+        <button
+          class="px-6 py-2 border-2 border-brand-teal text-brand-teal rounded-lg font-medium hover:bg-brand-teal hover:text-white transition-colors"
+        >
+          Installation
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          galleryItems.map((item) => (
+            <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer bg-slate-50">
+              <div class="relative h-64 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center overflow-hidden">
+                <div class="text-8xl group-hover:scale-110 transition-transform duration-300">
+                  {item.image}
+                </div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                <h3 class="text-white font-bold text-lg mb-1">{item.title}</h3>
+                <span class="inline-block bg-brand-teal text-white text-xs px-3 py-1 rounded-full w-fit">
+                  {item.category}
+                </span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Machine Models Section -->
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center"
+      >
+        Our Machine Models
+      </h2>
+
+      <div class="space-y-12">
+        <!-- 22 HP Model -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-md"
+        >
+          <div
+            class="bg-gradient-to-br from-slate-100 to-slate-200 h-64 rounded-lg flex items-center justify-center text-7xl"
+          >
+            🔧
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">
+              22 HP Submersible Boring Machine
+            </h3>
+            <p class="text-slate-600 mb-4">
+              Perfect for small to medium-sized boring projects. This compact
+              and efficient machine is ideal for bore depths up to 300 feet.
+            </p>
+            <ul class="space-y-2 text-slate-600 mb-6">
+              <li>✓ Power: 22 HP Diesel Engine</li>
+              <li>✓ Max Depth: 300+ feet</li>
+              <li>✓ Weight: 2500 kg</li>
+              <li>✓ Easy to transport and install</li>
+            </ul>
+            <a
+              href={`https://wa.me/${whatsapp}?text=I%20am%20interested%20in%2022%20HP%20boring%20machine`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-brand-teal text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-green transition-colors"
+            >
+              Get Quote
+            </a>
+          </div>
+        </div>
+
+        <!-- 30 HP Model -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-md"
+        >
+          <div
+            class="order-2 md:order-1 bg-gradient-to-br from-slate-100 to-slate-200 h-64 rounded-lg flex items-center justify-center text-7xl"
+          >
+            ⚙️
+          </div>
+          <div class="order-1 md:order-2">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">
+              30 HP Hydraulic Boring Machine
+            </h3>
+            <p class="text-slate-600 mb-4">
+              Our most popular model! High-power hydraulic system for heavy-duty
+              boring operations with exceptional performance.
+            </p>
+            <ul class="space-y-2 text-slate-600 mb-6">
+              <li>✓ Power: 30 HP Diesel Engine</li>
+              <li>✓ Max Depth: 500+ feet</li>
+              <li>✓ Weight: 3500 kg</li>
+              <li>✓ Advanced hydraulic system</li>
+            </ul>
+            <a
+              href={`https://wa.me/${whatsapp}?text=I%20am%20interested%20in%2030%20HP%20boring%20machine`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-brand-teal text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-green transition-colors"
+            >
+              Get Quote
+            </a>
+          </div>
+        </div>
+
+        <!-- 38 HP Model -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-lg shadow-md"
+        >
+          <div
+            class="bg-gradient-to-br from-slate-100 to-slate-200 h-64 rounded-lg flex items-center justify-center text-7xl"
+          >
+            🏗️
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">
+              38 HP Heavy Duty Boring Machine
+            </h3>
+            <p class="text-slate-600 mb-4">
+              Ultimate power and performance for the most demanding boring
+              projects. Engineered for maximum depth and durability.
+            </p>
+            <ul class="space-y-2 text-slate-600 mb-6">
+              <li>✓ Power: 38 HP Diesel Engine</li>
+              <li>✓ Max Depth: 800+ feet</li>
+              <li>✓ Weight: 4500 kg</li>
+              <li>✓ Industrial-grade components</li>
+            </ul>
+            <a
+              href={`https://wa.me/${whatsapp}?text=I%20am%20interested%20in%2038%20HP%20boring%20machine`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-brand-teal text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-green transition-colors"
+            >
+              Get Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Success Stories -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center"
+      >
+        Installation Success Stories
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 p-8 rounded-lg">
+          <div class="text-5xl mb-4">🏢</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">
+            Kanpur Contractor
+          </h3>
+          <p class="text-slate-600">
+            "ASR Drillers provided excellent service. The 30 HP machine is
+            incredibly reliable and saves us time and money."
+          </p>
+          <p class="text-brand-teal font-bold mt-4">- Rajesh Kumar</p>
+        </div>
+
+        <div class="bg-slate-50 p-8 rounded-lg">
+          <div class="text-5xl mb-4">👨‍🌾</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Farm Owner</h3>
+          <p class="text-slate-600">
+            "Great quality and unmatched support. They installed the machine at
+            my site and trained my team personally."
+          </p>
+          <p class="text-brand-teal font-bold mt-4">- Vikram Singh</p>
+        </div>
+
+        <div class="bg-slate-50 p-8 rounded-lg">
+          <div class="text-5xl mb-4">🏭</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">
+            Industry Partner
+          </h3>
+          <p class="text-slate-600">
+            "Been using their machines for 5 years now. Reliability and
+            after-sales support is outstanding."
+          </p>
+          <p class="text-brand-teal font-bold mt-4">- Arun Mehta</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Need a Custom Machine?
+      </h2>
+      <p class="text-lg text-teal-100 mb-8 max-w-2xl mx-auto">
+        Contact us to discuss custom boring machine solutions tailored to your
+        specific requirements.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-white text-brand-teal px-8 py-3 rounded-lg font-bold hover:bg-slate-100 transition-colors"
+      >
+        Inquire Now
+      </a>
+    </div>
+  </section>
+</Layout>

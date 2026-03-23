@@ -1,0 +1,312 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { commonData } from "../data/locations-i18n.js";
+
+const { phone, whatsapp } = commonData;
+
+const pageTitle = "Contact ASR Drillers - Get Your Boring Machine Quote";
+const pageDescription =
+  "Contact ASR Drillers for boring machine quotes, inquiries, and support. Call, WhatsApp, or submit a contact form.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section
+    class="py-16 md:py-24 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+        <p class="text-lg md:text-xl text-teal-100">
+          Get in touch with our boring machine experts. We respond within 2
+          hours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <!-- Phone -->
+        <div
+          class="text-center p-8 bg-slate-50 rounded-lg border-t-4 border-brand-teal"
+        >
+          <div class="text-5xl mb-4">📞</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-4">Phone</h3>
+          <p class="text-slate-600 mb-4">Call us for immediate assistance</p>
+          <a
+            href={`tel:${phone}`}
+            class="text-brand-teal font-bold text-lg hover:text-brand-green transition-colors"
+          >
+            {phone}
+          </a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div
+          class="text-center p-8 bg-slate-50 rounded-lg border-t-4 border-brand-green"
+        >
+          <div class="text-5xl mb-4">💬</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-4">WhatsApp</h3>
+          <p class="text-slate-600 mb-4">Message us anytime (24/7)</p>
+          <a
+            href={`https://wa.me/${whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-brand-green font-bold text-lg hover:text-brand-teal transition-colors"
+          >
+            {whatsapp}
+          </a>
+        </div>
+
+        <!-- Email -->
+        <div
+          class="text-center p-8 bg-slate-50 rounded-lg border-t-4 border-brand-teal"
+        >
+          <div class="text-5xl mb-4">📧</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-4">Email</h3>
+          <p class="text-slate-600 mb-4">Send us your inquiry</p>
+          <a
+            href="mailto:info@asrdrillers.com"
+            class="text-brand-teal font-bold text-lg hover:text-brand-green transition-colors"
+          >
+            info@asrdrillers.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="max-w-2xl mx-auto bg-slate-50 p-8 rounded-lg">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
+          Send us a Message
+        </h2>
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-slate-900 mb-2"
+                >Your Name *</label
+              >
+              <input
+                type="text"
+                required
+                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal focus:ring-opacity-20"
+                placeholder="Enter your name"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-900 mb-2"
+                >Phone Number *</label
+              >
+              <input
+                type="tel"
+                required
+                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal focus:ring-opacity-20"
+                placeholder="Your phone number"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-900 mb-2"
+              >Email *</label
+            >
+            <input
+              type="email"
+              required
+              class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal focus:ring-opacity-20"
+              placeholder="Your email address"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-900 mb-2"
+              >Location / District *</label
+            >
+            <select
+              required
+              class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal focus:ring-opacity-20"
+            >
+              <option value="">Select your location</option>
+              <option value="kanpur">Kanpur</option>
+              <option value="lucknow">Lucknow</option>
+              <option value="bihar">Bihar</option>
+              <option value="rajasthan">Rajasthan</option>
+              <option value="delhi">Delhi</option>
+              <option value="kolkata">Kolkata</option>
+              <option value="mp">Madhya Pradesh</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-900 mb-2"
+              >Machine Type (Optional)</label
+            >
+            <select
+              class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal focus:ring-opacity-20"
+            >
+              <option value="">Select machine type</option>
+              <option value="22hp">22 HP Submersible</option>
+              <option value="30hp">30 HP Hydraulic</option>
+              <option value="38hp">38 HP Heavy Duty</option>
+              <option value="custom">Custom Solution</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-900 mb-2"
+              >Your Message *</label
+            >
+            <textarea
+              required
+              rows="5"
+              class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal focus:ring-opacity-20"
+              placeholder="Tell us about your boring requirements..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-gradient-to-r from-brand-teal to-brand-green text-white py-3 rounded-lg font-bold hover:shadow-lg transition-shadow"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Locations -->
+  <section class="py-16 md:py-24 bg-slate-50">
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center"
+      >
+        Our Office
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Address -->
+        <div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-4">ASR Drillers</h3>
+          <div class="space-y-4 text-slate-600">
+            <p>
+              <strong>Factory Address:</strong><br />
+              Industrial Area, Kanpur<br />
+              Uttar Pradesh, India
+            </p>
+            <p>
+              <strong>Office Address:</strong><br />
+              Kanpur, Uttar Pradesh<br />
+              India - 208001
+            </p>
+            <p>
+              <strong>Business Hours:</strong><br />
+              Monday - Saturday: 9:00 AM - 6:00 PM<br />
+              Sunday: Closed<br />
+              WhatsApp: 24/7 Available
+            </p>
+          </div>
+        </div>
+
+        <!-- Map Placeholder -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md h-80">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.5168749999996!2d75.85!3d26.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sKanpur!2sIndia!5e0!3m2!1sen!2sin!4v1234567890"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center"
+      >
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-6">
+        <details class="bg-slate-50 p-6 rounded-lg group cursor-pointer">
+          <summary
+            class="font-bold text-lg text-slate-900 flex justify-between items-center"
+          >
+            How long does it take to get a quote?
+            <span class="text-brand-teal">+</span>
+          </summary>
+          <p class="text-slate-600 mt-4">
+            We respond to all inquiries within 2 hours. Simply call us or send a
+            WhatsApp message with your requirements.
+          </p>
+        </details>
+
+        <details class="bg-slate-50 p-6 rounded-lg group cursor-pointer">
+          <summary
+            class="font-bold text-lg text-slate-900 flex justify-between items-center"
+          >
+            Do you offer free installation?
+            <span class="text-brand-teal">+</span>
+          </summary>
+          <p class="text-slate-600 mt-4">
+            Yes! We provide free on-site installation and training with all our
+            boring machines. Our expert technicians will set up everything for
+            you.
+          </p>
+        </details>
+
+        <details class="bg-slate-50 p-6 rounded-lg group cursor-pointer">
+          <summary
+            class="font-bold text-lg text-slate-900 flex justify-between items-center"
+          >
+            What warranty do you provide?
+            <span class="text-brand-teal">+</span>
+          </summary>
+          <p class="text-slate-600 mt-4">
+            All our machines come with a comprehensive warranty. We also offer
+            extended warranty options. Contact us for details.
+          </p>
+        </details>
+
+        <details class="bg-slate-50 p-6 rounded-lg group cursor-pointer">
+          <summary
+            class="font-bold text-lg text-slate-900 flex justify-between items-center"
+          >
+            Do you deliver across India?
+            <span class="text-brand-teal">+</span>
+          </summary>
+          <p class="text-slate-600 mt-4">
+            Yes, we deliver across India with safe transportation and handling.
+            We have clients in almost every state.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section
+    class="py-16 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+  >
+    <div class="container mx-auto px-4 md:px-8 max-w-6xl text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
+      <p class="text-lg text-teal-100 mb-8">
+        Contact us today and let's discuss your boring machine needs.
+      </p>
+      <a
+        href={`https://wa.me/${whatsapp}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-white text-brand-teal px-8 py-3 rounded-lg font-bold hover:bg-slate-100 transition-colors"
+      >
+        Message on WhatsApp →
+      </a>
+    </div>
+  </section>
+</Layout>

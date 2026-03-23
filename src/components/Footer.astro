@@ -1,53 +1,196 @@
 ---
 import { commonData } from "../data/locations-i18n.js";
-const { phone, whatsapp } = commonData;
+const { phone, whatsapp, baseLocation, companyName } = commonData;
+
+const currentPath = Astro.url.pathname;
+const isHindi = currentPath.startsWith("/hi/");
 ---
 
-<footer class="bg-gray-900 text-gray-400 py-12">
-  <div class="container mx-auto px-4 max-w-6xl">
-    <div class="grid md:grid-cols-4 gap-8">
+<footer
+  class="bg-slate-900 text-slate-300 py-12 lg:py-16 border-t border-slate-800"
+>
+  <div class="container mx-auto px-4 max-w-7xl">
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- Company Info -->
       <div>
-        <h3 class="text-white text-xl font-bold mb-4">ASR Drillers</h3>
-        <p class="text-sm">
-          Premium Tubewell Boring Machines<br />Kanpur, Uttar Pradesh
+        <div class="flex items-center gap-2 mb-4">
+          <div
+            class="w-10 h-10 bg-linear-to-br from-brand-teal to-brand-green rounded-lg flex items-center justify-center text-white font-bold"
+          >
+            ⚙️
+          </div>
+          <h3 class="text-xl font-bold text-white">{companyName}</h3>
+        </div>
+        <p class="text-sm text-slate-400 mb-4">
+          {
+            isHindi
+              ? "उच्च गुणवत्ता की बोरिंग मशीनें"
+              : "Premium Tubewell & Borewell Boring Machines"
+          }
         </p>
-        <p class="mt-4 text-xs">GST: 09XXXXXXXXXXXXXX</p>
+        <p class="text-xs text-slate-500 mb-3">
+          <strong>{isHindi ? "स्थान:" : "Location:"}</strong>
+          {baseLocation}
+        </p>
+        <p class="text-xs text-slate-500">
+          <strong>GST:</strong> 09XXXXXXXXXXXXXX
+        </p>
       </div>
 
+      <!-- Quick Links -->
       <div>
-        <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+        <h4 class="text-white font-semibold mb-4 text-lg">
+          {isHindi ? "जगहें" : "Locations"}
+        </h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="/kanpur" class="hover:text-white">Kanpur</a></li>
-          <li><a href="/lucknow" class="hover:text-white">Lucknow</a></li>
-          <li><a href="/bihar" class="hover:text-white">Bihar</a></li>
-          <li><a href="/kolkata" class="hover:text-white">Kolkata</a></li>
+          <li>
+            <a
+              href={isHindi ? "/hi/kanpur" : "/kanpur"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "कानपुर" : "Kanpur"}
+            </a>
+          </li>
+          <li>
+            <a
+              href={isHindi ? "/hi/lucknow" : "/lucknow"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "लखनऊ" : "Lucknow"}
+            </a>
+          </li>
+          <li>
+            <a
+              href={isHindi ? "/hi/bihar" : "/bihar"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "बिहार" : "Bihar"}
+            </a>
+          </li>
+          <li>
+            <a
+              href={isHindi ? "/hi/kolkata" : "/kolkata"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "कोलकाता" : "Kolkata"}
+            </a>
+          </li>
+          <li>
+            <a
+              href={isHindi ? "/hi/rajasthan" : "/rajasthan"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "राजस्थान" : "Rajasthan"}
+            </a>
+          </li>
         </ul>
       </div>
 
+      <!-- Help & Info -->
       <div>
-        <h4 class="text-white font-semibold mb-4">Support</h4>
-        <p class="text-sm">
-          24/7 WhatsApp: <a
-            href={`https://wa.me/${whatsapp}`}
-            class="text-teal-400 hover:text-teal-300">{phone}</a
-          >
-        </p>
-        <p class="text-sm mt-2">Factory Address: Pukhrayan, Kanpur, UP</p>
+        <h4 class="text-white font-semibold mb-4 text-lg">
+          {isHindi ? "सहायता" : "Support"}
+        </h4>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a
+              href={isHindi ? "/hi/about" : "/about"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "हमारे बारे में" : "About Us"}
+            </a>
+          </li>
+          <li>
+            <a
+              href={isHindi ? "/hi/contact" : "/contact"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "संपर्क" : "Contact"}
+            </a>
+          </li>
+          <li>
+            <a
+              href={isHindi ? "/hi/" : "/"}
+              class="text-slate-400 hover:text-brand-teal transition-colors"
+            >
+              {isHindi ? "FAQ" : "FAQ"}
+            </a>
+          </li>
+          <li>
+            <span class="text-slate-500 text-xs">
+              {isHindi ? "24/7 ग्राहक सहायता" : "24/7 Customer Support"}
+            </span>
+          </li>
+        </ul>
       </div>
 
+      <!-- Contact & Social -->
       <div>
-        <h4 class="text-white font-semibold mb-4">Get In Touch</h4>
-        <a
-          href={`https://wa.me/${whatsapp}`}
-          class="block bg-green-600 hover:bg-green-700 text-white text-center py-4 rounded-lg font-semibold"
-        >
-          💬 Message on WhatsApp Now
-        </a>
+        <h4 class="text-white font-semibold mb-4 text-lg">
+          {isHindi ? "संपर्क करें" : "Get In Touch"}
+        </h4>
+        <div class="space-y-3">
+          <!-- Phone -->
+          <a
+            href={`tel:${phone}`}
+            class="flex items-center gap-2 text-slate-400 hover:text-brand-teal transition-colors text-sm"
+          >
+            <span>📞</span>
+            <span>{phone}</span>
+          </a>
+
+          <!-- WhatsApp -->
+          <a
+            href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-slate-400 hover:text-brand-green transition-colors text-sm"
+          >
+            <span>💬</span>
+            <span
+              >{
+                isHindi ? "WhatsApp पर संपर्क करें" : "Message on WhatsApp"
+              }</span
+            >
+          </a>
+
+          <!-- CTA Button -->
+          <a
+            href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full bg-brand-green hover:bg-brand-teal text-white text-center py-2 px-4 rounded-lg font-semibold text-sm transition-colors mt-4"
+          >
+            {isHindi ? "अभी संपर्क करें" : "Contact Now"}
+          </a>
+        </div>
       </div>
     </div>
 
-    <div class="text-center text-xs mt-12 pt-8 border-t border-gray-800">
-      © 2026 ASR Drillers • Best Boring Machine Manufacturer in India
+    <!-- Divider -->
+    <div class="border-t border-slate-800 my-8"></div>
+
+    <!-- Bottom Footer -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-500">
+      <div class="text-center md:text-left">
+        © 2026 ASR Drillers • {
+          isHindi
+            ? "सर्वश्रेष्ठ बोरिंग मशीन निर्माता"
+            : "Best Boring Machine Manufacturer"
+        }
+      </div>
+      <div class="text-center">
+        <a href="#" class="hover:text-brand-teal transition-colors mr-4"
+          >{isHindi ? "गोपनीयता" : "Privacy"}</a
+        >
+        <a href="#" class="hover:text-brand-teal transition-colors"
+          >{isHindi ? "शर्तें" : "Terms"}</a
+        >
+      </div>
+      <div class="text-center md:text-right">
+        {isHindi ? "भारत में निर्मित 🇮🇳" : "Made in India 🇮🇳"}
+      </div>
     </div>
   </div>
 </footer>

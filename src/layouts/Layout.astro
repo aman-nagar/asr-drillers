@@ -1,4 +1,6 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -13,45 +15,53 @@ const {
   schema = null,
 } = Astro.props;
 
-// Get current path and locale
-const currentPath = Astro.url.pathname;
-const isHindi = currentPath.startsWith('/hi/');
-const basePathWithoutLocale = isHindi 
-  ? currentPath.replace('/hi/', '/') 
-  : currentPath;
-const cleanPath = basePathWithoutLocale === '/' ? '/' : basePathWithoutLocale;
-
-// Generate hreflang URLs
-const siteUrl = 'https://asrdrillers.com';
-const englishUrl = cleanPath === '/' ? siteUrl : `${siteUrl}${cleanPath}`;
-const hindiUrl = cleanPath === '/' ? `${siteUrl}/hi/` : `${siteUrl}/hi${cleanPath}`;
+// Safe fallback (Astro.url may not exist during some build phases)
+const siteUrl = "https://asrdrillers.com";
+const fallbackPath = "/"; // worst-case fallback
 ---
 
 <!doctype html>
-<html lang={isHindi ? "hi" : "en"}>
+<html lang="en">
+  <!-- initial safe default; updated by script -->
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="boring machine, tubewell boring, borewell drilling, Kanpur manufacturer, India"
+      content="boring machine, tubewell boring, borewell drilling, Kanpur manufacturer, India, tubewell boring machine price, submersible boring machine"
     />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url?.href || siteUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Hreflang tags for multilingual SEO -->
-    <link rel="alternate" hreflang="en" href={englishUrl} />
-    <link rel="alternate" hreflang="hi" href={hindiUrl} />
-    <link rel="alternate" hreflang="x-default" href={englishUrl} />
-    
-    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
-    
+
+    <!-- Hreflang – safe initial values; will be corrected by JS -->
+    <link id="hreflang-en" rel="alternate" hreflang="en" href={siteUrl} />
+    <link
+      id="hreflang-hi"
+      rel="alternate"
+      hreflang="hi"
+      href={`${siteUrl}/hi/`}
+    />
+    <link
+      id="hreflang-default"
+      rel="alternate"
+      hreflang="x-default"
+      href={siteUrl}
+    />
+
+    {
+      schema && (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      )
+    }
+
     <title>{title}</title>
+
     <style is:global>
       * {
         margin: 0;
@@ -67,11 +77,14 @@ const hindiUrl = cleanPath === '/' ? `${siteUrl}/hi/` : `${siteUrl}/hi${cleanPat
           Cantarell, sans-serif;
         line-height: 1.6;
         color: #333;
+        background-color: #f8fafc;
       }
 
       .container {
         width: 100%;
+        max-width: 1400px;
         margin: 0 auto;
+        padding: 0 1rem;
       }
 
       details summary::-webkit-details-marker {
@@ -84,13 +97,49 @@ const hindiUrl = cleanPath === '/' ? `${siteUrl}/hi/` : `${siteUrl}/hi${cleanPat
 
       @media (max-width: 768px) {
         .container {
-          width: 100%;
           padding: 0 1rem;
         }
       }
     </style>
   </head>
+
   <body>
-    <slot />
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
+
+  <script>
+    // ────────────────────────────────────────────────
+    // Client-side language & hreflang correction
+    // ────────────────────────────────────────────────
+    (function () {
+      const currentPath = window.location.pathname;
+      const isHindiPage = currentPath.startsWith("/hi/");
+      const basePath = isHindiPage
+        ? currentPath.replace(/^\/hi/, "") || "/"
+        : currentPath;
+
+      const siteUrl = "https://asrdrillers.com";
+      const englishFullUrl =
+        basePath === "/" ? siteUrl : `${siteUrl}${basePath}`;
+      const hindiFullUrl =
+        basePath === "/" ? `${siteUrl}/hi/` : `${siteUrl}/hi${basePath}`;
+      // Update <html> lang
+      document.documentElement.lang = isHindiPage ? "hi" : "en";
+
+      // Update hreflang tags (with safety checks)
+      const enLink = document.getElementById("hreflang-en") as HTMLLinkElement;
+      const hiLink = document.getElementById("hreflang-hi") as HTMLLinkElement;
+      const defaultLink = document.getElementById(
+        "hreflang-default",
+      ) as HTMLLinkElement;
+
+      if (enLink) enLink.href = englishFullUrl;
+      if (hiLink) hiLink.href = hindiFullUrl;
+      if (defaultLink) defaultLink.href = englishFullUrl;
+    })();
+  </script>
 </html>
