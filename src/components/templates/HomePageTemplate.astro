@@ -1,0 +1,219 @@
+---
+import ModelsTable from "../ModelsTable.astro";
+import TestimonialsGrid from "../TestimonialsGrid.astro";
+import FAQSection from "../FAQSection.astro";
+import CommonCTA from "../CommonCTA.astro";
+import InsightCard from "../cards/InsightCard.astro";
+import PageHero from "../sections/PageHero.astro";
+import SectionHeading from "../sections/SectionHeading.astro";
+import SignalStrip from "../sections/SignalStrip.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getWhatsAppNumber } from "../../config/site";
+import { commonData } from "../../data/locations-i18n.js";
+
+interface HeroSignal {
+  value: string;
+  label: string;
+}
+
+interface SignalStripItem {
+  value: string;
+  label: string;
+  note?: string;
+}
+
+interface InsightItem {
+  title: string;
+  body: string;
+}
+
+interface DecisionStat {
+  label: string;
+  value: string;
+}
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface TestimonialItem {
+  name: string;
+  location: string;
+  role: string;
+  text: string;
+  rating: number;
+  project?: string;
+}
+
+interface HomePageContent {
+  pageTitle: string;
+  pageDescription: string;
+  schema: Record<string, unknown>;
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    signals: HeroSignal[];
+    visualTitle: string;
+    visualLines: string[];
+    primaryActionLabel: string;
+    secondaryActionLabel: string;
+    whatsappMessage?: string;
+  };
+  stripItems: SignalStripItem[];
+  problems: {
+    title: string;
+    subtitle: string;
+    cards: InsightItem[];
+  };
+  advantages: {
+    title: string;
+    subtitle: string;
+    cards: InsightItem[];
+  };
+  decisionPanel: {
+    eyebrow: string;
+    title: string;
+    stats: DecisionStat[];
+    ctaLabel: string;
+    whatsappMessage?: string;
+  };
+  models: {
+    title: string;
+    subtitle: string;
+  };
+  testimonials: {
+    title: string;
+    subtitle: string;
+    items: TestimonialItem[];
+  };
+  faq: {
+    title: string;
+    items: FAQItem[];
+  };
+  cta: {
+    headline: string;
+    subheadline: string;
+  };
+}
+
+interface Props {
+  content: HomePageContent;
+}
+
+const { content } = Astro.props;
+const whatsappNumber = getWhatsAppNumber();
+const heroMessage =
+  content.hero.whatsappMessage ??
+  "Hi! I want help choosing the right boring machine.";
+const decisionMessage = content.decisionPanel.whatsappMessage ?? heroMessage;
+---
+
+<Layout title={content.pageTitle} description={content.pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(content.schema)} />
+
+  <PageHero
+    eyebrow={content.hero.eyebrow}
+    title={content.hero.title}
+    description={content.hero.description}
+    signals={content.hero.signals}
+    visualTitle={content.hero.visualTitle}
+    visualLines={content.hero.visualLines}
+    actions={[
+      {
+        href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(heroMessage)}`,
+        label: content.hero.primaryActionLabel,
+        variant: "primary",
+        external: true,
+        icon: "WA",
+      },
+      {
+        href: `tel:${commonData.phone}`,
+        label: content.hero.secondaryActionLabel,
+        variant: "secondary",
+        icon: "PH",
+      },
+    ]}
+  />
+
+  <SignalStrip items={content.stripItems} sectionClass="bg-slate-950 py-10" />
+
+  <section class="section-shell bg-slate-50">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <SectionHeading
+        title={content.problems.title}
+        subtitle={content.problems.subtitle}
+      />
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {content.problems.cards.map((card) => (
+          <InsightCard title={card.title} body={card.body} tone="danger" icon="X" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell bg-white">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <SectionHeading
+        title={content.advantages.title}
+        subtitle={content.advantages.subtitle}
+      />
+
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
+        <div class="grid gap-6 md:grid-cols-3">
+          {content.advantages.cards.map((card) => (
+            <InsightCard title={card.title} body={card.body} tone="success" icon="+" />
+          ))}
+        </div>
+
+        <aside class="surface-panel border border-slate-200 bg-slate-950 p-8 text-white">
+          <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/80">
+            {content.decisionPanel.eyebrow}
+          </p>
+          <h3 class="mt-4 text-3xl font-bold">{content.decisionPanel.title}</h3>
+          <div class="mt-8 space-y-4">
+            {content.decisionPanel.stats.map((stat) => (
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-emerald-200/70">
+                  {stat.label}
+                </p>
+                <p class="mt-2 text-2xl font-bold">{stat.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(decisionMessage)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-8 inline-flex w-full items-center justify-center rounded-2xl bg-white px-6 py-4 font-bold text-brand-teal transition hover:bg-slate-100"
+          >
+            {content.decisionPanel.ctaLabel}
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <ModelsTable title={content.models.title} subtitle={content.models.subtitle} />
+
+  <TestimonialsGrid
+    testimonials={content.testimonials.items}
+    title={content.testimonials.title}
+    subtitle={content.testimonials.subtitle}
+    sectionClass="section-shell bg-slate-50"
+  />
+
+  <FAQSection
+    faqs={content.faq.items}
+    title={content.faq.title}
+    sectionId="faq"
+  />
+
+  <CommonCTA
+    headline={content.cta.headline}
+    subheadline={content.cta.subheadline}
+  />
+</Layout>

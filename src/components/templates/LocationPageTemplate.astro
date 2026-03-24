@@ -9,6 +9,7 @@ import TestimonialsGrid from "../TestimonialsGrid.astro";
 import TrustBadges from "../TrustBadges.astro";
 import PageHero from "../sections/PageHero.astro";
 import SectionHeading from "../sections/SectionHeading.astro";
+import SignalStrip from "../sections/SignalStrip.astro";
 import { getAbsoluteUrl, getWhatsAppNumber, siteConfig } from "../../config/site";
 import type { Locale } from "../../lib/i18n";
 
@@ -94,6 +95,7 @@ const faqSchema = {
 };
 
 const copy = {
+  eyebrow: isHindi ? `${pageData.title} के लिए सेवा कवरेज` : `Service coverage for ${pageData.title}`,
   heroPrimary: isHindi ? "व्हाट्सऐप पर संपर्क करें" : "WhatsApp Now",
   heroSecondary: isHindi ? "कॉल करें" : "Get Quote",
   problemsTitle: isHindi ? "आपकी ड्रिलिंग चुनौतियां" : "Your Drilling Challenges",
@@ -121,6 +123,44 @@ const copy = {
     ? "कानपुर के विश्वस्त निर्माता से कस्टम उद्धरण प्राप्त करें। हम आपके क्षेत्र में तेज़ डिलीवरी और स्थल पर समर्थन के साथ सेवा देते हैं।"
     : "Get a custom quote from Kanpur's trusted manufacturer. We serve your area with quick delivery and on-site support.",
 };
+
+const heroSignals = [
+  {
+    value: isHindi ? "2-5 दिन" : "2-5 Days",
+    label: isHindi ? "डिलीवरी विंडो" : "Delivery Window",
+  },
+  {
+    value: "22-38 HP",
+    label: isHindi ? "उपलब्ध मॉडल" : "Machine Range",
+  },
+  {
+    value: isHindi ? "24/7" : "24/7",
+    label: isHindi ? "व्हाट्सऐप सहायता" : "WhatsApp Support",
+  },
+];
+
+const stripItems = [
+  {
+    value: isHindi ? "उत्तर भारत" : "North India",
+    label: isHindi ? "सर्विस रीच" : "Service Reach",
+    note: isHindi ? "फैक्टरी से फील्ड समर्थन" : "Factory-backed field support",
+  },
+  {
+    value: "₹4.8-7.2L",
+    label: isHindi ? "मूल्य सीमा" : "Price Band",
+    note: isHindi ? "मॉडल के अनुसार" : "Based on machine model",
+  },
+  {
+    value: isHindi ? "स्थल पर" : "On-Site",
+    label: isHindi ? "स्थापन" : "Installation",
+    note: isHindi ? "ऑपरेटर प्रशिक्षण के साथ" : "Operator training included",
+  },
+  {
+    value: isHindi ? "1-2 वर्ष" : "1-2 Years",
+    label: isHindi ? "वारंटी" : "Warranty",
+    note: isHindi ? "निर्माण दोषों पर" : "Manufacturing-defect cover",
+  },
+];
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -130,8 +170,22 @@ const copy = {
   <Breadcrumbs breadcrumbs={breadcrumbs} />
 
   <PageHero
+    eyebrow={copy.eyebrow}
     title={pageData.heroHeadline}
     description={pageData.description}
+    signals={heroSignals}
+    visualTitle={isHindi ? "फैक्टरी से फील्ड रेडी सपोर्ट" : "Factory-to-field support"}
+    visualLines={[
+      isHindi
+        ? `${pageData.title} के लिए तेज़ सपोर्ट और स्पेयर उपलब्धता`
+        : `Fast support and spare-part access for ${pageData.title}`,
+      isHindi
+        ? "ठेकेदारों और किसानों के लिए उपयुक्त मॉडल गाइडेंस"
+        : "Model guidance for both contractors and farmers",
+      isHindi
+        ? "हिंदी और अंग्रेजी में सीधे संपर्क"
+        : "Direct contact in both Hindi and English",
+    ]}
     actions={[
       {
         href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(heroMessage)}`,
@@ -148,6 +202,8 @@ const copy = {
       },
     ]}
   />
+
+  <SignalStrip items={stripItems} sectionClass="bg-slate-950 py-10" />
 
   <TrustBadges />
 

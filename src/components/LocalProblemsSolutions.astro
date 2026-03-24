@@ -1,4 +1,6 @@
 ---
+import InsightCard from "./cards/InsightCard.astro";
+
 interface Problem {
   title: string;
   desc: string;
@@ -27,41 +29,32 @@ const {
 <section class="py-16 bg-white">
   <div class="container mx-auto px-4 md:px-8 max-w-6xl">
     <div class="grid md:grid-cols-2 gap-12">
-      <!-- Problems Section -->
       <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-8 text-gray-900">
+        <h3 class="text-2xl md:text-3xl font-bold mb-8 text-slate-950">
           {problemsTitle}
         </h3>
-        <div class="space-y-6">
+        <div class="grid gap-6">
           {
             problems.map((problem) => (
-              <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
-                <h4 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
-                  <span class="text-red-600">❌</span>
-                  {problem.title}
-                </h4>
-                <p class="text-gray-700">{problem.desc}</p>
-              </div>
+              <InsightCard title={problem.title} body={problem.desc} tone="danger" icon="X" />
             ))
           }
         </div>
       </div>
 
-      <!-- Solutions Section -->
       <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-8 text-gray-900">
+        <h3 class="text-2xl md:text-3xl font-bold mb-8 text-slate-950">
           {solutionsTitle}
         </h3>
-        <div class="space-y-6">
+        <div class="grid gap-6">
           {
             solutions.map((solution) => (
-              <div class="bg-green-50 p-6 rounded-lg border-l-4 border-brand-green">
-                <h4 class="font-bold text-lg text-gray-900 mb-2 flex items-center gap-2">
-                  <span class="text-brand-green">✓</span>
-                  {solution.title}
-                </h4>
-                <p class="text-gray-700">{solution.desc}</p>
-              </div>
+              <InsightCard
+                title={solution.title}
+                body={solution.desc}
+                tone="success"
+                icon="+"
+              />
             ))
           }
         </div>
