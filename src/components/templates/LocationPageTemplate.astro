@@ -1,0 +1,188 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../Breadcrumbs.astro";
+import CommonCTA from "../CommonCTA.astro";
+import FAQSection from "../FAQSection.astro";
+import LocalProblemsSolutions from "../LocalProblemsSolutions.astro";
+import ModelsTable from "../ModelsTable.astro";
+import TestimonialsGrid from "../TestimonialsGrid.astro";
+import TrustBadges from "../TrustBadges.astro";
+import PageHero from "../sections/PageHero.astro";
+import SectionHeading from "../sections/SectionHeading.astro";
+import { getAbsoluteUrl, getWhatsAppNumber, siteConfig } from "../../config/site";
+import type { Locale } from "../../lib/i18n";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface LocationContentBlock {
+  title: string;
+  description: string;
+  heroHeadline: string;
+  localProblems?: Array<{ title: string; desc: string }>;
+  localSolutions?: Array<{ title: string; desc: string }>;
+  localTestimonials?: Array<{
+    name: string;
+    location: string;
+    role: string;
+    text: string;
+    rating: number;
+    project?: string;
+  }>;
+  shippingInfo?: string;
+  areaServed?: string[];
+}
+
+interface Props {
+  locale: Locale;
+  location: string;
+  pageData: LocationContentBlock;
+  faqItems: FAQItem[];
+}
+
+const { locale, location, pageData, faqItems } = Astro.props;
+const isHindi = locale === "hi";
+const locationPath = isHindi ? `/hi/${location}` : `/${location}`;
+const pageTitle = isHindi
+  ? `${pageData.title} | ASR Drillers - बोरिंग मशीनें`
+  : `${pageData.title} | ASR Drillers - Boring Machines`;
+const pageDescription = pageData.description;
+const breadcrumbs = [{ label: pageData.title, href: locationPath }];
+const whatsappNumber = getWhatsAppNumber();
+const heroMessage = isHindi
+  ? `नमस्ते! मुझे ${pageData.title} में बोरिंग मशीनों के बारे में जानना है। कृपया विवरण साझा करें।`
+  : `Hi! I'm interested in boring machines in ${pageData.title}. Please share details.`;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${getAbsoluteUrl(locationPath)}/#localbusiness`,
+  name: `${siteConfig.name} - ${pageData.title}`,
+  image: getAbsoluteUrl(siteConfig.logoPath),
+  description: pageData.description,
+  url: getAbsoluteUrl(locationPath),
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: pageData.title,
+    addressRegion: "Uttar Pradesh",
+    addressCountry: "IN",
+  },
+  telephone: siteConfig.phone,
+  areaServed: pageData.areaServed,
+  priceRange: "₹450000-₹750000",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "08:00",
+    closes: "20:00",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
+const copy = {
+  heroPrimary: isHindi ? "व्हाट्सऐप पर संपर्क करें" : "WhatsApp Now",
+  heroSecondary: isHindi ? "कॉल करें" : "Get Quote",
+  problemsTitle: isHindi ? "आपकी ड्रिलिंग चुनौतियां" : "Your Drilling Challenges",
+  solutionsTitle: isHindi ? "ASR Drillers समाधान" : "ASR Drillers Solution",
+  productsTitle: isHindi ? "हमारी सर्वश्रेष्ठ बोरिंग मशीनें" : "Our Best-Selling Boring Machines",
+  productsSubtitle: isHindi
+    ? "भारतीय इलाके के लिए डिज़ाइन की गई पेशेवर-ग्रेड मशीनें"
+    : "Professional-grade machines designed for Indian terrain",
+  testimonialsTitle: isHindi
+    ? `${pageData.title} में सफलता की कहानियाँ`
+    : `Success Stories from ${pageData.title}`,
+  testimonialsSubtitle: isHindi
+    ? `${pageData.title} के ठेकेदारों और किसानों से असली प्रतिक्रिया`
+    : `Real feedback from contractors and farmers in ${pageData.title}`,
+  shippingTitle: isHindi
+    ? `${pageData.title} में डिलीवरी और समर्थन`
+    : `Delivery & Support in ${pageData.title}`,
+  faqTitle: isHindi
+    ? "हमारी बोरिंग मशीनों के बारे में आम प्रश्न"
+    : "Common Questions About Our Boring Machines",
+  ctaHeadline: isHindi
+    ? `${pageData.title} में शुरुआत करने के लिए तैयार?`
+    : `Ready to Get Started in ${pageData.title}?`,
+  ctaSubheadline: isHindi
+    ? "कानपुर के विश्वस्त निर्माता से कस्टम उद्धरण प्राप्त करें। हम आपके क्षेत्र में तेज़ डिलीवरी और स्थल पर समर्थन के साथ सेवा देते हैं।"
+    : "Get a custom quote from Kanpur's trusted manufacturer. We serve your area with quick delivery and on-site support.",
+};
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Breadcrumbs breadcrumbs={breadcrumbs} />
+
+  <PageHero
+    title={pageData.heroHeadline}
+    description={pageData.description}
+    actions={[
+      {
+        href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(heroMessage)}`,
+        label: copy.heroPrimary,
+        variant: "primary",
+        external: true,
+        icon: "💬",
+      },
+      {
+        href: `tel:${siteConfig.phone}`,
+        label: copy.heroSecondary,
+        variant: "secondary",
+        icon: "📞",
+      },
+    ]}
+  />
+
+  <TrustBadges />
+
+  {pageData.localProblems && pageData.localSolutions && (
+    <LocalProblemsSolutions
+      problems={pageData.localProblems}
+      solutions={pageData.localSolutions}
+      problemsTitle={copy.problemsTitle}
+      solutionsTitle={copy.solutionsTitle}
+    />
+  )}
+
+  <ModelsTable title={copy.productsTitle} subtitle={copy.productsSubtitle} />
+
+  {pageData.localTestimonials && pageData.localTestimonials.length > 0 && (
+    <TestimonialsGrid
+      testimonials={pageData.localTestimonials}
+      title={copy.testimonialsTitle}
+      subtitle={copy.testimonialsSubtitle}
+      sectionClass="py-16 bg-white"
+    />
+  )}
+
+  {pageData.shippingInfo && (
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+        <SectionHeading title={copy.shippingTitle} />
+        <div class="bg-white p-8 rounded-lg border-l-4 border-brand-teal max-w-2xl mx-auto shadow-sm">
+          <p class="text-lg text-gray-700 leading-relaxed">{pageData.shippingInfo}</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <FAQSection faqs={faqItems} title={copy.faqTitle} />
+
+  <CommonCTA headline={copy.ctaHeadline} subheadline={copy.ctaSubheadline} />
+</Layout>

@@ -9,18 +9,25 @@ interface Props {
     project?: string;
   }>;
   title?: string;
+  subtitle?: string;
+  sectionClass?: string;
 }
 
-const { testimonials, title = "What Our Clients Say" } = Astro.props;
+const {
+  testimonials,
+  title = "What Our Clients Say",
+  subtitle = "Real results from real boring professionals across India",
+  sectionClass = "py-16 bg-gray-50",
+} = Astro.props;
 ---
 
-<section class="py-16 bg-gray-50">
+<section class={sectionClass}>
   <div class="container mx-auto px-4 md:px-8 max-w-6xl">
     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">
       {title}
     </h2>
     <p class="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
-      Real results from real boring professionals across India
+      {subtitle}
     </p>
 
     <div class="grid md:grid-cols-3 gap-8">

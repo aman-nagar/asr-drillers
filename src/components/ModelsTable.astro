@@ -5,20 +5,31 @@ import { getLocaleFromPath } from "../lib/i18n";
 
 interface Props {
   models?: typeof commonData.models;
+  title?: string;
+  subtitle?: string;
 }
 
 const locale = getLocaleFromPath(Astro.url?.pathname || "/");
 const isHindi = locale === "hi";
 const whatsappNumber = getWhatsAppNumber();
-const { models = commonData.models } = Astro.props;
+const {
+  models = commonData.models,
+  title = isHindi ? "हमारी बोरिंग मशीन मॉडल" : "Our Boring Machine Models",
+  subtitle,
+} = Astro.props;
 ---
 
 <!-- Models Table Component - Reusable across all pages -->
 <section class="py-16 bg-white">
   <div class="container mx-auto px-4 md:px-8 max-w-6xl">
     <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
-      {isHindi ? "हमारी बोरिंग मशीन मॉडल" : "Our Boring Machine Models"}
+      {title}
     </h2>
+    {subtitle && (
+      <p class="text-center text-gray-600 mb-8 text-lg max-w-3xl mx-auto">
+        {subtitle}
+      </p>
+    )}
 
     <div class="overflow-x-auto">
       <table class="w-full bg-white rounded-lg overflow-hidden shadow">
