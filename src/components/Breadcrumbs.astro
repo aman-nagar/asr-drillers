@@ -1,4 +1,7 @@
 ---
+import { siteConfig } from "../config/site";
+import { getLocaleFromPath, withLocalePrefix } from "../lib/i18n";
+
 interface Breadcrumb {
   label: string;
   href: string;
@@ -9,16 +12,28 @@ interface Props {
 }
 
 const { breadcrumbs } = Astro.props;
+const currentPath = Astro.url?.pathname || "/";
+const locale = getLocaleFromPath(currentPath);
+const homeLabel = locale === "hi" ? "होम" : "Home";
+const homeHref = withLocalePrefix("/", locale);
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: breadcrumbs.map((item, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: item.label,
-    item: `https://asrdrillers.com${item.href}`,
-  })),
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: homeLabel,
+      item: `${siteConfig.siteUrl}${homeHref}`,
+    },
+    ...breadcrumbs.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 2,
+      name: item.label,
+      item: `${siteConfig.siteUrl}${item.href}`,
+    })),
+  ],
 };
 ---
 
@@ -28,40 +43,33 @@ const schema = {
       <!-- Home -->
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <a
-          href="/"
+          href={homeHref}
           class="text-brand-teal hover:text-brand-green transition-colors flex items-center gap-1"
           itemprop="item"
         >
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
           </svg>
-          <span itemprop="name">Home</span>
+          <span itemprop="name">{homeLabel}</span>
         </a>
         <meta itemprop="position" content="1" />
       </li>
 
       {breadcrumbs.map((crumb, index) => (
-        <li class="flex items-center gap-2">
-          <span class="text-gray-400">/</span>
-          <li
-            itemprop="itemListElement"
-            itemscope
-            itemtype="https://schema.org/ListItem"
-            class={index === breadcrumbs.length - 1 ? "text-gray-500" : ""}
-          >
-            {index === breadcrumbs.length - 1 ? (
-              <span itemprop="name" class="capitalize">{crumb.label}</span>
-            ) : (
-              <a
-                href={crumb.href}
-                class="text-brand-teal hover:text-brand-green transition-colors capitalize"
-                itemprop="item"
-              >
-                <span itemprop="name">{crumb.label}</span>
-              </a>
-            )}
-            <meta itemprop="position" content={String(index + 2)} />
-          </li>
+        <li class="flex items-center gap-2" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="text-gray-400" aria-hidden="true">/</span>
+          {index === breadcrumbs.length - 1 ? (
+            <span itemprop="name" class="text-gray-500 capitalize">{crumb.label}</span>
+          ) : (
+            <a
+              href={crumb.href}
+              class="text-brand-teal hover:text-brand-green transition-colors capitalize"
+              itemprop="item"
+            >
+              <span itemprop="name">{crumb.label}</span>
+            </a>
+          )}
+          <meta itemprop="position" content={String(index + 2)} />
         </li>
       ))}
     </ol>

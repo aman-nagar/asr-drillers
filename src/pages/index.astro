@@ -7,6 +7,7 @@ import TestimonialsGrid from "../components/TestimonialsGrid.astro";
 import FAQSection from "../components/FAQSection.astro";
 import CommonCTA from "../components/CommonCTA.astro";
 import { commonData } from "../data/locations-i18n.js";
+import { getAbsoluteUrl, siteConfig } from "../config/site";
 
 const pageTitle =
   "Best Boring Machine Manufacturer in India | ASR Drillers Kanpur";
@@ -16,7 +17,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "ASR Drillers",
-  image: "https://asrdrillers.com/logo.png",
+  image: getAbsoluteUrl(siteConfig.logoPath),
   description:
     "Manufacturer of high-quality boring machines for tubewell and borewell drilling",
   address: {
@@ -27,7 +28,7 @@ const schema = {
     postalCode: "208201",
     addressCountry: "IN",
   },
-  telephone: `+${commonData.phone}`,
+  telephone: commonData.phone,
   priceRange: "₹450000-₹750000",
   areaServed: ["UP", "Bihar", "Rajasthan", "MP", "Delhi-NCR"],
   sameAs: ["https://www.facebook.com/asrdrillers"],
@@ -202,7 +203,7 @@ const homepageFAQs = [
   </section>
 
   <!-- Solution -->
-  <section class="py-16 bg-white">
+  <section id="faq" class="py-16 bg-white">
     <div class="container mx-auto px-4 md:px-8 max-w-6xl">
       <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">
         Our Solution: Kanpur-Made Boring Machines Built for India's Terrain

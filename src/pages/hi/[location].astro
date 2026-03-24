@@ -8,6 +8,7 @@ import FAQSection from "../../components/FAQSection.astro";
 import CommonCTA from "../../components/CommonCTA.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { commonData, locationsData } from "../../data/locations-i18n.js";
+import { getAbsoluteUrl, siteConfig } from "../../config/site";
 
 interface Props {
   location: string;
@@ -32,8 +33,7 @@ const pageTitle = `${pageData.title} | ASR Drillers - बोरिंग मश�
 const pageDescription = pageData.description;
 
 const breadcrumbs = [
-  { label: "हिंदी", href: `/hi/${location}` },
-  { label: location.charAt(0).toUpperCase() + location.slice(1), href: `/${location}` },
+  { label: pageData.title, href: `/hi/${location}` },
 ];
 
 // LocalBusiness Schema (Hindi)
@@ -42,7 +42,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": `https://asrdrillers.com/hi/${location}/#localbusiness`,
   name: `ASR Drillers - ${pageData.title}`,
-  image: "https://asrdrillers.com/logo.png",
+  image: getAbsoluteUrl(siteConfig.logoPath),
   description: pageData.description,
   url: `https://asrdrillers.com/hi/${location}`,
   address: {
@@ -76,38 +76,12 @@ const faqSchema = {
   })),
 };
 
-// BreadcrumbList Schema
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "होम",
-      item: "https://asrdrillers.com",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: location.charAt(0).toUpperCase() + location.slice(1),
-      item: `https://asrdrillers.com/${location}`,
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "हिंदी",
-      item: `https://asrdrillers.com/hi/${location}`,
-    },
-  ],
-};
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
   <!-- Schemas -->
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- Breadcrumbs -->
   <Breadcrumbs breadcrumbs={breadcrumbs} />

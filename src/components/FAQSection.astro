@@ -1,16 +1,25 @@
 ---
+import { getLocaleFromPath } from "../lib/i18n";
+
 interface Props {
   faqs: Array<{
     question: string;
     answer: string;
   }>;
   title?: string;
+  sectionId?: string;
 }
 
-const { faqs, title = "Frequently Asked Questions" } = Astro.props;
+const locale = getLocaleFromPath(Astro.url?.pathname || "/");
+const isHindi = locale === "hi";
+const {
+  faqs,
+  title = isHindi ? "अक्सर पूछे जाने वाले प्रश्न" : "Frequently Asked Questions",
+  sectionId,
+} = Astro.props;
 ---
 
-<section class="py-16 bg-white">
+<section id={sectionId} class="py-16 bg-white">
   <div class="container mx-auto px-4 md:px-8 max-w-4xl">
     <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
       {title}

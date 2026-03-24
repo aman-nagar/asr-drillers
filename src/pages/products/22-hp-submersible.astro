@@ -1,15 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getAbsoluteUrl } from "../../config/site";
 
 const pageTitle = "22 HP Submersible Boring Machine | ASR Drillers Kanpur";
 const pageDescription =
   "22 HP submersible boring machine for tubewell drilling. 150-300 feet depth. Cast iron build. Kirloskar engine. ₹4.8 lakh. Free installation & training in UP.";
 
-const breadcrumbs = [
-  { label: "Products", href: "/products" },
-  { label: "22 HP Submersible", href: "/products/22-hp-submersible" },
-];
+const breadcrumbs = [{ label: "22 HP Submersible", href: "/products/22-hp-submersible" }];
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -101,21 +99,18 @@ const faqSchema = {
   ],
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://asrdrillers.com" },
-    { "@type": "ListItem", position: 2, name: "Products", item: "https://asrdrillers.com/products" },
-    { "@type": "ListItem", position: 3, name: "22 HP Submersible", item: "https://asrdrillers.com/products/22-hp-submersible" },
-  ],
-};
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  alternateUrls={{
+    en: getAbsoluteUrl("/products/22-hp-submersible/"),
+    xDefault: getAbsoluteUrl("/products/22-hp-submersible/"),
+  }}
+>
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- Breadcrumb -->
   <Breadcrumbs breadcrumbs={breadcrumbs} />

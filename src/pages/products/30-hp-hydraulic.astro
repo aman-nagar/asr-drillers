@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getAbsoluteUrl } from "../../config/site";
 
 const pageTitle = "30 HP Hydraulic Boring Machine | ASR Drillers Kanpur";
 const pageDescription =
@@ -28,17 +30,20 @@ const schema = {
 };
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  alternateUrls={{
+    en: getAbsoluteUrl("/products/30-hp-hydraulic/"),
+    xDefault: getAbsoluteUrl("/products/30-hp-hydraulic/"),
+  }}
+>
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <!-- Breadcrumb -->
-  <nav class="bg-gray-100 py-3 px-4">
-    <div class="container mx-auto max-w-6xl text-sm text-gray-600">
-      <a href="/" class="text-blue-600 hover:underline">Home</a> /
-      <a href="#products" class="text-blue-600 hover:underline">Products</a> /
-      <span>30 HP Hydraulic</span>
-    </div>
-  </nav>
+  <Breadcrumbs
+    breadcrumbs={[{ label: "30 HP Hydraulic", href: "/products/30-hp-hydraulic" }]}
+  />
 
   <!-- Hero Section -->
   <section

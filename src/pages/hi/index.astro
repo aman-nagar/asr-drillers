@@ -7,6 +7,7 @@ import TestimonialsGrid from "../../components/TestimonialsGrid.astro";
 import FAQSection from "../../components/FAQSection.astro";
 import CommonCTA from "../../components/CommonCTA.astro";
 import { commonData } from "../../data/locations-i18n.js";
+import { getAbsoluteUrl, siteConfig } from "../../config/site";
 
 const pageTitle =
   "भारत में सर्वश्रेष्ठ बोरिंग मशीन निर्माता | ASR ड्रिलर्स कानपुर";
@@ -16,7 +17,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "ASR ड्रिलर्स",
-  image: "https://asrdrillers.com/logo.png",
+  image: getAbsoluteUrl(siteConfig.logoPath),
   description:
     "ट्यूबवेल और बोरवेल ड्रिलिंग के लिए उच्च गुणवत्ता की बोरिंग मशीनों का निर्माता",
   address: {
@@ -27,7 +28,7 @@ const schema = {
     postalCode: "208201",
     addressCountry: "IN",
   },
-  telephone: `+${commonData.phone}`,
+  telephone: commonData.phone,
   priceRange: "₹450000-₹750000",
   areaServed: ["UP", "Bihar", "Rajasthan", "MP", "Delhi-NCR"],
   sameAs: ["https://www.facebook.com/asrdrillers"],
@@ -169,7 +170,7 @@ const whyChooseData = [
   </section>
 
   <!-- FAQ Section -->
-  <FAQSection faqs={commonData.commonFAQHi} />
+  <FAQSection faqs={commonData.commonFAQHi} sectionId="faq" />
 
   <!-- Final CTA -->
   <CommonCTA />

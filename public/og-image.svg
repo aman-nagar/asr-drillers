@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">ASR Drillers social preview</title>
+  <desc id="desc">ASR Drillers boring machine manufacturer social sharing image.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="56" y="56" width="1088" height="518" rx="36" fill="rgba(15,23,42,0.28)" stroke="rgba(248,250,252,0.16)" />
+  <circle cx="215" cy="205" r="76" fill="none" stroke="#f8fafc" stroke-width="20" />
+  <path d="M215 108v45M215 257v45M118 205h45M267 205h45M146 136l33 33M251 241l33 33M146 274l33-33M251 169l33-33" stroke="#f8fafc" stroke-width="16" stroke-linecap="round" />
+  <path d="M118 394h194" stroke="#facc15" stroke-width="24" stroke-linecap="round" />
+  <text x="370" y="220" font-family="Arial, sans-serif" font-size="72" font-weight="700" fill="#f8fafc">ASR Drillers</text>
+  <text x="370" y="300" font-family="Arial, sans-serif" font-size="34" fill="#dcfce7">Boring machine manufacturer in Kanpur, India</text>
+  <text x="370" y="360" font-family="Arial, sans-serif" font-size="30" fill="#e2e8f0">22 HP, 30 HP, and 38 HP machines for farms and contractors</text>
+  <text x="370" y="426" font-family="Arial, sans-serif" font-size="28" fill="#f8fafc">Factory direct pricing • Hindi and English support • On-site installation</text>
+  <text x="370" y="500" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#facc15">www.asrdrillers.com</text>
+</svg>

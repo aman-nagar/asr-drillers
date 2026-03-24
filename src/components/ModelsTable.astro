@@ -1,30 +1,41 @@
 ---
 import { commonData } from "../data/locations-i18n.js";
+import { getWhatsAppNumber } from "../config/site";
+import { getLocaleFromPath } from "../lib/i18n";
+
+interface Props {
+  models?: typeof commonData.models;
+}
+
+const locale = getLocaleFromPath(Astro.url?.pathname || "/");
+const isHindi = locale === "hi";
+const whatsappNumber = getWhatsAppNumber();
+const { models = commonData.models } = Astro.props;
 ---
 
 <!-- Models Table Component - Reusable across all pages -->
 <section class="py-16 bg-white">
   <div class="container mx-auto px-4 md:px-8 max-w-6xl">
     <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
-      Our Boring Machine Models
+      {isHindi ? "हमारी बोरिंग मशीन मॉडल" : "Our Boring Machine Models"}
     </h2>
 
     <div class="overflow-x-auto">
       <table class="w-full bg-white rounded-lg overflow-hidden shadow">
         <thead class="bg-brand-teal text-white">
           <tr>
-            <th class="p-4 text-left">Model</th>
+            <th class="p-4 text-left">{isHindi ? "मॉडल" : "Model"}</th>
             <th class="p-4 text-center">HP</th>
-            <th class="p-4 text-center">Max Depth</th>
-            <th class="p-4 text-center">Diameter</th>
-            <th class="p-4 text-center">Fuel/Day</th>
-            <th class="p-4 text-center">Price</th>
-            <th class="p-4 text-center">Action</th>
+            <th class="p-4 text-center">{isHindi ? "अधिकतम गहराई" : "Max Depth"}</th>
+            <th class="p-4 text-center">{isHindi ? "व्यास" : "Diameter"}</th>
+            <th class="p-4 text-center">{isHindi ? "ईंधन/दिन" : "Fuel/Day"}</th>
+            <th class="p-4 text-center">{isHindi ? "कीमत" : "Price"}</th>
+            <th class="p-4 text-center">{isHindi ? "कार्रवाई" : "Action"}</th>
           </tr>
         </thead>
         <tbody>
           {
-            commonData.models.map((model, idx) => (
+            models.map((model, idx) => (
               <tr class={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                 <td class="p-4 font-semibold text-gray-900">{model.name}</td>
                 <td class="p-4 text-center text-lg font-bold text-brand-teal">
@@ -40,10 +51,10 @@ import { commonData } from "../data/locations-i18n.js";
                 </td>
                 <td class="p-4 text-center">
                   <a
-                    href={`https://wa.me/${commonData.whatsapp.replace("+", "")}?text=Interested%20in%20${model.hp}HP`}
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isHindi ? `${model.name} के बारे में जानकारी चाहिए। कृपया विवरण भेजें।` : `Interested in ${model.name}. Please share details.`)}`}
                     class="text-brand-teal hover:text-brand-green font-semibold text-sm"
                   >
-                    Quote
+                    {isHindi ? "कोट लें" : "Quote"}
                   </a>
                 </td>
               </tr>
@@ -54,8 +65,11 @@ import { commonData } from "../data/locations-i18n.js";
     </div>
 
     <p class="text-center text-gray-600 mt-6 text-sm">
-      Click "Quote" for instant WhatsApp inquiry | Free installation & training
-      included
+      {
+        isHindi
+          ? '"कोट लें" पर क्लिक करें और तुरंत व्हाट्सऐप पूछताछ करें | मुफ्त इंस्टॉलेशन और प्रशिक्षण शामिल'
+          : 'Click "Quote" for instant WhatsApp inquiry | Free installation & training included'
+      }
     </p>
   </div>
 </section>

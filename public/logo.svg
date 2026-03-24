@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">ASR Drillers logo</title>
+  <desc id="desc">A branded ASR Drillers logo mark with industrial colors.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#166534" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="48" fill="url(#bg)" />
+  <circle cx="160" cy="120" r="54" fill="none" stroke="#f8fafc" stroke-width="16" />
+  <path d="M160 50v36M160 154v36M90 120h36M194 120h36M111 71l26 26M183 143l26 26M111 169l26-26M183 97l26-26" stroke="#f8fafc" stroke-width="14" stroke-linecap="round" />
+  <path d="M110 248h100" stroke="#facc15" stroke-width="18" stroke-linecap="round" />
+  <text x="160" y="286" font-family="Arial, sans-serif" font-size="44" font-weight="700" text-anchor="middle" fill="#f8fafc">ASR</text>
+</svg>

@@ -4,6 +4,8 @@ import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import TrustBar from "../components/TrustBar.astro";
 import SEOHead from "../components/SEOHead.astro";
+import { siteConfig, getAbsoluteUrl } from "../config/site";
+import { getLocaleFromPath } from "../lib/i18n";
 import "../styles/global.css";
 
 interface Props {
@@ -11,48 +13,49 @@ interface Props {
   description?: string;
   schema?: any;
   canonicalUrl?: string;
+  alternateUrls?: {
+    en?: string;
+    hi?: string;
+    xDefault?: string;
+  };
   ogImage?: string;
   noindex?: boolean;
 }
 
 const {
-  title = "ASR Drillers - Boring Machine Manufacturer",
+  title = `${siteConfig.name} - Boring Machine Manufacturer`,
   description = "ASR Drillers manufactures high-quality tubewell and borewell boring machines in Kanpur, India. 22-38 HP diesel-powered models. On-site installation & 24/7 support.",
   schema = null,
   canonicalUrl,
-  ogImage = "/og-image.jpg",
+  alternateUrls,
+  ogImage = siteConfig.defaultOgImage,
   noindex = false,
 } = Astro.props;
 
 // Determine locale from URL
 const currentPath = Astro.url?.pathname || "/";
-const isHindi = currentPath.startsWith("/hi/");
-const locale = isHindi ? "hi" : "en";
+const locale = getLocaleFromPath(currentPath);
 
 // Organization Schema (always included)
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://asrdrillers.com/#organization",
-  name: "ASR Drillers",
-  url: "https://asrdrillers.com",
-  logo: "https://asrdrillers.com/logo.png",
-  description: "Leading boring machine manufacturer in India. 14+ years experience, 500+ happy customers.",
+  "@id": `${siteConfig.siteUrl}/#organization`,
+  name: siteConfig.name,
+  url: siteConfig.siteUrl,
+  logo: getAbsoluteUrl(siteConfig.logoPath),
+  description: siteConfig.organizationDescription,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Pukhrayan Industrial Area",
-    addressLocality: "Kanpur",
-    addressRegion: "Uttar Pradesh",
-    postalCode: "208201",
-    addressCountry: "IN",
+    ...siteConfig.address,
   },
-  telephone: "+91-98765-43210",
-  email: "info@asrdrillers.com",
-  foundingDate: "2012",
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  foundingDate: String(siteConfig.foundingYear),
   sameAs: [
     "https://www.facebook.com/asrdrillers",
     "https://www.instagram.com/asrdrillers",
-    "https://wa.me/919876543210",
+    `https://wa.me/${siteConfig.whatsapp.replace(/[^0-9]/g, "")}`,
   ],
 };
 ---
@@ -64,6 +67,7 @@ const organizationSchema = {
       title={title}
       description={description}
       canonicalUrl={canonicalUrl}
+      alternateUrls={alternateUrls}
       ogImage={ogImage}
       locale={locale}
       noindex={noindex}

@@ -1,12 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { commonData } from "../../data/locations-i18n.js";
+import { getWhatsAppNumber, siteConfig } from "../../config/site";
 
 const { phone, whatsapp, yearsActive } = commonData;
+const whatsappNumber = getWhatsAppNumber();
 
 const pageTitle = "ASR Drillers के बारे में - बोरिंग मशीन निर्माता";
 const pageDescription =
-  "ASR Drillers के बारे में जानें, कानपुर की अग्रणी बोरिंग मशीन निर्माता कंपनी 2015 से। गुणवत्ता, नवाचार और ग्राहक संतुष्टि।";
+  `ASR Drillers के बारे में जानें, कानपुर की अग्रणी बोरिंग मशीन निर्माता कंपनी ${siteConfig.foundingYear} से। गुणवत्ता, नवाचार और ग्राहक संतुष्टि।`;
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -36,7 +38,7 @@ const pageDescription =
             हमारी कहानी
           </h2>
           <p class="text-lg text-slate-600 mb-4">
-            ASR Drillers की स्थापना 2015 में भारत में बोरिंग मशीन उद्योग में
+            ASR Drillers की स्थापना {siteConfig.foundingYear} में भारत में बोरिंग मशीन उद्योग में
             क्रांति लाने के दृष्टिकोण के साथ की गई थी। कानपुर में एक छोटी सी
             विनिर्माण इकाई से शुरुआत करके, हम अब उत्तरी भारत में एक विश्वसनीय
             नाम बन गए हैं।
@@ -257,7 +259,7 @@ const pageDescription =
           उद्धरण प्राप्त करें
         </a>
         <a
-          href={`https://wa.me/${whatsapp}`}
+          href={`https://wa.me/${whatsappNumber}`}
           target="_blank"
           rel="noopener noreferrer"
           class="bg-white text-brand-teal px-8 py-3 rounded-lg font-bold hover:bg-slate-100 transition-colors"

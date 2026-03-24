@@ -1,5 +1,9 @@
 ---
 import { commonData } from "../data/locations-i18n.js";
+import { getLocaleFromPath } from "../lib/i18n";
+
+const locale = getLocaleFromPath(Astro.url?.pathname || "/");
+const isHindi = locale === "hi";
 ---
 
 <section class="py-12 bg-brand-teal text-white">
@@ -7,23 +11,33 @@ import { commonData } from "../data/locations-i18n.js";
     <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
       <div>
         <p class="text-3xl md:text-4xl font-bold">{commonData.yearsActive}</p>
-        <p class="text-sm text-teal-100 mt-1">Years Manufacturing</p>
+        <p class="text-sm text-teal-100 mt-1">
+          {isHindi ? "निर्माण का अनुभव" : "Years Manufacturing"}
+        </p>
       </div>
       <div>
         <p class="text-3xl md:text-4xl font-bold">500+</p>
-        <p class="text-sm text-teal-100 mt-1">Happy Clients</p>
+        <p class="text-sm text-teal-100 mt-1">
+          {isHindi ? "संतुष्ट ग्राहक" : "Happy Clients"}
+        </p>
       </div>
       <div>
         <p class="text-3xl md:text-4xl font-bold">1000+</p>
-        <p class="text-sm text-teal-100 mt-1">Borewells Drilled</p>
+        <p class="text-sm text-teal-100 mt-1">
+          {isHindi ? "ड्रिल किए गए बोरवेल" : "Borewells Drilled"}
+        </p>
       </div>
       <div>
         <p class="text-3xl md:text-4xl font-bold">99%</p>
-        <p class="text-sm text-teal-100 mt-1">Uptime Record</p>
+        <p class="text-sm text-teal-100 mt-1">
+          {isHindi ? "अपटाइम रिकॉर्ड" : "Uptime Record"}
+        </p>
       </div>
       <div>
         <p class="text-3xl md:text-4xl font-bold">24/7</p>
-        <p class="text-sm text-teal-100 mt-1">WhatsApp Support</p>
+        <p class="text-sm text-teal-100 mt-1">
+          {isHindi ? "व्हाट्सऐप सहायता" : "WhatsApp Support"}
+        </p>
       </div>
     </div>
   </div>

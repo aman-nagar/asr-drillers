@@ -1,8 +1,20 @@
 ---
+import { getAbsoluteUrl, siteConfig } from "../config/site";
+import {
+  getLocaleFromPath,
+  stripLocalePrefix,
+  withLocalePrefix,
+} from "../lib/i18n";
+
 interface Props {
   title: string;
   description: string;
   canonicalUrl?: string;
+  alternateUrls?: {
+    en?: string;
+    hi?: string;
+    xDefault?: string;
+  };
   ogImage?: string;
   ogType?: "website" | "article";
   locale?: "en" | "hi";
@@ -13,25 +25,28 @@ const {
   title,
   description,
   canonicalUrl,
-  ogImage = "/og-image.jpg",
+  alternateUrls,
+  ogImage = siteConfig.defaultOgImage,
   ogType = "website",
   locale = "en",
   noindex = false,
 } = Astro.props;
 
-const siteUrl = "https://asrdrillers.com";
-const fullOgImage = `${siteUrl}${ogImage}`;
+const fullOgImage = getAbsoluteUrl(ogImage);
 const currentPath = Astro.url?.pathname || "/";
 
 // Determine language version paths
-const isHindiPage = currentPath.startsWith("/hi/");
-const basePath = isHindiPage
-  ? currentPath.replace(/^\/hi/, "") || "/"
-  : currentPath;
+const currentLocale = getLocaleFromPath(currentPath);
+const basePath = stripLocalePrefix(currentPath);
 
-const englishUrl = basePath === "/" ? `${siteUrl}/` : `${siteUrl}${basePath}`;
-const hindiUrl = basePath === "/" ? `${siteUrl}/hi/` : `${siteUrl}/hi${basePath}`;
-const canonical = canonicalUrl || (isHindiPage ? hindiUrl : englishUrl);
+const englishUrl = getAbsoluteUrl(withLocalePrefix(basePath, "en"));
+const hindiUrl = getAbsoluteUrl(withLocalePrefix(basePath, "hi"));
+const canonical = canonicalUrl || (currentLocale === "hi" ? hindiUrl : englishUrl);
+const resolvedAlternateUrls = alternateUrls ?? {
+  en: englishUrl,
+  hi: hindiUrl,
+  xDefault: englishUrl,
+};
 ---
 
 <!-- Primary Meta Tags -->
@@ -46,9 +61,11 @@ const canonical = canonicalUrl || (isHindiPage ? hindiUrl : englishUrl);
 <link rel="canonical" href={canonical} />
 
 <!-- Language Alternates (hreflang) -->
-<link rel="alternate" hreflang="en" href={englishUrl} />
-<link rel="alternate" hreflang="hi" href={hindiUrl} />
-<link rel="alternate" hreflang="x-default" href={englishUrl} />
+{resolvedAlternateUrls.en && <link rel="alternate" hreflang="en" href={resolvedAlternateUrls.en} />}
+{resolvedAlternateUrls.hi && <link rel="alternate" hreflang="hi" href={resolvedAlternateUrls.hi} />}
+{resolvedAlternateUrls.xDefault && (
+  <link rel="alternate" hreflang="x-default" href={resolvedAlternateUrls.xDefault} />
+)}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
@@ -72,7 +89,7 @@ const canonical = canonicalUrl || (isHindiPage ? hindiUrl : englishUrl);
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="apple-touch-icon" href={siteConfig.appleTouchIcon} />
 
 <!-- Theme Color -->
 <meta name="theme-color" content="#0F766E" />
@@ -80,6 +97,4 @@ const canonical = canonicalUrl || (isHindiPage ? hindiUrl : englishUrl);
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <!-- Additional SEO -->
-<meta name="keywords" content="boring machine, tubewell boring, borewell drilling, water boring machine, submersible pump, hydraulic drilling machine, Kanpur manufacturer, India boring machine, borewell machine price, agricultural drilling" />
-<meta name="revisit-after" content="7 days" />
 <meta name="language" content={locale === "hi" ? "Hindi" : "English"} />
