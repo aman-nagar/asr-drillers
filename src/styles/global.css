@@ -1,14 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --surface-page: #f8fafc;
+  --surface-page: #eef4f3;
   --surface-panel: #ffffff;
   --surface-strong: #020617;
   --radius-card: 1.5rem;
   --radius-panel: 2rem;
   --shadow-card: 0 24px 60px rgba(15, 23, 42, 0.08);
   --shadow-panel: 0 30px 80px rgba(15, 23, 42, 0.16);
-  --section-space: 4rem;
+  --section-space: 3.75rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-space: 5rem;
+  }
 }
 
 .section-shell {
@@ -23,4 +29,27 @@
 .surface-panel {
   border-radius: var(--radius-panel);
   box-shadow: var(--shadow-panel);
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 24rem),
+    linear-gradient(180deg, #f7faf9 0%, #eef4f3 100%);
+}
+
+html {
+  scroll-padding-top: 6rem;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+.section-tint {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(240, 249, 247, 0.9) 100%);
 }

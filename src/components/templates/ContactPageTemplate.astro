@@ -202,7 +202,7 @@ const faqItems = isHindi
 
   <SignalStrip items={stripItems} sectionClass="bg-slate-950 py-10" />
 
-  <section class="section-shell bg-white">
+  <section class="section-shell section-tint">
     <div class="container mx-auto max-w-6xl px-4 md:px-8">
       <SectionHeading
         title={isHindi ? "संपर्क के सबसे आसान तरीके" : "The Easiest Ways to Reach Us"}
@@ -216,7 +216,7 @@ const faqItems = isHindi
             target={card.external ? "_blank" : undefined}
             rel={card.external ? "noopener noreferrer" : undefined}
             class:list={[
-              "surface-card border-t-4 bg-slate-50 p-8 text-center transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)]",
+              "surface-card border-t-4 bg-white p-8 text-center transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)]",
               card.accent,
             ]}
           >
@@ -229,10 +229,10 @@ const faqItems = isHindi
     </div>
   </section>
 
-  <section class="section-shell bg-slate-50">
+  <section class="section-shell bg-white">
     <div class="container mx-auto max-w-6xl px-4 md:px-8">
       <div class="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-        <div class="surface-panel border border-slate-200 bg-white p-8">
+        <div class="surface-panel border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-8">
           <SectionHeading
             title={isHindi ? "हमसे संदेश में क्या साझा करें" : "What to Share in Your Inquiry"}
             subtitle={isHindi ? "कम संदेश में भी सही सलाह तभी मिलती है जब जरूरी जानकारी साफ हो।" : "Even a short message becomes more useful when the key project details are clear."}
@@ -343,7 +343,32 @@ const faqItems = isHindi
         </div>
 
         <div class="space-y-6">
-          <article class="surface-panel border border-slate-200 bg-white p-8">
+          <article class="surface-panel border border-slate-200 bg-slate-950 p-6 text-white md:p-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/80">
+              {isHindi ? "जवाब को तेज़ बनाने के लिए" : "To Get a Faster Reply"}
+            </p>
+            <div class="mt-5 space-y-3">
+              {(isHindi
+                ? [
+                    "लोकेशन या जिला लिखें",
+                    "अनुमानित गहराई बताएं",
+                    "मिट्टी या उपयोग का प्रकार लिखें",
+                    "बजट या मशीन रुचि जोड़ें",
+                  ]
+                : [
+                    "Mention your location or district",
+                    "Share your expected drilling depth",
+                    "Describe soil type or use case",
+                    "Add budget range or machine interest",
+                  ]).map((item) => (
+                <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article class="surface-panel border border-slate-200 bg-white p-6 md:p-8">
             <SectionHeading
               title={isHindi ? "फैक्टरी और संपर्क जानकारी" : "Factory and Contact Details"}
               align="left"
@@ -392,7 +417,7 @@ const faqItems = isHindi
     </div>
   </section>
 
-  <section class="section-shell bg-white">
+  <section class="section-shell section-tint">
     <div class="container mx-auto max-w-4xl px-4 md:px-8">
       <SectionHeading
         title={isHindi ? "अक्सर पूछे जाने वाले प्रश्न" : "Frequently Asked Questions"}
@@ -401,7 +426,7 @@ const faqItems = isHindi
 
       <div class="space-y-6">
         {faqItems.map((faq) => (
-          <details class="surface-card cursor-pointer border border-slate-200 bg-slate-50 p-6 group">
+          <details class="surface-card cursor-pointer border border-slate-200 bg-white p-6 group">
             <summary class="flex items-center justify-between text-lg font-bold text-slate-900">
               {faq.question}
               <span class="text-brand-teal transition-transform group-open:rotate-45">+</span>

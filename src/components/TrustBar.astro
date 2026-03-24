@@ -38,15 +38,17 @@ const trustItems = [
 ];
 ---
 
-<div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-4 border-y border-slate-700">
-  <div class="container mx-auto px-4 md:px-8 max-w-7xl">
-    <div class="flex flex-wrap items-center justify-center md:justify-between gap-4 md:gap-6">
+<div class="border-y border-slate-800 bg-[linear-gradient(135deg,#081c1f_0%,#0f172a_48%,#0b3b36_100%)] py-3">
+  <div class="container mx-auto max-w-7xl px-4 md:px-8">
+    <div class="flex snap-x gap-3 overflow-x-auto pb-1 md:flex-wrap md:justify-between md:overflow-visible">
       {trustItems.map((item) => (
-        <div class="flex items-center gap-2 text-white">
-          <span class="text-xl md:text-2xl">{item.icon}</span>
-          <div class="flex flex-col">
-            <span class="text-sm font-semibold">{item.label}</span>
-            <span class="text-xs text-slate-400 hidden md:block">{item.value}</span>
+        <div class="min-w-[13rem] snap-start rounded-2xl border border-white/10 bg-white/6 px-3 py-3 text-white backdrop-blur-sm md:min-w-0 md:flex-1">
+          <div class="flex items-center gap-3">
+            <span class="text-xl md:text-2xl">{item.icon}</span>
+            <div class="flex flex-col">
+              <span class="text-sm font-semibold leading-tight">{item.label}</span>
+              <span class="text-xs text-slate-300">{item.value}</span>
+            </div>
           </div>
         </div>
       ))}

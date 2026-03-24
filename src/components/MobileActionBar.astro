@@ -5,11 +5,11 @@ const isHindi = Astro.url?.pathname?.startsWith("/hi/") || false;
 const whatsappNumber = getWhatsAppNumber();
 ---
 
-<div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 shadow-[0_-12px_40px_rgba(15,23,42,0.12)] backdrop-blur md:hidden">
+<div class="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/96 px-4 py-3.5 shadow-[0_-12px_40px_rgba(15,23,42,0.12)] backdrop-blur md:hidden">
   <div class="mx-auto flex max-w-6xl items-center gap-3">
     <a
       href={`tel:${siteConfig.phone}`}
-      class="flex min-w-0 flex-1 items-center justify-center rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm font-bold text-slate-900 transition hover:border-brand-teal hover:text-brand-teal"
+      class="flex min-h-[3.75rem] min-w-0 flex-1 items-center justify-center rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm font-bold text-slate-900 transition hover:border-brand-teal hover:text-brand-teal"
     >
       {isHindi ? "कॉल करें" : "Call Now"}
     </a>
@@ -17,7 +17,7 @@ const whatsappNumber = getWhatsAppNumber();
       href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isHindi ? "नमस्ते! मुझे बोरिंग मशीन के बारे में जानकारी चाहिए।" : "Hi! I want more details about your boring machines.")}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="flex min-w-0 flex-[1.2] items-center justify-center rounded-2xl bg-brand-green px-4 py-3 text-sm font-bold text-white shadow-[0_14px_30px_rgba(22,163,74,0.24)] transition hover:bg-brand-green/90"
+      class="flex min-h-[3.75rem] min-w-0 flex-[1.2] items-center justify-center rounded-2xl bg-brand-green px-4 py-3 text-sm font-bold text-white shadow-[0_14px_30px_rgba(22,163,74,0.24)] transition hover:bg-brand-green/90"
     >
       {isHindi ? "व्हाट्सऐप पर पूछें" : "WhatsApp Quote"}
     </a>

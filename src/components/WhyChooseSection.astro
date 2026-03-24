@@ -1,54 +1,66 @@
 ---
 import { commonData } from "../data/locations-i18n.js";
+import { getLocaleFromPath } from "../lib/i18n";
+
+const locale = getLocaleFromPath(Astro.url?.pathname || "/");
+const isHindi = locale === "hi";
 ---
 
 <section class="py-16 bg-gray-50">
   <div class="container mx-auto px-4 md:px-8 max-w-6xl">
     <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
-      Why ASR Drillers Wins
+      {isHindi ? "ASR ड्रिलर्स क्यों बेहतर लगता है" : "Why ASR Drillers Wins"}
     </h2>
 
     <div class="grid md:grid-cols-2 gap-12 mb-12">
       <div>
-        <h3 class="text-2xl font-bold mb-6 text-brand-teal">Why Choose ASR?</h3>
+        <h3 class="text-2xl font-bold mb-6 text-brand-teal">
+          {isHindi ? "ASR को क्यों चुनें?" : "Why Choose ASR?"}
+        </h3>
         <ul class="space-y-4">
           <li class="flex gap-3">
             <span class="text-brand-green font-bold text-2xl">✓</span>
             <div>
-              <strong>Proven Kanpur Manufacturing:</strong> 14+ years crafting boring
-              machines in Pukhrayan industrial hub. In-house assembly, quality control,
-              field-tested.
+              <strong>{isHindi ? "कानपुर आधारित निर्माण:" : "Proven Kanpur Manufacturing:"}</strong>
+              {isHindi
+                ? " 14+ वर्षों का अनुभव, इन-हाउस असेंबली, quality control और field-tested machine approach."
+                : " 14+ years crafting boring machines in Pukhrayan industrial hub. In-house assembly, quality control, field-tested."}
             </div>
           </li>
           <li class="flex gap-3">
             <span class="text-brand-green font-bold text-2xl">✓</span>
             <div>
-              <strong>High-Torque, Fuel-Efficient Engines:</strong> 22 HP, 30 HP,
-              38 HP models with Kirloskar/Field Marshal engines. Drill 100–500 feet
-              in clay, rock, sandy soil.
+              <strong>{isHindi ? "ज्यादा टॉर्क, बेहतर ईंधन उपयोग:" : "High-Torque, Fuel-Efficient Engines:"}</strong>
+              {isHindi
+                ? " 22 HP, 30 HP और 38 HP मॉडल जो clay, rock और sandy soil में 100-500+ फुट तक काम संभालते हैं।"
+                : " 22 HP, 30 HP, 38 HP models with Kirloskar/Field Marshal engines. Drill 100–500 feet in clay, rock, sandy soil."}
             </div>
           </li>
           <li class="flex gap-3">
             <span class="text-brand-green font-bold text-2xl">✓</span>
             <div>
-              <strong>3 Proven Machine Types:</strong> Submersible (lightweight, deep
-              drilling), Hydraulic (precision control), Portable (tractor-mounted,
-              flexible).
+              <strong>{isHindi ? "तीन proven machine levels:" : "3 Proven Machine Types:"}</strong>
+              {isHindi
+                ? " सबमर्सिबल, हाइड्रोलिक और ट्रैक्टर-माउंटेड विकल्प ताकि workload के हिसाब से सही मशीन चुनी जा सके।"
+                : " Submersible (lightweight, deep drilling), Hydraulic (precision control), Portable (tractor-mounted, flexible)."}
             </div>
           </li>
           <li class="flex gap-3">
             <span class="text-brand-green font-bold text-2xl">✓</span>
             <div>
-              <strong>Local Support You Can Count On:</strong> On-site installation/training
-              in UP/North India. 24/7 WhatsApp support. Quick spare parts from Kanpur
-              factory.
+              <strong>{isHindi ? "लोकल सपोर्ट जिस पर भरोसा हो:" : "Local Support You Can Count On:"}</strong>
+              {isHindi
+                ? " UP और उत्तर भारत में on-site guidance, 24/7 व्हाट्सऐप सपोर्ट और कानपुर से तेज spare access."
+                : " On-site installation/training in UP/North India. 24/7 WhatsApp support. Quick spare parts from Kanpur factory."}
             </div>
           </li>
           <li class="flex gap-3">
             <span class="text-brand-green font-bold text-2xl">✓</span>
             <div>
-              <strong>Warranty + Service Camps:</strong> 1–2 year warranty. Annual
-              free service camps across UP/Bihar. Never stranded.
+              <strong>{isHindi ? "वारंटी और सर्विस कैंप:" : "Warranty + Service Camps:"}</strong>
+              {isHindi
+                ? " 1-2 वर्ष की वारंटी और UP/बिहार में वार्षिक service camps ताकि buyer अकेला न पड़े।"
+                : " 1–2 year warranty. Annual free service camps across UP/Bihar. Never stranded."}
             </div>
           </li>
         </ul>
@@ -57,35 +69,37 @@ import { commonData } from "../data/locations-i18n.js";
       <div
         class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-brand-teal"
       >
-        <h3 class="text-2xl font-bold mb-6 text-gray-900">Quick Specs</h3>
+        <h3 class="text-2xl font-bold mb-6 text-gray-900">
+          {isHindi ? "क्विक स्पेक्स" : "Quick Specs"}
+        </h3>
         <div class="space-y-4">
           <div>
             <p class="text-sm text-gray-600 uppercase font-semibold">
-              Depth Capacity
+              {isHindi ? "गहराई क्षमता" : "Depth Capacity"}
             </p>
             <p class="text-2xl font-bold text-brand-teal">100–500+ Feet</p>
           </div>
           <div>
             <p class="text-sm text-gray-600 uppercase font-semibold">
-              Engine Types
+              {isHindi ? "इंजन रेंज" : "Engine Types"}
             </p>
             <p class="text-2xl font-bold text-brand-teal">22–38 HP Diesel</p>
           </div>
           <div>
             <p class="text-sm text-gray-600 uppercase font-semibold">
-              Borehole Diameter
+              {isHindi ? "बोर व्यास" : "Borehole Diameter"}
             </p>
             <p class="text-2xl font-bold text-brand-teal">4–12 Inch</p>
           </div>
           <div>
             <p class="text-sm text-gray-600 uppercase font-semibold">
-              Price Range
+              {isHindi ? "कीमत रेंज" : "Price Range"}
             </p>
             <p class="text-2xl font-bold text-brand-teal">₹4.5–7.5 Lakhs</p>
           </div>
           <div>
             <p class="text-sm text-gray-600 uppercase font-semibold">
-              Warranty
+              {isHindi ? "वारंटी" : "Warranty"}
             </p>
             <p class="text-2xl font-bold text-brand-teal">1–2 Years</p>
           </div>
@@ -97,7 +111,7 @@ import { commonData } from "../data/locations-i18n.js";
           rel="noopener noreferrer"
           class="block mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded text-center transition"
         >
-          Get Custom Quote
+          {isHindi ? "कस्टम कोट लें" : "Get Custom Quote"}
         </a>
       </div>
     </div>

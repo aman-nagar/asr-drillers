@@ -25,19 +25,147 @@ const {
 ---
 
 <!-- Models Table Component - Reusable across all pages -->
-<section class="py-16 bg-white">
+<section class="section-shell section-tint">
   <div class="container mx-auto px-4 md:px-8 max-w-6xl">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
+    <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-10 text-center text-gray-900">
       {title}
     </h2>
     {subtitle && (
-      <p class="text-center text-gray-600 mb-8 text-lg max-w-3xl mx-auto">
+      <p class="text-center text-gray-600 mb-8 text-base md:text-lg max-w-3xl mx-auto">
         {subtitle}
       </p>
     )}
 
-    <div class="overflow-x-auto">
-      <table class="w-full bg-white rounded-lg overflow-hidden shadow">
+    <div class="grid gap-5 md:hidden">
+      {
+        models.map((model, index) => (
+          <article class="surface-card overflow-hidden border border-slate-200 bg-white">
+            <div class={`px-5 py-5 text-white ${index === 1 ? "bg-[linear-gradient(135deg,#0f766e_0%,#14532d_100%)]" : "bg-[linear-gradient(135deg,#0f172a_0%,#0f766e_100%)]"}`}>
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.22em] text-emerald-100/80">
+                    {isHindi ? "मॉडल" : "Model"}
+                  </p>
+                  <h3 class="mt-2 text-2xl font-bold">
+                    {isHindi ? localizedModelNames[model.name] ?? model.name : model.name}
+                  </h3>
+                </div>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold">
+                  {model.hp} HP
+                </span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-0">
+              <div class="border-b border-r border-slate-200 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "गहराई" : "Depth"}
+                </p>
+                <p class="mt-2 font-bold text-slate-950">{model.minDepth}-{model.maxDepth}</p>
+              </div>
+              <div class="border-b border-slate-200 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "व्यास" : "Diameter"}
+                </p>
+                <p class="mt-2 font-bold text-slate-950">{model.diameter}</p>
+              </div>
+              <div class="border-r border-slate-200 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "ईंधन/दिन" : "Fuel/Day"}
+                </p>
+                <p class="mt-2 font-bold text-slate-950">{model.fuelPerDay}</p>
+              </div>
+              <div class="px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "कीमत" : "Price"}
+                </p>
+                <p class="mt-2 font-bold text-emerald-700">{model.price}</p>
+              </div>
+            </div>
+
+            <div class="px-5 py-5">
+              <div class="mb-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+                  {isHindi ? "फील्ड रेडी" : "Field Ready"}
+                </span>
+                <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                  {isHindi ? "सपोर्ट शामिल" : "Support Included"}
+                </span>
+              </div>
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isHindi ? `${localizedModelNames[model.name] ?? model.name} के बारे में जानकारी चाहिए। कृपया विवरण भेजें।` : `Interested in ${model.name}. Please share details.`)}`}
+                class="inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-4 py-3 font-bold text-white transition hover:bg-brand-teal"
+              >
+                {isHindi ? "कोट लें" : "Quote on WhatsApp"}
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mb-8 hidden gap-6 md:grid lg:grid-cols-3">
+      {
+        models.map((model, index) => (
+          <article class={`surface-card overflow-hidden border ${index === 1 ? "border-emerald-300 bg-[linear-gradient(180deg,#f0fdf4_0%,#ffffff_100%)]" : "border-slate-200 bg-white"}`}>
+            <div class={`px-6 py-5 text-white ${index === 1 ? "bg-[linear-gradient(135deg,#0f766e_0%,#14532d_100%)]" : "bg-[linear-gradient(135deg,#0f172a_0%,#0f766e_100%)]"}`}>
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.22em] text-emerald-100/80">
+                    {isHindi ? "मॉडल हाइलाइट" : "Model Highlight"}
+                  </p>
+                  <h3 class="mt-2 text-2xl font-bold">
+                    {isHindi ? localizedModelNames[model.name] ?? model.name : model.name}
+                  </h3>
+                </div>
+                <span class="rounded-full bg-white/10 px-3 py-1 text-sm font-semibold">
+                  {model.hp} HP
+                </span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-0">
+              <div class="border-b border-r border-slate-200 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "गहराई" : "Depth"}
+                </p>
+                <p class="mt-2 font-bold text-slate-950">{model.minDepth}-{model.maxDepth}</p>
+              </div>
+              <div class="border-b border-slate-200 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "व्यास" : "Diameter"}
+                </p>
+                <p class="mt-2 font-bold text-slate-950">{model.diameter}</p>
+              </div>
+              <div class="border-r border-slate-200 px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "ईंधन/दिन" : "Fuel/Day"}
+                </p>
+                <p class="mt-2 font-bold text-slate-950">{model.fuelPerDay}</p>
+              </div>
+              <div class="px-5 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  {isHindi ? "कीमत" : "Price"}
+                </p>
+                <p class="mt-2 font-bold text-emerald-700">{model.price}</p>
+              </div>
+            </div>
+
+            <div class="px-5 pb-5 pt-4">
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isHindi ? `${localizedModelNames[model.name] ?? model.name} के बारे में जानकारी चाहिए। कृपया विवरण भेजें।` : `Interested in ${model.name}. Please share details.`)}`}
+                class="inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-4 py-3 font-bold text-white transition hover:bg-brand-teal"
+              >
+                {isHindi ? "कोट लें" : "Quote on WhatsApp"}
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="hidden overflow-x-auto xl:block">
+      <table class="w-full overflow-hidden rounded-[1.75rem] bg-white shadow-[0_22px_55px_rgba(15,23,42,0.08)]">
         <thead class="bg-brand-teal text-white">
           <tr>
             <th class="p-4 text-left">{isHindi ? "मॉडल" : "Model"}</th>
@@ -83,11 +211,9 @@ const {
     </div>
 
     <p class="text-center text-gray-600 mt-6 text-sm">
-      {
-        isHindi
-          ? '"कोट लें" पर क्लिक करें और तुरंत व्हाट्सऐप पूछताछ करें | मुफ्त इंस्टॉलेशन और प्रशिक्षण शामिल'
-          : 'Click "Quote" for instant WhatsApp inquiry | Free installation & training included'
-      }
+      {isHindi
+        ? '"कोट लें" पर क्लिक करें और तुरंत व्हाट्सऐप पूछताछ करें | मुफ्त इंस्टॉलेशन और प्रशिक्षण शामिल'
+        : 'Click "Quote" for instant WhatsApp inquiry | Free installation & training included'}
     </p>
   </div>
 </section>

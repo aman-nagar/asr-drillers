@@ -1,0 +1,319 @@
+---
+import CommonCTA from "../CommonCTA.astro";
+import InsightCard from "../cards/InsightCard.astro";
+import PageHero from "../sections/PageHero.astro";
+import SectionHeading from "../sections/SectionHeading.astro";
+import SignalStrip from "../sections/SignalStrip.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getWhatsAppNumber, siteConfig } from "../../config/site";
+import { withLocalePrefix, type Locale } from "../../lib/i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const isHindi = locale === "hi";
+const whatsappNumber = getWhatsAppNumber();
+
+const pageTitle = isHindi
+  ? "ASR ड्रिलर्स के बारे में | बोरिंग मशीन निर्माता"
+  : "About ASR Drillers | Boring Machine Manufacturer";
+const pageDescription = isHindi
+  ? `ASR ड्रिलर्स के बारे में जानें। ${siteConfig.foundingYear} से कानपुर आधारित बोरिंग मशीन निर्माण, सपोर्ट और गुणवत्ता पर हमारा फोकस।`
+  : `Learn about ASR Drillers, the Kanpur-based boring machine manufacturer focused on build quality, support, and long-term field performance since ${siteConfig.foundingYear}.`;
+
+const heroSignals = [
+  { value: siteConfig.yearsActive, label: isHindi ? "सक्रिय वर्षों" : "Years Active" },
+  { value: "500+", label: isHindi ? "ग्राहक भरोसा" : "Customer Trust" },
+  { value: "Kanpur", label: isHindi ? "फैक्टरी बेस" : "Factory Base" },
+];
+
+const stripItems = [
+  {
+    value: String(siteConfig.foundingYear),
+    label: isHindi ? "शुरुआत" : "Founded",
+    note: isHindi ? "कानपुर आधारित निर्माण" : "Kanpur-based manufacturing",
+  },
+  {
+    value: "North India",
+    label: isHindi ? "मुख्य बाजार" : "Primary Market",
+    note: isHindi ? "किसान और ठेकेदार" : "Farmers and contractors",
+  },
+  {
+    value: "22-38 HP",
+    label: isHindi ? "मशीन रेंज" : "Machine Range",
+    note: isHindi ? "विभिन्न उपयोग के लिए" : "For multiple workload levels",
+  },
+  {
+    value: "24/7",
+    label: isHindi ? "व्हाट्सऐप सपोर्ट" : "WhatsApp Support",
+    note: isHindi ? "बिक्री के बाद भी" : "Before and after purchase",
+  },
+];
+
+const processSteps = isHindi
+  ? [
+      {
+        title: "डिजाइन और योजना",
+        body: "फील्ड उपयोग को ध्यान में रखकर डिजाइन, layout और practical machine decisions तय किए जाते हैं।",
+      },
+      {
+        title: "घटक चयन",
+        body: "इंजन, निर्माण सामग्री और जरूरी पार्ट्स ऐसे चुने जाते हैं जो असली drilling conditions में भरोसेमंद रहें।",
+      },
+      {
+        title: "असेंबली और परीक्षण",
+        body: "असेंबली के बाद मशीनों को उपयोग और प्रदर्शन के हिसाब से जांचा जाता है ताकि dispatch से पहले clarity रहे।",
+      },
+      {
+        title: "अंतिम quality check",
+        body: "मशीन को site-ready स्थिति में भेजने से पहले final review और support preparation किया जाता है।",
+      },
+    ]
+  : [
+      {
+        title: "Design and planning",
+        body: "Machine decisions start with practical field use, layout clarity, and realistic drilling conditions rather than brochure-first thinking.",
+      },
+      {
+        title: "Component selection",
+        body: "Engines, structural materials, and critical parts are chosen around reliability in actual boring environments.",
+      },
+      {
+        title: "Assembly and testing",
+        body: "After assembly, machines are checked with an emphasis on usability and dependable output before dispatch.",
+      },
+      {
+        title: "Final quality review",
+        body: "Each unit is reviewed as a site-ready system so support preparation is not treated as an afterthought.",
+      },
+    ];
+
+const certificationCards = isHindi
+  ? [
+      {
+        title: "गुणवत्ता पर फोकस",
+        body: "हमारा संदेश सिर्फ certification दिखाना नहीं, बल्कि खरीदार को यह भरोसा देना है कि मशीन responsibly तैयार की गई है।",
+      },
+      {
+        title: "फील्ड-लेवल trust",
+        body: "वास्तविक buyers के लिए सबसे अहम बात यह है कि मशीन delivery के बाद काम करे और जरूरत पड़ने पर support मिले।",
+      },
+      {
+        title: "स्थायी संबंध",
+        body: "एक बिक्री के बजाय long-term customer relationship पर ध्यान दिया जाता है, खासकर recurring contractor buyers के साथ।",
+      },
+    ]
+  : [
+      {
+        title: "Quality focus",
+        body: "The message is not just certification language. It is about giving the buyer confidence that the machine has been built responsibly.",
+      },
+      {
+        title: "Field-level trust",
+        body: "For real buyers, what matters most is whether the machine performs after delivery and whether support is actually available.",
+      },
+      {
+        title: "Long-term relationships",
+        body: "The business works best when the sale leads to repeat trust, especially with contractors who come back with more requirements.",
+      },
+    ];
+
+const reasonCards = isHindi
+  ? [
+      {
+        title: "अनुभव जो फील्ड से जुड़ा है",
+        body: "सिर्फ manufacturing history नहीं, बल्कि drilling use-case की समझ भी इस brand strength का हिस्सा है।",
+      },
+      {
+        title: "सपोर्ट जो खरीद के बाद भी रहता है",
+        body: "व्हाट्सऐप, फोन, onboarding और spare guidance ownership experience को बेहतर बनाते हैं।",
+      },
+      {
+        title: "कीमत और value का संतुलन",
+        body: "लाइनअप इस तरह रखा गया है कि buyer budget और workload के हिसाब से सही स्तर चुन सके।",
+      },
+      {
+        title: "ऑन-साइट guidance",
+        body: "मशीन बेचकर हटने के बजाय setup और शुरुआती उपयोग में support देना खरीद को आसान बनाता है।",
+      },
+    ]
+  : [
+      {
+        title: "Experience tied to field reality",
+        body: "The strength is not only manufacturing history, but also an understanding of actual drilling use cases.",
+      },
+      {
+        title: "Support that continues after purchase",
+        body: "WhatsApp, phone guidance, onboarding, and spare-part help make ownership easier instead of harder.",
+      },
+      {
+        title: "Balanced price-to-value choices",
+        body: "The lineup gives buyers a clearer way to match budget with workload instead of forcing one-size-fits-all buying.",
+      },
+      {
+        title: "On-site guidance",
+        body: "Helping with setup and early usage makes the purchase experience more trustworthy than a simple ship-and-forget sale.",
+      },
+    ];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <PageHero
+    eyebrow={isHindi ? "ASR ड्रिलर्स प्रोफाइल" : "ASR Drillers Profile"}
+    title={isHindi ? "कानपुर से चलने वाला बोरिंग मशीन ब्रांड, जो निर्माण से ज्यादा ownership experience पर ध्यान देता है" : "A Kanpur-based boring machine brand built around ownership confidence, not just manufacturing output"}
+    description={isHindi ? "हमारा फोकस ऐसी मशीनें बनाना है जो साइट पर भरोसेमंद हों, खरीदार के बजट के हिसाब से सही बैठें, और बिक्री के बाद भी सपोर्ट के साथ चलें।" : "Our focus is to build machines that feel dependable in the field, fit the buyer's budget realistically, and remain supported after the sale."}
+    signals={heroSignals}
+    visualTitle={isHindi ? "फैक्टरी से फील्ड तक" : "From factory to field"}
+    visualLines={[
+      isHindi
+        ? "ब्रांड का मूल्य सिर्फ उत्पादन नहीं, बल्कि support और repeat trust में भी दिखता है।"
+        : "The brand value shows up not only in production, but in support and repeat trust.",
+      isHindi
+        ? "कानपुर आधारित निर्माण उत्तर भारत buyers के लिए coordination आसान बनाता है।"
+        : "Kanpur-based manufacturing keeps coordination simpler for North India buyers.",
+      isHindi
+        ? "फार्म, contractor और deeper-work buyers के लिए अलग machine levels उपलब्ध हैं।"
+        : "The lineup covers farm buyers, contractors, and deeper-work use cases with clearer machine tiers.",
+    ]}
+    actions={[
+      {
+        href: withLocalePrefix("/contact", locale),
+        label: isHindi ? "संपर्क करें" : "Contact Us",
+        variant: "primary",
+      },
+      {
+        href: `https://wa.me/${whatsappNumber}`,
+        label: isHindi ? "व्हाट्सऐप पर बात करें" : "Chat on WhatsApp",
+        variant: "secondary",
+        external: true,
+      },
+    ]}
+  />
+
+  <SignalStrip items={stripItems} sectionClass="bg-slate-950 py-10" />
+
+  <section class="section-shell section-tint">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <div class="grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
+        <div class="surface-panel border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-8">
+          <SectionHeading
+            title={isHindi ? "हमारी कहानी" : "Our Story"}
+            align="left"
+          />
+          <div class="space-y-4 text-slate-700">
+            <p>
+              {isHindi
+                ? `ASR ड्रिलर्स की शुरुआत ${siteConfig.foundingYear} में इस सोच के साथ हुई कि बोरिंग मशीन खरीदारों को सिर्फ एक product नहीं, बल्कि ऐसा सिस्टम मिले जिसे वे लंबे समय तक चला सकें।`
+                : `ASR Drillers started in ${siteConfig.foundingYear} with a simple goal: give boring machine buyers not just a product, but a system they can keep working with for the long term.`}
+            </p>
+            <p>
+              {isHindi
+                ? "कानपुर से चलने वाला यह निर्माण आधार आज उत्तर भारत के कई buyers के लिए भरोसेमंद reference point बन चुका है, खासकर जब बात support, spares और practical machine advice की हो।"
+                : "That Kanpur-based manufacturing base has become a practical trust point for many North India buyers, especially when support, spares, and realistic machine advice matter."}
+            </p>
+            <p>
+              {isHindi
+                ? "हम ब्रांड की विश्वसनीयता को सिर्फ factory capability से नहीं, बल्कि buyer experience से भी मापते हैं।"
+                : "We measure brand credibility not only by factory capability, but by the ownership experience the buyer actually gets."}
+            </p>
+          </div>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            {stripItems.slice(0, 4).map((item) => (
+              <div class="rounded-2xl border border-slate-200 bg-white px-4 py-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  {item.label}
+                </p>
+                <p class="mt-3 text-2xl font-bold text-slate-950">{item.value}</p>
+                <p class="mt-2 text-sm text-slate-600">{item.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="surface-panel overflow-hidden border border-slate-200 bg-slate-950 text-white">
+          <div class="bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.22),transparent_48%)] p-8">
+            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/80">
+              {isHindi ? "विश्वास का ट्रैक रिकॉर्ड" : "Track Record"}
+            </p>
+            <p class="mt-5 text-6xl font-bold text-white">{siteConfig.yearsActive}</p>
+            <p class="mt-3 text-xl text-slate-300">
+              {isHindi ? "निर्माण और buyer trust" : "Years of manufacturing and buyer trust"}
+            </p>
+          </div>
+
+          <div class="space-y-4 p-8">
+            {reasonCards.slice(0, 2).map((card) => (
+              <div class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+                <p class="font-bold text-white">{card.title}</p>
+                <p class="mt-2 text-sm leading-relaxed text-slate-300">{card.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell bg-white">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <SectionHeading
+        title={isHindi ? "निर्माण प्रक्रिया" : "Manufacturing Process"}
+        subtitle={isHindi ? "इस ब्रांड की विश्वसनीयता machine story, process clarity और final review के मेल से बनती है।" : "The reliability story comes from how process, component choices, and final review fit together."}
+      />
+
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {processSteps.map((step, index) => (
+          <article class="surface-card border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-7 text-center">
+            <p class="text-4xl font-bold text-brand-teal">{String(index + 1).padStart(2, "0")}</p>
+            <h3 class="mt-5 text-xl font-bold text-slate-950">{step.title}</h3>
+            <p class="mt-3 text-slate-600">{step.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell section-tint">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <SectionHeading
+        title={isHindi ? "गुणवत्ता और भरोसा" : "Quality and Trust"}
+        subtitle={isHindi ? "यह सेक्शन certification claims से ज्यादा buyer confidence को मजबूत करता है।" : "This section is less about decorative claims and more about giving the buyer confidence."}
+      />
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {certificationCards.map((card) => (
+          <InsightCard title={card.title} body={card.body} tone="neutral" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell bg-white">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <SectionHeading
+        title={isHindi ? "लोग ASR ड्रिलर्स क्यों चुनते हैं" : "Why Buyers Choose ASR Drillers"}
+        subtitle={isHindi ? "निर्णय केवल मशीन की कीमत पर नहीं, बल्कि ownership experience पर भी बनता है।" : "The decision is not only about machine price, but also about the ownership experience behind it."}
+      />
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {reasonCards.map((card, index) => (
+          <article class="surface-card border border-slate-200 bg-white p-7">
+            <div class={`inline-flex h-11 w-11 items-center justify-center rounded-2xl text-lg font-bold ${index % 2 === 0 ? "bg-emerald-100 text-emerald-700" : "bg-teal-100 text-brand-teal"}`}>
+              +
+            </div>
+            <h3 class="mt-5 text-2xl font-bold text-slate-950">{card.title}</h3>
+            <p class="mt-3 text-slate-700">{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CommonCTA
+    headline={isHindi ? "ASR ड्रिलर्स के साथ अपनी जरूरत पर बात करनी है?" : "Want to talk through your requirement with ASR Drillers?"}
+    subheadline={isHindi ? "अपनी मिट्टी, गहराई और बजट की जानकारी साझा करें। हम आपको सही मशीन और अगला कदम समझाने में मदद करेंगे।" : "Share your soil condition, depth target, and budget range. We can help you narrow the right machine and next step."}
+  />
+</Layout>

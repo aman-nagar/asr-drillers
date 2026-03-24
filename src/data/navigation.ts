@@ -20,7 +20,7 @@ export const footerCompanyLinks = [
   { path: "/about", label: { en: "About Us", hi: "हमारे बारे में" } },
   { path: "/gallery", label: { en: "Gallery", hi: "गैलरी" } },
   { path: "/contact", label: { en: "Contact", hi: "संपर्क" } },
-  { path: "/#faq", label: { en: "FAQ", hi: "FAQ" } },
+  { path: "/#faq", label: { en: "FAQ", hi: "सामान्य प्रश्न" } },
 ] as const;
 
 export const footerBottomLinks = [
