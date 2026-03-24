@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  locale?: "en" | "hi";
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  ogImage = "/og-image.jpg",
+  ogType = "website",
+  locale = "en",
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = "https://asrdrillers.com";
+const fullOgImage = `${siteUrl}${ogImage}`;
+const currentPath = Astro.url?.pathname || "/";
+
+// Determine language version paths
+const isHindiPage = currentPath.startsWith("/hi/");
+const basePath = isHindiPage
+  ? currentPath.replace(/^\/hi/, "") || "/"
+  : currentPath;
+
+const englishUrl = basePath === "/" ? `${siteUrl}/` : `${siteUrl}${basePath}`;
+const hindiUrl = basePath === "/" ? `${siteUrl}/hi/` : `${siteUrl}/hi${basePath}`;
+const canonical = canonicalUrl || (isHindiPage ? hindiUrl : englishUrl);
+---
+
+<!-- Primary Meta Tags -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<meta name="description" content={description} />
+<meta name="author" content="ASR Drillers" />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large"} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonical} />
+
+<!-- Language Alternates (hreflang) -->
+<link rel="alternate" hreflang="en" href={englishUrl} />
+<link rel="alternate" hreflang="hi" href={hindiUrl} />
+<link rel="alternate" hreflang="x-default" href={englishUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullOgImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="ASR Drillers - Boring Machine Manufacturer in India" />
+<meta property="og:site_name" content="ASR Drillers" />
+<meta property="og:locale" content={locale === "hi" ? "hi_IN" : "en_US"} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonical} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullOgImage} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#0F766E" />
+<meta name="msapplication-navbutton-color" content="#0F766E" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- Additional SEO -->
+<meta name="keywords" content="boring machine, tubewell boring, borewell drilling, water boring machine, submersible pump, hydraulic drilling machine, Kanpur manufacturer, India boring machine, borewell machine price, agricultural drilling" />
+<meta name="revisit-after" content="7 days" />
+<meta name="language" content={locale === "hi" ? "Hindi" : "English"} />

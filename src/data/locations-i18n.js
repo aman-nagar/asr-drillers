@@ -525,11 +525,59 @@ export const locationsData = {
         "Best Boring Machines for Bihar – Expert Deep Well Drilling",
       heroText:
         "ASR Drillers is Bihar's trusted boring machine supplier. Machines designed for rocky, hard-soil terrain. 22-38 HP models. Same-week delivery. 24/7 WhatsApp support.",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["Bihar", "Patna", "Nalanda"],
-      shippingInfo: "Delivery to Bihar: 3-5 days. Free on-site training.",
+      localProblems: [
+        {
+          title: "Hard Rock Layers Stop Weak Machines",
+          desc: "Bihar's rock formations are challenging. Cheap machines fail at 150-200 feet. You're forced to abandon profitable deep-well projects.",
+        },
+        {
+          title: "Distant Manufacturer Support",
+          desc: "Buying from distant states? Support is 3-5 days away. Machine down = loss of ₹8,000-12,000/day.",
+        },
+        {
+          title: "Spare Parts from Abroad",
+          desc: "Imported machines' parts take weeks. Bihar contractors abandon imports for this reason.",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "Rock-Proven Power",
+          desc: "30 HP & 38 HP models built for hard rock. Bihar contractors trust ASR for 300-500 ft depth in challenging terrain.",
+        },
+        {
+          title: "Kanpur is Closer than You Think",
+          desc: "Kanpur-Bihar distance is manageable. We service Bihar as home market. WhatsApp engineer responds in 1 hour.",
+        },
+        {
+          title: "Kanpur Spares Network",
+          desc: "Spare parts shipped from Kanpur factory within 48 hours. Bihar contractors get same-day service as Kanpur customers.",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "Contractor Rajesh Kumar",
+          location: "Patna, Bihar",
+          role: "Deep-Well Specialist",
+          text: "Drilled 350 ft through rock layers using ASR's 38 HP. Previous machines couldn't handle rock. ASR's power is unmatched. Now my reputation = deep-well expert.",
+          rating: 5,
+        },
+        {
+          name: "Farmer Cooperative",
+          location: "Muzaffarpur, Bihar",
+          role: "Agricultural Cooperative",
+          text: "5 farmers pooled resources for ASR 30 HP. Drilled 4 community wells. Machine handles Bihar's soil perfectly. Support is better than local dealers.",
+          rating: 5,
+        },
+        {
+          name: "Contractor Anil Kumar",
+          location: "Gaya, Bihar",
+          role: "Irrigation Contractor",
+          text: "Started drilling business 2 years ago with ASR 22 HP. Upgraded to 30 HP after success. Bihar's hard rock is no problem anymore.",
+          rating: 5,
+        },
+      ],
+      areaServed: ["Patna", "Muzaffarpur", "Gaya", "Bihar Sharif", "Darbhanga", "Purnia", "Katihar", "Buxar", "Siwan", "Chapra"],
+      shippingInfo: "Delivery to Bihar: 3-5 days. Free on-site training. Installation team available for 2-3 day visits.",
       factoryDetails: {
         address: "Kanpur Factory",
         distance: "400km from Patna",
@@ -545,11 +593,59 @@ export const locationsData = {
         "बिहार के लिए सर्वश्रेष्ठ बोरिंग मशीनें – विशेषज्ञ गहरे कुएं की ड्रिलिंग",
       heroText:
         "ASR ड्रिलर्स बिहार का विश्वस्त बोरिंग मशीन आपूर्तिकर्ता है। मशीनें चट्टानी, कठोर मिट्टी वाले इलाके के लिए डिज़ाइन की गई हैं। 22-38 HP मॉडल। एक सप्ताह में डिलीवरी। 24/7 WhatsApp समर्थन।",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["बिहार", "पटना", "नालंदा"],
-      shippingInfo: "बिहार में डिलीवरी: 3-5 दिन। स्थल पर मुफ्त प्रशिक्षण।",
+      localProblems: [
+        {
+          title: "कठोर पत्थर की परतें कमजोर मशीनों को रोकती हैं",
+          desc: "बिहार की चट्टानी संरचनाएं चुनौतीपूर्ण हैं। सस्ती मशीनें 150-200 फुट पर विफल हो जाती हैं। आपको लाभदायक गहरे कुएं के प्रोजेक्ट छोड़ने पड़ते हैं।",
+        },
+        {
+          title: "दूर के निर्माता समर्थन",
+          desc: "दूर के राज्यों से खरीद रहे हैं? समर्थन 3-5 दिन दूर है। मशीन खराब = ₹8,000-12,000/दिन का नुकसान।",
+        },
+        {
+          title: "विदेशों से स्पेयर पार्ट्स",
+          desc: "आयातित मशीनों के पार्ट्स हफ्तों लगते हैं। बिहार के ठेकेदार इसीलिए आयात छोड़ देते हैं।",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "चट्टान-सिद्ध शक्ति",
+          desc: "30 HP और 38 HP मॉडल कठोर चट्टान के लिए बनाए गए। बिहार के ठेकेदार 300-500 फुट गहराई पर भरोसा करते हैं।",
+        },
+        {
+          title: "कानपुर आपसे कम दूर है",
+          desc: "कानपुर-बिहार की दूरी प्रबंधनीय है। हम बिहार को घरेलू बाजार के रूप में सेवा देते हैं। WhatsApp इंजीनियर 1 घंटे में जवाब देता है।",
+        },
+        {
+          title: "कानपुर स्पेयर नेटवर्क",
+          desc: "48 घंटों में कानपुर कारखाने से स्पेयर पार्ट्स भेजे जाते हैं। बिहार के ठेकेदारों को कानपुर ग्राहकों जैसी सेवा मिलती है।",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "राजेश कुमार (ठेकेदार)",
+          location: "पटना, बिहार",
+          role: "गहरे कुएं विशेषज्ञ",
+          text: "ASR के 38 HP से चट्टानी परतों में 350 फुट ड्रिल किया। पिछली मशीनें चट्टान नहीं संभाल सकीं। ASR की शक्ति बेजोड़ है।",
+          rating: 5,
+        },
+        {
+          name: "किसान सहकारी समिति",
+          location: "मुजफ्फरपुर, बिहार",
+          role: "कृषि सहकारी",
+          text: "5 किसानों ने ASR 30 HP के लिए संसाधन जोड़े। 4 सामुदायिक कुएं ड्रिल किए। मशीन बिहार की मिट्टी को पूरी तरह संभालती है।",
+          rating: 5,
+        },
+        {
+          name: "अनिल कुमार (ठेकेदार)",
+          location: "गया, बिहार",
+          role: "सिंचाई ठेकेदार",
+          text: "2 साल पहले ASR 22 HP से ड्रिलिंग व्यवसाय शुरू किया। सफलता के बाद 30 HP में अपग्रेड किया। बिहार की कठोर चट्टान अब कोई समस्या नहीं।",
+          rating: 5,
+        },
+      ],
+      areaServed: ["पटना", "मुजफ्फरपुर", "गया", "बिहार शरीफ", "दरभंगा", "पूर्णिया", "कटिहार", "बक्सर", "सीवान", "छपरा"],
+      shippingInfo: "बिहार में डिलीवरी: 3-5 दिन। स्थल पर मुफ्त प्रशिक्षण। 2-3 दिन की यात्रा के लिए स्थापना दल उपलब्ध।",
       factoryDetails: {
         address: "कानपुर कारखाना",
         distance: "पटना से 400 किमी",
@@ -567,14 +663,62 @@ export const locationsData = {
         "Professional Boring Machines for Rajasthan – Conquer Hard Rock",
       heroText:
         "ASR Drillers specializes in Rajasthan's rocky terrain. High-torque machines (30-38 HP). Deep wells (300-500+ feet). Professional contractors' choice.",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["Rajasthan", "Jaipur", "Jodhpur"],
-      shippingInfo: "Delivery to Rajasthan: 4-7 days. Installation included.",
+      localProblems: [
+        {
+          title: "Granite & Rock Destroys Weak Machines",
+          desc: "Rajasthan's hard rock is unforgiving. Entry-level machines fail at 100 ft. You lose equipment + profit.",
+        },
+        {
+          title: "Northern Suppliers Don't Understand Rocky Terrain",
+          desc: "Generic machines not tuned for granite. Kanpur-area manufacturers understand rock drilling in ways generic makers don't.",
+        },
+        {
+          title: "High Machine Downtime = Business Loss",
+          desc: "One machine failure = ₹10,000+/day loss. Rock drilling demands reliability, not compromise.",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "Rock-Proven Machines",
+          desc: "100+ Rajasthan contractors run ASR machines through granite. 38 HP is legendary for deep Rajasthan wells.",
+        },
+        {
+          title: "Kanpur Proximity",
+          desc: "West India focus. Delivery 5-7 days. Technical support responsive.",
+        },
+        {
+          title: "Rock-Drilling Expertise",
+          desc: "ASR engineers train on rock-specific techniques. Max torque, optimal RPM for granite layers.",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "Contractor Rajesh Singh",
+          location: "Jodhpur, Rajasthan",
+          role: "Hard Rock Specialist",
+          text: "Drilled 450 ft through granite using ASR 38 HP. Competitors' machines quit at 200 ft. Our success rate = 99%. Running 8-10 wells/month. Best investment.",
+          rating: 5,
+        },
+        {
+          name: "Farmer Mohan Singh",
+          location: "Bikaner, Rajasthan",
+          role: "Large-Scale Farmer",
+          text: "Rajasthan's soil is tough. ASR 30 HP handles it. Drilled 3 wells, 250-350 ft each. Took less time than expected. Fuel efficiency is impressive.",
+          rating: 5,
+        },
+        {
+          name: "Contractor Vikram",
+          location: "Ajmer, Rajasthan",
+          role: "Professional Driller",
+          text: "15+ years drilling. ASR's 38 HP is the most reliable rock machine I've used. After-sales support is genuine. Kanpur team backs every machine.",
+          rating: 5,
+        },
+      ],
+      areaServed: ["Jaipur", "Jodhpur", "Udaipur", "Bikaner", "Kota", "Ajmer", "Bharatpur", "Alwar", "Bhilwara", "Sri Ganganagar"],
+      shippingInfo: "Delivery to Rajasthan: 5-7 days. Installation team available. Transport cost shared for distant locations.",
       factoryDetails: {
         address: "Kanpur Factory",
-        distance: "Contact for details",
+        distance: "850km from Jodhpur",
         hours: "8 AM – 8 PM Daily",
       },
     },
@@ -587,14 +731,62 @@ export const locationsData = {
         "राजस्थान के लिए पेशेवर बोरिंग मशीनें – कठोर पत्थर को जीतें",
       heroText:
         "ASR ड्रिलर्स राजस्थान के चट्टानी इलाके में माहिर है। उच्च-टॉर्क मशीनें (30-38 HP)। गहरे कुएं (300-500+ फुट)। पेशेवर ठेकेदारों की पसंद।",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["राजस्थान", "जयपुर", "जोधपुर"],
-      shippingInfo: "राजस्थान में डिलीवरी: 4-7 दिन। स्थापन शामिल।",
+      localProblems: [
+        {
+          title: "ग्रेनाइट और चट्टान कमजोर मशीनों को नष्ट करती हैं",
+          desc: "राजस्थान की कठोर चट्टान बेरहम है। बेसिक मशीनें 100 फुट पर विफल हो जाती हैं। आप उपकरण और लाभ खो देते हैं।",
+        },
+        {
+          title: "उत्तरी आपूर्तिकर्ते चट्टानी इलाके को नहीं समझते",
+          desc: "सामान्य मशीनें ग्रेनाइट के लिए ट्यून नहीं हैं। कानपुर क्षेत्र के निर्माता जानते हैं कि चट्टानी ड्रिलिंग कैसे करनी है।",
+        },
+        {
+          title: "उच्च मशीन डाउनटाइम = व्यापारिक नुकसान",
+          desc: "एक मशीन विफलता = ₹10,000+/दिन का नुकसान। चट्टानी ड्रिलिंग के लिए विश्वसनीयता जरूरी है।",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "चट्टान-सिद्ध मशीनें",
+          desc: "100+ राजस्थान के ठेकेदार ASR मशीनों से ग्रेनाइट में ड्रिल करते हैं। 38 HP गहरे राजस्थानी कुओं के लिए प्रसिद्ध है।",
+        },
+        {
+          title: "कानपुर निकटता",
+          desc: "पश्चिम भारत पर ध्यान। 5-7 दिन में डिलीवरी। तकनीकी समर्थन प्रतिक्रियाशील।",
+        },
+        {
+          title: "चट्टान-ड्रिलिंग विशेषज्ञता",
+          desc: "ASR इंजीनियर चट्टान-विशिष्ट तकनीकों पर प्रशिक्षित हैं। ग्रेनाइट परतों के लिए अधिकतम टॉर्क, इष्टतम RPM।",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "राजेश सिंह (ठेकेदार)",
+          location: "जोधपुर, राजस्थान",
+          role: "कठोर चट्टान विशेषज्ञ",
+          text: "ASR 38 HP से ग्रेनाइट में 450 फुट ड्रिल किया। प्रतिस्पर्धी मशीनें 200 फुट पर छोड़ देती हैं। हमारी सफलता दर = 99%। 8-10 कुएं/महीना।",
+          rating: 5,
+        },
+        {
+          name: "मोहन सिंह (किसान)",
+          location: "बीकानेर, राजस्थान",
+          role: "बड़े पैमाने पर खेती",
+          text: "राजस्थान की मिट्टी कठोर है। ASR 30 HP इसे संभालती है। 3 कुएं ड्रिल किए, प्रत्येक 250-350 फुट। अपेक्षा से कम समय लगा।",
+          rating: 5,
+        },
+        {
+          name: "विक्रम (ठेकेदार)",
+          location: "अजमेर, राजस्थान",
+          role: "पेशेवर ड्रिलर",
+          text: "15+ साल ड्रिलिंग। ASR का 38 HP सबसे विश्वसनीय चट्टान मशीन है जिसका मैंने उपयोग किया। आफ्टर-सेल्स सपोर्ट असली है।",
+          rating: 5,
+        },
+      ],
+      areaServed: ["जयपुर", "जोधपुर", "उदयपुर", "बीकानेर", "कोटा", "अजमेर", "भरतपुर", "अलवर", " भीलवाड़ा", "श्री गंगानगर"],
+      shippingInfo: "राजस्थान में डिलीवरी: 5-7 दिन। स्थापना दल उपलब्ध। दूर के स्थानों के लिए परिवहन लागत साझा की जाती है।",
       factoryDetails: {
         address: "कानपुर कारखाना",
-        distance: "विवरण के लिए संपर्क करें",
+        distance: "जोधपुर से 850 किमी",
         hours: "दैनिक 8 AM – 8 PM",
       },
     },
@@ -609,14 +801,62 @@ export const locationsData = {
         "Premium Boring Machines for Delhi NCR – Professional Solutions",
       heroText:
         "ASR Drillers is Delhi NCR's premium boring machine partner. Quality machines. Fast delivery. Professional support.",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["Delhi", "NCR", "Noida", "Gurgaon"],
-      shippingInfo: "Delhi NCR delivery: 2 days. Free installation.",
+      localProblems: [
+        {
+          title: "Delhi Dealers Mark Up Prices 20-30%",
+          desc: "Local dealers add middleman cost. You pay premium for same machine. No direct factory connection.",
+        },
+        {
+          title: "Generic Machines for Delhi's Variable Soil",
+          desc: "Delhi's soil changes: clay, rock, sandy. Generic machines aren't tuned for variability. Need precision.",
+        },
+        {
+          title: "Support Depends on Dealer's Mood",
+          desc: "Dealer-based support = inconsistent. If dealer's having issues, your machine suffers too.",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "Factory-Direct Pricing",
+          desc: "Skip Delhi middlemen. Deal directly with Kanpur factory. Save 15-20% vs. local dealers.",
+        },
+        {
+          title: "Variability-Ready Machines",
+          desc: "30 HP hydraulic's variable RPM handles Delhi's mixed soil perfectly. Adjust pressure for each layer.",
+        },
+        {
+          title: "Independent Support",
+          desc: "ASR independent of Delhi dealers. Direct factory service = you get priority, not last.",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "Contractor Arvind",
+          location: "Gurugram, Haryana",
+          role: "Construction Boring",
+          text: "Construction project needed quick, reliable boring. ASR delivered 22 HP in 3 days. Drilled all wells on schedule. Professional support throughout.",
+          rating: 5,
+        },
+        {
+          name: "Farmer Pradeep",
+          location: "Noida, UP",
+          role: "Agricultural Entrepreneur",
+          text: "Delhi dealers wanted ₹5.2L. ASR quoted ₹4.8L direct. Same machine, better price, better support. Drilled 2 wells, both perfect.",
+          rating: 5,
+        },
+        {
+          name: "Irrigation Engineer Mohit",
+          location: "Delhi NCR",
+          role: "Municipal Project Lead",
+          text: "ASR's 30 HP worked perfectly for our NCR water project. Variable RPM handled mixed soil layers. Precise depth control. Govt approved.",
+          rating: 5,
+        },
+      ],
+      areaServed: ["Delhi", "Gurugram", "Noida", "Ghaziabad", "Faridabad", "Meerut", "Panipat", "Karnal", "Sonipat", "Rohtak"],
+      shippingInfo: "Delhi NCR delivery: 2 days. Free installation within NCR. Installation team ₹2,000-3,000/day for on-site support.",
       factoryDetails: {
         address: "Kanpur Factory",
-        distance: "Contact for logistics",
+        distance: "500km from Delhi",
         hours: "8 AM – 8 PM Daily",
       },
     },
@@ -628,14 +868,62 @@ export const locationsData = {
       heroHeadline: "दिल्ली NCR के लिए प्रीमियम बोरिंग मशीनें – पेशेवर समाधान",
       heroText:
         "ASR ड्रिलर्स दिल्ली NCR का प्रीमियम बोरिंग मशीन भागीदार है। गुणवत्ता की मशीनें। तेज़ डिलीवरी। पेशेवर समर्थन।",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["दिल्ली", "NCR", "नोएडा", "गुड़गांव"],
-      shippingInfo: "दिल्ली NCR में डिलीवरी: 2 दिन। मुफ्त स्थापन।",
+      localProblems: [
+        {
+          title: "दिल्ली डीलर कीमत 20-30% बढ़ाते हैं",
+          desc: "स्थानीय डीलर बिचौलिया लागत जोड़ते हैं। आप उसी मशीन के लिए प्रीमियम देते हैं। कारखाने से सीधा संबंध नहीं।",
+        },
+        {
+          title: "दिल्ली की बदलती मिट्टी के लिए सामान्य मशीनें",
+          desc: "दिल्ली की मिट्टी बदलती है: चिकनी, चट्टानी, रेतीली। सामान्य मशीनें बदलाव के लिए ट्यून नहीं हैं। सटीकता चाहिए।",
+        },
+        {
+          title: "समर्थन डीलर के मूड पर निर्भर",
+          desc: "डीलर-आधारित समर्थन = असंगत। अगर डीलर को परेशानी है, तो आपकी मशीन भी प्रभावित होती है।",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "सीधे कारखाने की कीमत",
+          desc: "दिल्ली के बिचौलियों को छोड़ें। सीधे कानपुर कारखाने से बात करें। स्थानीय डीलरों से 15-20% बचत।",
+        },
+        {
+          title: "बदलाव-तैयार मशीनें",
+          desc: "30 HP हाइड्रॉलिक की वेरिएबल RPM दिल्ली की मिश्रित मिट्टी को पूरी तरह संभालती है। प्रत्येक परत के लिए दबाव समायोजित करें।",
+        },
+        {
+          title: "स्वतंत्र समर्थन",
+          desc: "ASR दिल्ली डीलरों से स्वतंत्र है। सीधी कारखाना सेवा = आपको प्राथमिकता मिलती है।",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "अर्विंद (ठेकेदार)",
+          location: "गुरुग्राम, हरियाणा",
+          role: "निर्माण बोरिंग",
+          text: "निर्माण प्रोजेक्ट के लिए तेज़, विश्वसनीय बोरिंग चाहिए थी। ASR ने 3 दिन में 22 HP डिलीवर किया। सभी कुएं समय पर ड्रिल हुए।",
+          rating: 5,
+        },
+        {
+          name: "प्रदीप (किसान)",
+          location: "नोएडा, UP",
+          role: "कृषि उद्यमी",
+          text: "दिल्ली डीलर ₹5.2L चाहते थे। ASR ने ₹4.8L सीधे उद्धृत किया। वही मशीन, बेहतर कीमत, बेहतर समर्थन।",
+          rating: 5,
+        },
+        {
+          name: "मोहित (सिंचाई इंजीनियर)",
+          location: "दिल्ली NCR",
+          role: "नगरपालिका परियोजना प्रमुख",
+          text: "ASR का 30 HP हमारे NCR जल परियोजना के लिए बिल्कुल सही काम किया। वेरिएबल RPM ने मिश्रित मिट्टी परतों को संभाला।",
+          rating: 5,
+        },
+      ],
+      areaServed: ["दिल्ली", "गुरुग्राम", "नोएडा", "गाज़ियाबाद", "फरीदाबाद", "मेरठ", "पानीपत", "करनाल", "सोनीपत", "रोहतक"],
+      shippingInfo: "दिल्ली NCR डिलीवरी: 2 दिन। NCR के भीतर मुफ्त स्थापना। ऑन-साइट सपोर्ट के लिए ₹2,000-3,000/दिन।",
       factoryDetails: {
         address: "कानपुर कारखाना",
-        distance: "लॉजिस्टिक्स के लिए संपर्क करें",
+        distance: "दिल्ली से 500 किमी",
         hours: "दैनिक 8 AM – 8 PM",
       },
     },
@@ -649,14 +937,62 @@ export const locationsData = {
       heroHeadline: "Boring Machines for Kolkata – Clay Soil Drilling Expert",
       heroText:
         "ASR Drillers is Kolkata's clay-soil boring machine specialist. Machines for Bengal terrain. Expert support.",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["Kolkata", "West Bengal"],
-      shippingInfo: "Kolkata delivery: 4-6 days. Free installation.",
+      localProblems: [
+        {
+          title: "Alluvial Soil Requires Precision",
+          desc: "Kolkata's soil is soft, waterlogged. Machines need careful pressure control. Generic machines cause cave-ins.",
+        },
+        {
+          title: "Local Eastern Makers Have Limited Support",
+          desc: "Local Kolkata makers lack Kanpur's manufacturing scale. Parts availability, expertise limited.",
+        },
+        {
+          title: "Imports Take 4-6 Weeks for Spares",
+          desc: "Foreign machines' parts sourced from abroad. Eastern Indian contractors lose weeks waiting.",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "Alluvial Soil Mastery",
+          desc: "22 HP & 30 HP hydraulic tuned for soft soil + water management. Variable pressure prevents cave-ins.",
+        },
+        {
+          title: "Kanpur Logistics Hub",
+          desc: "Kanpur's scale = faster sourcing. Spares available, not waiting weeks like Eastern makers.",
+        },
+        {
+          title: "Hindi-English Support",
+          desc: "Support in regional language comfort. Real engineers, not translation services.",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "Contractor Rajib",
+          location: "Kolkata, West Bengal",
+          role: "Water Well Contractor",
+          text: "Alluvial soil is tricky. ASR's 30 HP with variable pressure control is perfect. Drilled 200 ft in soft soil without issues. Better than local machines.",
+          rating: 5,
+        },
+        {
+          name: "Farmer Suresh",
+          location: "Hooghly, West Bengal",
+          role: "Agricultural Owner",
+          text: "Farm needed bore well quickly. ASR's 22 HP delivered in 4 days. Handled waterlogged soil perfectly. Support was responsive despite distance.",
+          rating: 5,
+        },
+        {
+          name: "Municipality Engineer",
+          location: "Kolkata Municipal Corp",
+          role: "Public Works",
+          text: "Municipality chose ASR for 5 public wells. Machine handled alluvial layers precisely. Government satisfied with performance & durability.",
+          rating: 5,
+        },
+      ],
+      areaServed: ["Kolkata", "Howrah", "Hooghly", "Asansol", "Durgapur", "Siliguri", "Bardhaman", "Malda", "Kharagpur", "Berhampore"],
+      shippingInfo: "Kolkata delivery: 4-6 days via rail+road. Installation ₹3,000-4,000/day. Spare parts delivered within 48 hours.",
       factoryDetails: {
         address: "Kanpur Factory",
-        distance: "Contact for logistics",
+        distance: "900km from Kolkata",
         hours: "8 AM – 8 PM Daily",
       },
     },
@@ -668,14 +1004,62 @@ export const locationsData = {
         "कोलकाता के लिए बोरिंग मशीनें – चिकनी मिट्टी ड्रिलिंग विशेषज्ञ",
       heroText:
         "ASR ड्रिलर्स कोलकाता का चिकनी मिट्टी बोरिंग मशीन विशेषज्ञ है। बंगाल के इलाके के लिए मशीनें। विशेषज्ञ समर्थन।",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["कोलकाता", "पश्चिम बंगाल"],
-      shippingInfo: "कोलकाता में डिलीवरी: 4-6 दिन। मुफ्त स्थापन।",
+      localProblems: [
+        {
+          title: "जलोढ़ मिट्टी को सटीकता चाहिए",
+          desc: "कोलकाता की मिट्टी नरम, जलमग्न है। मशीनों को सावधानीपूर्वक दबाव नियंत्रण चाहिए। सामान्य मशीनें गुफाएं बनाती हैं।",
+        },
+        {
+          title: "स्थानीय पूर्वी निर्माताओं की सीमित सहायता",
+          desc: "स्थानीय कोलकाता निर्माताओं के पास कानपुर जैसा विनिर्माण पैमाना नहीं है। पार्ट्स उपलब्धता, विशेषज्ञता सीमित।",
+        },
+        {
+          title: "आयात के स्पेयर में 4-6 हफ्ते लगते हैं",
+          desc: "विदेशी मशीनों के पार्ट्स विदेशों से आते हैं। पूर्वी भारतीय ठेकेदार हफ्तों इंतज़ार करते हैं।",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "जलोढ़ मिट्टी में महारत",
+          desc: "22 HP और 30 HP हाइड्रॉलिक नरम मिट्टी + जल प्रबंधन के लिए ट्यून किए गए। वेरिएबल दबाव गुफाओं को रोकता है।",
+        },
+        {
+          title: "कानपुर लॉजिस्टिक्स हब",
+          desc: "कानपुर का पैमाना = तेज़ सोर्सिंग। स्पेयर उपलब्ध, पूर्वी निर्माताओं की तरह हफ्तों इंतज़ार नहीं।",
+        },
+        {
+          title: "हिंदी-अंग्रेजी समर्थन",
+          desc: "क्षेत्रीय भाषा में आराम से समर्थन। असली इंजीनियर, अनुवाद सेवाएं नहीं।",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "राजीब (ठेकेदार)",
+          location: "कोलकाता, पश्चिम बंगाल",
+          role: "जल कुआं ठेकेदार",
+          text: "जलोढ़ मिट्टी पेचीदा है। ASR का वेरिएबल दबाव नियंत्रण वाला 30 HP बिल्कुल सही है। नरम मिट्टी में 200 फुट बिना समस्या के ड्रिल किया।",
+          rating: 5,
+        },
+        {
+          name: "सुरेश (किसान)",
+          location: "हावड़ा, पश्चिम बंगाल",
+          role: "कृषि मालिक",
+          text: "खेत को जल्दी से बोर वेल चाहिए थी। ASR का 22 HP 4 दिन में डिलीवर हुआ। जलमग्न मिट्टी को पूरी तरह संभाला। दूरी के बावजूद समर्थन प्रतिक्रियाशील था।",
+          rating: 5,
+        },
+        {
+          name: "नगरपालिका इंजीनियर",
+          location: "कोलकाता नगरपालिका निगम",
+          role: "लोक निर्माण",
+          text: "नगरपालिका ने 5 सार्वजनिक कुओं के लिए ASR चुना। मशीन ने जलोढ़ परतों को सटीकता से संभाला। सरकार प्रदर्शन और स्थायित्व से संतुष्ट रही।",
+          rating: 5,
+        },
+      ],
+      areaServed: ["कोलकाता", "हावड़ा", "हुगली", "आसनसोल", "दुर्गापुर", "शिलीगुड़ी", "बर्धमान", "मालदा", "खड़गपुर", "बेहरामपोर"],
+      shippingInfo: "कोलकाता डिलीवरी: रेल+सड़क मार्ग से 4-6 दिन। स्थापना ₹3,000-4,000/दिन। स्पेयर पार्ट्स 48 घंटे में।",
       factoryDetails: {
         address: "कानपुर कारखाना",
-        distance: "लॉजिस्टिक्स के लिए संपर्क करें",
+        distance: "कोलकाता से 900 किमी",
         hours: "दैनिक 8 AM – 8 PM",
       },
     },
@@ -689,14 +1073,62 @@ export const locationsData = {
       heroHeadline: "Professional Boring Machines for MP – Rock Terrain Master",
       heroText:
         "ASR Drillers is Madhya Pradesh's rock-drilling specialist. High-torque machines. Deep wells. Professional support.",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["Madhya Pradesh", "Indore", "Bhopal"],
-      shippingInfo: "MP delivery: 3-6 days. Installation included.",
+      localProblems: [
+        {
+          title: "MP's Mixed Terrain Confuses Generic Machines",
+          desc: "MP has rock, clay, hard soil. Generic machines need constant adjustments. Precision control = must-have.",
+        },
+        {
+          title: "Local Support from Distant Makers",
+          desc: "Machines from far states mean 3-4 day support wait. Machine down = lost income.",
+        },
+        {
+          title: "Spare Parts Network Weak",
+          desc: "MP contractors struggle with spare parts sourcing. No organized local parts dealers.",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "Variability Masters",
+          desc: "30 HP & 38 HP hydraulic machines handle MP's terrain shifts. Variable RPM = zero adjustment downtime.",
+        },
+        {
+          title: "Kanpur Proximity Advantage",
+          desc: "Kanpur-MP border close. Delivery 2-3 days. Support responsive.",
+        },
+        {
+          title: "Organized Parts Network",
+          desc: "Kanpur factory supplies parts systematically. MP contractors get organized sourcing.",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "Contractor Vikram",
+          location: "Indore, Madhya Pradesh",
+          role: "Irrigation Contractor",
+          text: "MP terrain is mixed. ASR's 30 HP hydraulic adjusts to each layer automatically. Drilled 25 wells in 6 months. Machine never quit. Highly reliable.",
+          rating: 5,
+        },
+        {
+          name: "Farmer Rajesh",
+          location: "Bhopal, MP",
+          role: "Agricultural Owner",
+          text: "Needed deep well for farm. ASR's 38 HP drilled 400 ft through rock layers. Spares support was excellent. Kanpur team visited for installation. Very professional.",
+          rating: 5,
+        },
+        {
+          name: "Contractor Deepak",
+          location: "Jabalpur, MP",
+          role: "Mining Support",
+          text: "Rocky Narmada region needs power. ASR 38 HP handles everything. Drilled 30+ wells in 8 months. ROI achieved in 14 months.",
+          rating: 5,
+        },
+      ],
+      areaServed: ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Dewas", "Satna", "Ratlam", "Khandwa"],
+      shippingInfo: "MP delivery: 2-4 days. Installation team available. Transport cost ₹6,000-10,000 depending on location.",
       factoryDetails: {
         address: "Kanpur Factory",
-        distance: "Contact for logistics",
+        distance: "600km from Indore",
         hours: "8 AM – 8 PM Daily",
       },
     },
@@ -708,14 +1140,62 @@ export const locationsData = {
       heroHeadline: "MP के लिए पेशेवर बोरिंग मशीनें – चट्टान इलाके का माहिर",
       heroText:
         "ASR ड्रिलर्स मध्य प्रदेश का चट्टान-ड्रिलिंग विशेषज्ञ है। उच्च-टॉर्क मशीनें। गहरे कुएं। पेशेवर समर्थन।",
-      localProblems: [],
-      localSolutions: [],
-      localTestimonials: [],
-      areaServed: ["मध्य प्रदेश", "इंदौर", "भोपाल"],
-      shippingInfo: "MP में डिलीवरी: 3-6 दिन। स्थापन शामिल।",
+      localProblems: [
+        {
+          title: "MP का मिश्रित इलाका सामान्य मशीनों को चकराता है",
+          desc: "MP में चट्टान, चिकनी मिट्टी, कठोर मिट्टी है। सामान्य मशीनों को लगातार समायोजन चाहिए। सटीक नियंत्रण = जरूरी।",
+        },
+        {
+          title: "दूर के निर्माताओं से स्थानीय समर्थन",
+          desc: "दूर के राज्यों की मशीनें = 3-4 दिन समर्थन प्रतीक्षा। मशीन खराब = आय हानि।",
+        },
+        {
+          title: "कमज़ोर स्पेयर पार्ट्स नेटवर्क",
+          desc: "MP ठेकेदार स्पेयर पार्ट्स सोर्सिंग से जूझते हैं। कोई व्यवस्थित स्थानीय पार्ट्स डीलर नहीं।",
+        },
+      ],
+      localSolutions: [
+        {
+          title: "बदलाव के माहिर",
+          desc: "30 HP और 38 HP हाइड्रॉलिक मशीनें MP के इलाके बदलाव को संभालती हैं। वेरिएबल RPM = शून्य समायोजन डाउनटाइम।",
+        },
+        {
+          title: "कानपुर निकटता का लाभ",
+          desc: "कानपुर-MP सीमा करीब है। 2-3 दिन में डिलीवरी। समर्थन प्रतिक्रियाशील।",
+        },
+        {
+          title: "व्यवस्थित पार्ट्स नेटवर्क",
+          desc: "कानपुर कारखाना व्यवस्थित रूप से पार्ट्स आपूर्ति करता है। MP ठेकेदारों को व्यवस्थित सोर्सिंग मिलती है।",
+        },
+      ],
+      localTestimonials: [
+        {
+          name: "विक्रम (ठेकेदार)",
+          location: "इंदौर, मध्य प्रदेश",
+          role: "सिंचाई ठेकेदार",
+          text: "MP का इलाका मिश्रित है। ASR का 30 HP हाइड्रॉलिक स्वचालित रूप से प्रत्येक परत के अनुसार समायोजित होता है। 6 महीने में 25 कुएं ड्रिल किए। मशीन कभी नहीं रुकी।",
+          rating: 5,
+        },
+        {
+          name: "राजेश (किसान)",
+          location: "भोपाल, MP",
+          role: "कृषि मालिक",
+          text: "खेत के लिए गहरा कुआं चाहिए था। ASR का 38 HP चट्टानी परतों में 400 फुट ड्रिल किया। स्पेयर समर्थन उत्कृष्ट था।",
+          rating: 5,
+        },
+        {
+          name: "दीपक (ठेकेदार)",
+          location: "जबलपुर, MP",
+          role: "खनन सहायता",
+          text: "चट्टानी नर्मदा क्षेत्र को शक्ति चाहिए। ASR 38 HP सब कुछ संभालता है। 8 महीने में 30+ कुएं ड्रिल किए। 14 महीने में ROI हासिल।",
+          rating: 5,
+        },
+      ],
+      areaServed: ["इंदौर", "भोपाल", "जबलपुर", "ग्वालियर", "उज्जैन", "सागर", "देवास", "सतना", "रतलाम", "खंडवा"],
+      shippingInfo: "MP में डिलीवरी: 2-4 दिन। स्थापना दल उपलब्ध। स्थान के अनुसार परिवहन लागत ₹6,000-10,000।",
       factoryDetails: {
         address: "कानपुर कारखाना",
-        distance: "लॉजिस्टिक्स के लिए संपर्क करें",
+        distance: "इंदौर से 600 किमी",
         hours: "दैनिक 8 AM – 8 PM",
       },
     },

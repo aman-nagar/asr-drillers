@@ -1,0 +1,56 @@
+---
+import { commonData } from "../data/locations-i18n.js";
+
+const { yearsActive, companyName } = commonData;
+
+const isHindi = Astro.url?.pathname?.startsWith("/hi/") || false;
+
+const trustItems = [
+  {
+    icon: "🏭",
+    label: isHindi ? "14+ वर्षों का अनुभव" : "14+ Years Experience",
+    value: "Since 2012",
+  },
+  {
+    icon: "👥",
+    label: isHindi ? "500+ संतुष्ट ग्राहक" : "500+ Happy Customers",
+    value: "Across India",
+  },
+  {
+    icon: "⭐",
+    label: isHindi ? "4.8/5 ग्राहक रेटिंग" : "4.8/5 Customer Rating",
+    value: "Google Reviews",
+  },
+  {
+    icon: "🏆",
+    label: isHindi ? "ISO 9001 प्रमाणित" : "ISO 9001 Certified",
+    value: "Quality Assured",
+  },
+  {
+    icon: "🚚",
+    label: isHindi ? "भारत भर में डिलीवरी" : "Delivery Across India",
+    value: "Pan India",
+  },
+  {
+    icon: "📞",
+    label: isHindi ? "24/7 समर्थन" : "24/7 Support",
+    value: "WhatsApp",
+  },
+];
+---
+
+<div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-4 border-y border-slate-700">
+  <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+    <div class="flex flex-wrap items-center justify-center md:justify-between gap-4 md:gap-6">
+      {trustItems.map((item) => (
+        <div class="flex items-center gap-2 text-white">
+          <span class="text-xl md:text-2xl">{item.icon}</span>
+          <div class="flex flex-col">
+            <span class="text-sm font-semibold">{item.label}</span>
+            <span class="text-xs text-slate-400 hidden md:block">{item.value}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

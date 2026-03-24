@@ -1,22 +1,50 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 
 const pageTitle = "22 HP Submersible Boring Machine | ASR Drillers Kanpur";
 const pageDescription =
   "22 HP submersible boring machine for tubewell drilling. 150-300 feet depth. Cast iron build. Kirloskar engine. ₹4.8 lakh. Free installation & training in UP.";
-const schema = {
+
+const breadcrumbs = [
+  { label: "Products", href: "/products" },
+  { label: "22 HP Submersible", href: "/products/22-hp-submersible" },
+];
+
+const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "22 HP Submersible Boring Machine",
-  brand: "ASR Drillers",
-  manufacturer: "ASR Drillers",
+  image: "https://asrdrillers.com/images/22-hp-submersible.jpg",
   description:
-    "High-quality submersible boring machine for deep tubewell drilling",
+    "High-quality submersible boring machine for deep tubewell drilling. 150-300 feet depth capacity. Kirloskar 22 HP diesel engine.",
+  brand: {
+    "@type": "Brand",
+    name: "ASR Drillers",
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: "ASR Drillers",
+    url: "https://asrdrillers.com",
+  },
+  model: "22 HP Submersible",
+  sku: "ASR-22HP-SUB",
   offers: {
     "@type": "Offer",
     priceCurrency: "INR",
     price: "480000",
+    priceValidUntil: "2026-12-31",
     availability: "https://schema.org/InStock",
+    seller: {
+      "@type": "Organization",
+      name: "ASR Drillers",
+    },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "IN",
+      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      merchantReturnDays: 30,
+    },
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -25,20 +53,72 @@ const schema = {
     worstRating: "1",
     ratingCount: "45",
   },
+  hasProductSpecification: [
+    { "@type": "PropertyValue", name: "Power", value: "22 HP" },
+    { "@type": "PropertyValue", name: "Engine", value: "Kirloskar Diesel" },
+    { "@type": "PropertyValue", name: "Max Depth", value: "300 feet" },
+    { "@type": "PropertyValue", name: "Bore Diameter", value: "4-6 inch" },
+    { "@type": "PropertyValue", name: "Fuel Consumption", value: "8-10 L/day" },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Can the 22 HP drill 300 feet every time?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Not guaranteed. Depth depends on soil composition. Soft clay/sandy: 300 ft possible. Hard rock layers: May hit 150-200 ft. Best practice: Survey soil before drilling. ASR engineer can advise.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does fuel cost per borewell?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "For a 200-foot borewell: ~₹150-200 in fuel at current rates (₹90/liter). A 150-foot well might cost ₹100-120. Actual cost varies by soil hardness.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is installation included in the price?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Price includes delivery and on-site setup in UP. ASR engineer sets up machine, tests it, trains your operator. No hidden charges. Installation takes 2-4 hours.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I get this machine on EMI?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Partner banks (HDFC, Axis, ICICI) offer 24-36 month EMI at 9-12% interest. Loan amount: 80-90% of price. Approval in 3-5 days. We handle paperwork.",
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://asrdrillers.com" },
+    { "@type": "ListItem", position: 2, name: "Products", item: "https://asrdrillers.com/products" },
+    { "@type": "ListItem", position: 3, name: "22 HP Submersible", item: "https://asrdrillers.com/products/22-hp-submersible" },
+  ],
 };
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- Breadcrumb -->
-  <nav class="bg-gray-100 py-3 px-4">
-    <div class="container mx-auto max-w-6xl text-sm text-gray-600">
-      <a href="/" class="text-blue-600 hover:underline">Home</a> /
-      <a href="#products" class="text-blue-600 hover:underline">Products</a> /
-      <span>22 HP Submersible</span>
-    </div>
-  </nav>
+  <Breadcrumbs breadcrumbs={breadcrumbs} />
 
   <!-- Hero Section -->
   <section class="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-16">

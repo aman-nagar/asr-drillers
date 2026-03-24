@@ -6,6 +6,7 @@ import LocalProblemsSolutions from "../../components/LocalProblemsSolutions.astr
 import TestimonialsGrid from "../../components/TestimonialsGrid.astro";
 import FAQSection from "../../components/FAQSection.astro";
 import CommonCTA from "../../components/CommonCTA.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { commonData, locationsData } from "../../data/locations-i18n.js";
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const { location } = Astro.params;
-const locale = "hi"; // Hindi for /hi/[location] routes
+const locale = "hi";
 const locationData = locationsData[location as keyof typeof locationsData];
 const pageData = locationData?.[locale as "en" | "hi"];
 
@@ -22,38 +23,97 @@ if (!pageData) {
 }
 
 export function getStaticPaths() {
-  return Object.keys(locationsData).map((location) => ({
-    params: { location },
+  return Object.keys(locationsData).map((loc) => ({
+    params: { location: loc },
   }));
 }
 
-const pageTitle = `${pageData.title} | ASR ड्रिलर्स - बोरिंग मशीनें`;
+const pageTitle = `${pageData.title} | ASR Drillers - बोरिंग मशीनें`;
 const pageDescription = pageData.description;
 
-const schema = {
+const breadcrumbs = [
+  { label: "हिंदी", href: `/hi/${location}` },
+  { label: location.charAt(0).toUpperCase() + location.slice(1), href: `/${location}` },
+];
+
+// LocalBusiness Schema (Hindi)
+const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: `ASR ड्रिलर्स - ${pageData.title}`,
+  "@id": `https://asrdrillers.com/hi/${location}/#localbusiness`,
+  name: `ASR Drillers - ${pageData.title}`,
   image: "https://asrdrillers.com/logo.png",
   description: pageData.description,
+  url: `https://asrdrillers.com/hi/${location}`,
   address: {
     "@type": "PostalAddress",
     addressLocality: pageData.title,
-    addressRegion: "UP",
+    addressRegion: "Uttar Pradesh",
     addressCountry: "IN",
   },
-  telephone: `+${commonData.phone}`,
+  telephone: commonData.phone,
   areaServed: pageData.areaServed,
+  priceRange: "₹450000-₹750000",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "08:00",
+    closes: "20:00",
+  },
+};
+
+// FAQPage Schema (Hindi)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: commonData.commonFAQHi.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "होम",
+      item: "https://asrdrillers.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: location.charAt(0).toUpperCase() + location.slice(1),
+      item: `https://asrdrillers.com/${location}`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "हिंदी",
+      item: `https://asrdrillers.com/hi/${location}`,
+    },
+  ],
 };
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <!-- Schemas -->
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Breadcrumbs -->
+  <Breadcrumbs breadcrumbs={breadcrumbs} />
 
   <!-- Hero Section -->
-  <section
-    class="hero-section bg-gradient-to-r from-teal-700 to-teal-600 text-white py-16 md:py-24"
-  >
+  <section class="bg-gradient-to-r from-brand-teal to-brand-green text-white py-16 md:py-24">
     <div class="container mx-auto px-4 md:px-8 max-w-6xl">
       <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
         {pageData.heroHeadline}
@@ -63,16 +123,16 @@ const schema = {
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
-          href={`https://wa.me/${commonData.whatsapp.replace(/[^0-9]/g, "")}?text=नमस्ते%20ASR%20ड्रिलर्स%21%20मुझे%20बोरिंग%20मशीन%20के%20बारे%20में%20जानना%20है।`}
+          href={`https://wa.me/${commonData.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(`नमस्ते! मुझे ${pageData.title} में बोरिंग मशीनों के बारे में जानना है। कृपया विवरण साझा करें।`)}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded text-center transition"
+          class="bg-brand-green hover:bg-brand-green/90 text-white font-bold py-3 px-6 rounded text-center transition flex items-center justify-center gap-2"
         >
-          📱 व्हाट्सऐप पर संपर्क करें
+          💬 व्हाट्सऐप पर संपर्क करें
         </a>
         <a
           href={`tel:${commonData.phone}`}
-          class="bg-white text-teal-700 hover:bg-gray-100 font-bold py-3 px-6 rounded text-center transition"
+          class="bg-white text-brand-teal hover:bg-gray-100 font-bold py-3 px-6 rounded text-center transition"
         >
           📞 कॉल करें
         </a>
@@ -96,26 +156,26 @@ const schema = {
   <!-- Featured Products -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4 md:px-8 max-w-6xl">
-      <h2
-        class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900"
-      >
-        हमारी सर्वश्रेष्ठ मॉडल
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">
+        हमारी सर्वश्रेष्ठ बोरिंग मशीनें
       </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg">
+        भारतीय इलाके के लिए डिज़ाइन की गई पेशेवर-ग्रेड मशीनें
+      </p>
       <ModelsTable models={commonData.models} />
     </div>
   </section>
 
   <!-- Local Testimonials -->
   {
-    pageData.localTestimonials && (
+    pageData.localTestimonials && pageData.localTestimonials.length > 0 && (
       <section class="py-16 bg-white">
         <div class="container mx-auto px-4 md:px-8 max-w-6xl">
           <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">
             {pageData.title} में सफलता की कहानियाँ
           </h2>
           <p class="text-center text-gray-600 mb-12 text-lg">
-            देखें कि {pageData.title} के स्थानीय ठेकेदार और किसान ASR ड्रिलर्स
-            से कैसे लाभान्वित हो रहे हैं।
+            {pageData.title} के ठेकेदारों और किसानों से असली प्रतिक्रिया
           </p>
           <TestimonialsGrid testimonials={pageData.localTestimonials} />
         </div>
@@ -131,7 +191,7 @@ const schema = {
           <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">
             {pageData.title} में डिलीवरी और समर्थन
           </h2>
-          <div class="bg-white p-8 rounded-lg border-l-4 border-teal-700 max-w-2xl mx-auto">
+          <div class="bg-white p-8 rounded-lg border-l-4 border-brand-teal max-w-2xl mx-auto shadow-sm">
             <p class="text-lg text-gray-700 leading-relaxed">
               {pageData.shippingInfo}
             </p>
@@ -141,9 +201,9 @@ const schema = {
     )
   }
 
-  <!-- FAQ Section -->
+  <!-- FAQ Section with Schema -->
   <section class="py-16 bg-white">
-    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl">
       <FAQSection
         faqs={commonData.commonFAQHi}
         title="हमारी बोरिंग मशीनों के बारे में आम प्रश्न"

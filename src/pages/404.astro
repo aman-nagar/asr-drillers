@@ -1,0 +1,138 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { commonData } from "../data/locations-i18n.js";
+
+const { phone, whatsapp } = commonData;
+
+const isHindi = Astro.url?.pathname?.startsWith("/hi/") || false;
+
+const pageTitle = isHindi
+  ? "404 - पेज नहीं मिला | ASR Drillers"
+  : "404 - Page Not Found | ASR Drillers";
+
+const pageDescription = isHindi
+  ? "क्षमा करें, यह पेज नहीं मिला। ASR Drillers - भारत में बोरिंग मशीन निर्माता।"
+  : "Sorry, this page doesn't exist. ASR Drillers - Boring Machine Manufacturer in India.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- 404 Hero -->
+  <section class="min-h-[70vh] flex items-center justify-center py-16 bg-gradient-to-br from-brand-teal to-brand-green">
+    <div class="container mx-auto px-4 text-center text-white">
+      <div class="mb-8">
+        <span class="text-9xl font-bold opacity-20">404</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        {isHindi ? "पेज नहीं मिला" : "Page Not Found"}
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl mx-auto">
+        {isHindi
+          ? "क्षमा करें, जिस पेज को आप खोज रहे हैं वह मौजूद नहीं है।"
+          : "Sorry, the page you're looking for doesn't exist or has been moved."}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/"
+          class="bg-white text-brand-teal hover:bg-gray-100 font-bold py-4 px-8 rounded-lg text-lg transition"
+        >
+          {isHindi ? "🏠 होम पेज पर जाएं" : "🏠 Go to Homepage"}
+        </a>
+        <a
+          href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-brand-green hover:bg-brand-green/90 text-white font-bold py-4 px-8 rounded-lg text-lg transition"
+        >
+          {isHindi ? "💬 WhatsApp पर संपर्क करें" : "💬 Contact on WhatsApp"}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900">
+        {isHindi ? "लोकप्रिय पेज" : "Popular Pages"}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a
+          href="/"
+          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+        >
+          <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
+            {isHindi ? "🏠 होमपेज" : "🏠 Homepage"}
+          </h3>
+          <p class="text-sm text-gray-600 mt-1">
+            {isHindi ? "हमारी सभी मशीनें देखें" : "View all our machines"}
+          </p>
+        </a>
+        <a
+          href="/kanpur"
+          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+        >
+          <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
+            📍 Kanpur
+          </h3>
+          <p class="text-sm text-gray-600 mt-1">
+            {isHindi ? "कानपुर में बोरिंग मशीन" : "Boring machines in Kanpur"}
+          </p>
+        </a>
+        <a
+          href="/products/22-hp-submersible"
+          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+        >
+          <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
+            ⚙️ 22 HP Submersible
+          </h3>
+          <p class="text-sm text-gray-600 mt-1">
+            {isHindi ? "₹4.8 लाख से शुरू" : "Starting ₹4.8 Lakh"}
+          </p>
+        </a>
+        <a
+          href="/contact"
+          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+        >
+          <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
+            📞 {isHindi ? "संपर्क करें" : "Contact Us"}
+          </h3>
+          <p class="text-sm text-gray-600 mt-1">
+            {isHindi ? "अभी संपर्क करें" : "Get in touch now"}
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section
+    class="py-12 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+  >
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+        {isHindi ? "क्या आपको मदद चाहिए?" : "Need Help Finding Something?"}
+      </h2>
+      <p class="text-lg mb-6 opacity-90">
+        {isHindi
+          ? "हमारी टीम आपकी मदद के लिए उपलब्ध है।"
+          : "Our team is available to help you."}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={`tel:${phone}`}
+          class="bg-white text-brand-teal hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition"
+        >
+          📞 {phone}
+        </a>
+        <a
+          href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-brand-green hover:bg-brand-green/90 text-white font-bold py-3 px-6 rounded-lg transition"
+        >
+          💬 WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

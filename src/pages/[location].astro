@@ -6,6 +6,7 @@ import LocalProblemsSolutions from "../components/LocalProblemsSolutions.astro";
 import TestimonialsGrid from "../components/TestimonialsGrid.astro";
 import FAQSection from "../components/FAQSection.astro";
 import CommonCTA from "../components/CommonCTA.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { commonData, locationsData } from "../data/locations-i18n.js";
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const { location } = Astro.params;
-const locale = "en"; // English for /[location] routes
+const locale = "en";
 const locationData = locationsData[location as keyof typeof locationsData];
 const pageData = locationData?.[locale as "en" | "hi"];
 
@@ -22,38 +23,90 @@ if (!pageData) {
 }
 
 export function getStaticPaths() {
-  return Object.keys(locationsData).map((location) => ({
-    params: { location },
+  return Object.keys(locationsData).map((loc) => ({
+    params: { location: loc },
   }));
 }
 
 const pageTitle = `${pageData.title} | ASR Drillers - Boring Machines`;
 const pageDescription = pageData.description;
 
-const schema = {
+const breadcrumbs = [
+  { label: location.charAt(0).toUpperCase() + location.slice(1), href: `/${location}` },
+];
+
+// LocalBusiness Schema
+const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": `https://asrdrillers.com/${location}/#localbusiness`,
   name: `ASR Drillers - ${pageData.title}`,
   image: "https://asrdrillers.com/logo.png",
   description: pageData.description,
+  url: `https://asrdrillers.com/${location}`,
   address: {
     "@type": "PostalAddress",
     addressLocality: pageData.title,
-    addressRegion: "UP",
+    addressRegion: "Uttar Pradesh",
     addressCountry: "IN",
   },
-  telephone: `+${commonData.phone}`,
+  telephone: commonData.phone,
   areaServed: pageData.areaServed,
+  priceRange: "₹450000-₹750000",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "08:00",
+    closes: "20:00",
+  },
+};
+
+// FAQPage Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: commonData.commonFAQEn.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://asrdrillers.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: location.charAt(0).toUpperCase() + location.slice(1),
+      item: `https://asrdrillers.com/${location}`,
+    },
+  ],
 };
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <!-- Schemas -->
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Breadcrumbs -->
+  <Breadcrumbs breadcrumbs={breadcrumbs} />
 
   <!-- Hero Section -->
-  <section
-    class="hero-section bg-linear-to-r from-brand-teal to-brand-green text-white py-16 md:py-24"
-  >
+  <section class="bg-gradient-to-r from-brand-teal to-brand-green text-white py-16 md:py-24">
     <div class="container mx-auto px-4 md:px-8 max-w-6xl">
       <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
         {pageData.heroHeadline}
@@ -63,16 +116,18 @@ const schema = {
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
-          href={`https://wa.me/${commonData.whatsapp.replace("+", "")}`}
-          class="bg-brand-green hover:opacity-90 text-white font-bold py-3 px-6 rounded text-center transition"
+          href={`https://wa.me/${commonData.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(`Hi! I'm interested in boring machines in ${pageData.title}. Please share details.`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-brand-green hover:bg-brand-green/90 text-white font-bold py-3 px-6 rounded text-center transition flex items-center justify-center gap-2"
         >
-          📱 WhatsApp Now
+          💬 WhatsApp Now
         </a>
         <a
           href={`tel:${commonData.phone}`}
           class="bg-white text-brand-teal hover:bg-gray-100 font-bold py-3 px-6 rounded text-center transition"
         >
-          Get Quote
+          📞 Get Quote
         </a>
       </div>
     </div>
@@ -94,26 +149,26 @@ const schema = {
   <!-- Featured Products -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4 md:px-8 max-w-6xl">
-      <h2
-        class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900"
-      >
-        Our Best-Selling Models
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">
+        Our Best-Selling Boring Machines
       </h2>
+      <p class="text-center text-gray-600 mb-12 text-lg">
+        Professional-grade machines designed for Indian terrain
+      </p>
       <ModelsTable />
     </div>
   </section>
 
   <!-- Local Testimonials -->
   {
-    pageData.localTestimonials && (
+    pageData.localTestimonials && pageData.localTestimonials.length > 0 && (
       <section class="py-16 bg-white">
         <div class="container mx-auto px-4 md:px-8 max-w-6xl">
           <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">
             Success Stories from {pageData.title}
           </h2>
           <p class="text-center text-gray-600 mb-12 text-lg">
-            See how local contractors and farmers in {pageData.title} are
-            benefiting from ASR Drillers.
+            Real feedback from contractors and farmers in {pageData.title}
           </p>
           <TestimonialsGrid testimonials={pageData.localTestimonials} />
         </div>
@@ -129,7 +184,7 @@ const schema = {
           <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">
             Delivery & Support in {pageData.title}
           </h2>
-          <div class="bg-white p-8 rounded-lg border-l-4 border-brand-teal max-w-2xl mx-auto">
+          <div class="bg-white p-8 rounded-lg border-l-4 border-brand-teal max-w-2xl mx-auto shadow-sm">
             <p class="text-lg text-gray-700 leading-relaxed">
               {pageData.shippingInfo}
             </p>
@@ -139,9 +194,9 @@ const schema = {
     )
   }
 
-  <!-- FAQ Section -->
+  <!-- FAQ Section with Schema -->
   <section class="py-16 bg-white">
-    <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl">
       <FAQSection
         faqs={commonData.commonFAQEn}
         title="Common Questions About Our Boring Machines"

@@ -1,0 +1,72 @@
+---
+interface Breadcrumb {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  breadcrumbs: Breadcrumb[];
+}
+
+const { breadcrumbs } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.label,
+    item: `https://asrdrillers.com${item.href}`,
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="py-4 bg-gray-50">
+  <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+    <ol class="flex items-center gap-2 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <!-- Home -->
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a
+          href="/"
+          class="text-brand-teal hover:text-brand-green transition-colors flex items-center gap-1"
+          itemprop="item"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+          </svg>
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1" />
+      </li>
+
+      {breadcrumbs.map((crumb, index) => (
+        <li class="flex items-center gap-2">
+          <span class="text-gray-400">/</span>
+          <li
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            class={index === breadcrumbs.length - 1 ? "text-gray-500" : ""}
+          >
+            {index === breadcrumbs.length - 1 ? (
+              <span itemprop="name" class="capitalize">{crumb.label}</span>
+            ) : (
+              <a
+                href={crumb.href}
+                class="text-brand-teal hover:text-brand-green transition-colors capitalize"
+                itemprop="item"
+              >
+                <span itemprop="name">{crumb.label}</span>
+              </a>
+            )}
+            <meta itemprop="position" content={String(index + 2)} />
+          </li>
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

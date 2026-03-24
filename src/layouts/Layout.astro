@@ -1,64 +1,79 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import TrustBar from "../components/TrustBar.astro";
+import SEOHead from "../components/SEOHead.astro";
 import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
   schema?: any;
+  canonicalUrl?: string;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
 const {
   title = "ASR Drillers - Boring Machine Manufacturer",
   description = "ASR Drillers manufactures high-quality tubewell and borewell boring machines in Kanpur, India. 22-38 HP diesel-powered models. On-site installation & 24/7 support.",
   schema = null,
+  canonicalUrl,
+  ogImage = "/og-image.jpg",
+  noindex = false,
 } = Astro.props;
 
-// Safe fallback (Astro.url may not exist during some build phases)
-const siteUrl = "https://asrdrillers.com";
-const fallbackPath = "/"; // worst-case fallback
+// Determine locale from URL
+const currentPath = Astro.url?.pathname || "/";
+const isHindi = currentPath.startsWith("/hi/");
+const locale = isHindi ? "hi" : "en";
+
+// Organization Schema (always included)
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://asrdrillers.com/#organization",
+  name: "ASR Drillers",
+  url: "https://asrdrillers.com",
+  logo: "https://asrdrillers.com/logo.png",
+  description: "Leading boring machine manufacturer in India. 14+ years experience, 500+ happy customers.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Pukhrayan Industrial Area",
+    addressLocality: "Kanpur",
+    addressRegion: "Uttar Pradesh",
+    postalCode: "208201",
+    addressCountry: "IN",
+  },
+  telephone: "+91-98765-43210",
+  email: "info@asrdrillers.com",
+  foundingDate: "2012",
+  sameAs: [
+    "https://www.facebook.com/asrdrillers",
+    "https://www.instagram.com/asrdrillers",
+    "https://wa.me/919876543210",
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="en">
-  <!-- initial safe default; updated by script -->
+<html lang={locale}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta
-      name="keywords"
-      content="boring machine, tubewell boring, borewell drilling, Kanpur manufacturer, India, tubewell boring machine price, submersible boring machine"
-    />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url?.href || siteUrl} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-
-    <!-- Hreflang – safe initial values; will be corrected by JS -->
-    <link id="hreflang-en" rel="alternate" hreflang="en" href={siteUrl} />
-    <link
-      id="hreflang-hi"
-      rel="alternate"
-      hreflang="hi"
-      href={`${siteUrl}/hi/`}
-    />
-    <link
-      id="hreflang-default"
-      rel="alternate"
-      hreflang="x-default"
-      href={siteUrl}
+    <SEOHead
+      title={title}
+      description={description}
+      canonicalUrl={canonicalUrl}
+      ogImage={ogImage}
+      locale={locale}
+      noindex={noindex}
     />
 
-    {
-      schema && (
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-      )
-    }
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- Page-specific Schema -->
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
     <title>{title}</title>
 
@@ -100,46 +115,48 @@ const fallbackPath = "/"; // worst-case fallback
           padding: 0 1rem;
         }
       }
+
+      /* Smooth scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #0F766E;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #166534;
+      }
     </style>
   </head>
 
   <body>
+    <!-- Trust Bar -->
+    <TrustBar />
+
+    <!-- Header -->
     <Header />
+
+    <!-- Main Content -->
     <main>
       <slot />
     </main>
+
+    <!-- Footer -->
     <Footer />
+
+    <!-- Floating WhatsApp Button -->
+    <FloatingWhatsApp />
   </body>
-
-  <script>
-    // ────────────────────────────────────────────────
-    // Client-side language & hreflang correction
-    // ────────────────────────────────────────────────
-    (function () {
-      const currentPath = window.location.pathname;
-      const isHindiPage = currentPath.startsWith("/hi/");
-      const basePath = isHindiPage
-        ? currentPath.replace(/^\/hi/, "") || "/"
-        : currentPath;
-
-      const siteUrl = "https://asrdrillers.com";
-      const englishFullUrl =
-        basePath === "/" ? siteUrl : `${siteUrl}${basePath}`;
-      const hindiFullUrl =
-        basePath === "/" ? `${siteUrl}/hi/` : `${siteUrl}/hi${basePath}`;
-      // Update <html> lang
-      document.documentElement.lang = isHindiPage ? "hi" : "en";
-
-      // Update hreflang tags (with safety checks)
-      const enLink = document.getElementById("hreflang-en") as HTMLLinkElement;
-      const hiLink = document.getElementById("hreflang-hi") as HTMLLinkElement;
-      const defaultLink = document.getElementById(
-        "hreflang-default",
-      ) as HTMLLinkElement;
-
-      if (enLink) enLink.href = englishFullUrl;
-      if (hiLink) hiLink.href = hindiFullUrl;
-      if (defaultLink) defaultLink.href = englishFullUrl;
-    })();
-  </script>
 </html>
