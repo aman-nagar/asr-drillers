@@ -19,15 +19,14 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
 >
   <div class="container mx-auto px-4 md:px-6 max-w-7xl">
     <div class="flex items-center justify-between py-4 md:py-5">
-      <!-- Logo Section -->
       <a href={withLocalePrefix("/", locale)} class="flex items-center gap-3 shrink-0 group">
-        <div
-          class="w-14 h-14 bg-gradient-to-br from-brand-teal to-brand-green rounded-xl flex items-center justify-center text-white text-3xl font-bold shadow-lg group-hover:shadow-xl transition-shadow"
-        >
-          ⚙️
-        </div>
+        <img
+          src={siteConfig.logoPath}
+          alt="ASR Drillers"
+          class="h-12 w-12 rounded-xl border border-slate-200 bg-white p-1.5 shadow-md md:h-14 md:w-14"
+        />
         <div class="flex flex-col gap-0.5">
-          <span class="text-2xl font-bold text-slate-900 tracking-tight"
+          <span class="text-lg font-bold text-slate-900 tracking-tight sm:text-2xl"
             >ASR Drillers</span
           >
           <p
@@ -38,7 +37,6 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-1">
         {
           primaryNavLinks.map((link) => (
@@ -52,11 +50,9 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
         }
       </nav>
 
-      <!-- Right Section -->
       <div class="flex items-center gap-2 md:gap-4 lg:gap-5">
-        <!-- Language Toggle -->
         <div
-          class="flex items-center gap-1 pl-3 md:pl-4 border-l-2 border-slate-300"
+          class="hidden sm:flex items-center gap-1 pl-3 md:pl-4 border-l-2 border-slate-300"
         >
           {
             isHindi ? (
@@ -89,7 +85,6 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
           }
         </div>
 
-        <!-- Phone (hidden on small mobile) -->
         <a
           href={`tel:${siteConfig.phone}`}
           class="hidden sm:flex text-sm font-semibold text-slate-700 hover:text-brand-teal transition-colors items-center gap-2"
@@ -99,21 +94,41 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
           <span class="hidden md:inline">{siteConfig.phone}</span>
         </a>
 
-        <!-- WhatsApp CTA Button -->
         <a
           href={`https://wa.me/${whatsappNumber}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-brand-green hover:bg-brand-green/90 text-white font-bold px-4 md:px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:scale-105 text-sm md:text-base"
+          class="hidden sm:flex bg-brand-green hover:bg-brand-green/90 text-white font-bold px-4 md:px-5 py-2.5 rounded-xl items-center gap-2 transition-all duration-300 hover:shadow-lg hover:scale-105 text-sm md:text-base"
         >
           💬 <span class="hidden sm:inline">{isHindi ? "व्हाट्सऐप" : "WhatsApp"}</span>
         </a>
 
-        <!-- Mobile Menu Button -->
+        <a
+          href={`tel:${siteConfig.phone}`}
+          class="sm:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 bg-slate-50 text-slate-700 transition hover:border-brand-teal hover:text-brand-teal"
+          aria-label={isHindi ? "कॉल करें" : "Call us"}
+        >
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h2.2a1 1 0 01.97.757l1 4a1 1 0 01-.502 1.134l-1.62.81a11.042 11.042 0 005.049 5.049l.81-1.62a1 1 0 011.134-.502l4 1A1 1 0 0121 16.8V19a2 2 0 01-2 2h-1C10.82 21 3 13.18 3 4V5z"
+            ></path>
+          </svg>
+        </a>
+
         <button
-          class="lg:hidden text-slate-700 hover:text-brand-teal p-2.5 rounded-lg hover:bg-slate-100/50 transition-all duration-300"
+          class="lg:hidden text-slate-700 hover:text-brand-teal p-2.5 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100/80 transition-all duration-300"
           id="mobile-menu-btn"
           aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
         >
           <svg
             class="w-6 h-6"
@@ -131,40 +146,76 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
       </div>
     </div>
 
-    <!-- Mobile Menu -->
     <div
       id="mobile-menu"
       class="hidden lg:hidden border-t-2 border-slate-200 py-4 px-4"
     >
-      <nav class="flex flex-col gap-2">
+      <div class="surface-card border border-slate-200 bg-slate-50 p-4">
+        <div class="mb-4 flex items-center justify-between gap-3">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-teal">
+              {isHindi ? "क्विक एक्शन" : "Quick Actions"}
+            </p>
+            <p class="mt-1 text-sm text-slate-600">
+              {isHindi ? "नेविगेशन और संपर्क एक ही जगह" : "Navigation and contact in one place"}
+            </p>
+          </div>
+          <a
+            href={languageTogglePath}
+            class="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700 transition hover:border-brand-teal hover:text-brand-teal"
+          >
+            {isHindi ? "English" : "हिंदी"}
+          </a>
+        </div>
+
+        <div class="mb-4 grid grid-cols-2 gap-3">
+          <a
+            href={`tel:${siteConfig.phone}`}
+            class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-900 transition hover:border-brand-teal hover:text-brand-teal"
+          >
+            {isHindi ? "कॉल करें" : "Call Now"}
+          </a>
+          <a
+            href={`https://wa.me/${whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-2xl bg-brand-green px-4 py-3 text-sm font-bold text-white transition hover:bg-brand-green/90"
+          >
+            {isHindi ? "व्हाट्सऐप" : "WhatsApp"}
+          </a>
+        </div>
+
+        <nav class="flex flex-col gap-2">
         {
           primaryNavLinks.map((link) => (
             <a
               href={withLocalePrefix(link.path, locale)}
-              class="text-sm font-semibold text-slate-700 hover:text-brand-teal px-4 py-3 rounded-lg hover:bg-slate-100/50 transition-all duration-300"
+              class="text-sm font-semibold text-slate-700 hover:text-brand-teal px-4 py-3 rounded-xl bg-white hover:bg-slate-100/70 transition-all duration-300"
             >
               {link.label[locale]}
             </a>
           ))
         }
-      </nav>
+        </nav>
+      </div>
     </div>
   </div>
 </header>
 
 <script>
-  // Mobile menu toggle
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
 
   mobileMenuBtn?.addEventListener("click", () => {
     mobileMenu?.classList.toggle("hidden");
+    const isExpanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+    mobileMenuBtn.setAttribute("aria-expanded", String(!isExpanded));
   });
 
-  // Close mobile menu on link click
   mobileMenu?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.add("hidden");
+      mobileMenuBtn?.setAttribute("aria-expanded", "false");
     });
   });
 </script>

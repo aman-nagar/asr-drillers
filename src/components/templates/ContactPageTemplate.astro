@@ -1,0 +1,449 @@
+---
+import PageHero from "../sections/PageHero.astro";
+import SignalStrip from "../sections/SignalStrip.astro";
+import SectionHeading from "../sections/SectionHeading.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getWhatsAppNumber, siteConfig } from "../../config/site";
+import type { Locale } from "../../lib/i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const isHindi = locale === "hi";
+const whatsappNumber = getWhatsAppNumber();
+
+const pageTitle = isHindi
+  ? "ASR ड्रिलर्स से संपर्क करें | बोरिंग मशीन पूछताछ"
+  : "Contact ASR Drillers | Boring Machine Inquiries";
+const pageDescription = isHindi
+  ? "कीमत, मशीन सुझाव, डिलीवरी और सपोर्ट के लिए ASR ड्रिलर्स से संपर्क करें। कॉल करें, व्हाट्सऐप करें या संदेश भेजें।"
+  : "Contact ASR Drillers for pricing, machine guidance, delivery, and support. Call, WhatsApp, or send your project details.";
+
+const locations = isHindi
+  ? [
+      "कानपुर",
+      "लखनऊ",
+      "बिहार",
+      "राजस्थान",
+      "दिल्ली",
+      "कोलकाता",
+      "मध्य प्रदेश",
+      "अन्य",
+    ]
+  : [
+      "Kanpur",
+      "Lucknow",
+      "Bihar",
+      "Rajasthan",
+      "Delhi",
+      "Kolkata",
+      "Madhya Pradesh",
+      "Other",
+    ];
+
+const machineOptions = isHindi
+  ? [
+      "22 HP सबमर्सिबल",
+      "30 HP हाइड्रोलिक",
+      "38 HP ट्रैक्टर-माउंटेड",
+      "कस्टम समाधान",
+    ]
+  : [
+      "22 HP Submersible",
+      "30 HP Hydraulic",
+      "38 HP Tractor-Mounted",
+      "Custom Solution",
+    ];
+
+const heroSignals = [
+  {
+    value: isHindi ? "2 घंटे" : "2 Hours",
+    label: isHindi ? "सामान्य रिस्पॉन्स" : "Typical Response",
+  },
+  {
+    value: "24/7",
+    label: isHindi ? "व्हाट्सऐप उपलब्ध" : "WhatsApp Access",
+  },
+  {
+    value: isHindi ? "कानपुर" : "Kanpur",
+    label: isHindi ? "फैक्टरी बेस" : "Factory Base",
+  },
+];
+
+const stripItems = [
+  {
+    value: siteConfig.phone,
+    label: isHindi ? "कॉल सपोर्ट" : "Call Support",
+    note: isHindi ? "तुरंत बात करें" : "Talk to the team directly",
+  },
+  {
+    value: siteConfig.email,
+    label: isHindi ? "ईमेल" : "Email",
+    note: isHindi ? "डिटेल या डॉक्यूमेंट भेजें" : "Share details or documents",
+  },
+  {
+    value: "Pukhrayan",
+    label: isHindi ? "फैक्टरी लोकेशन" : "Factory Location",
+    note: isHindi ? "कानपुर, उत्तर प्रदेश" : "Kanpur, Uttar Pradesh",
+  },
+  {
+    value: isHindi ? "मुफ्त" : "Free",
+    label: isHindi ? "इंस्टॉलेशन गाइडेंस" : "Install Guidance",
+    note: isHindi ? "ऑनबोर्डिंग और सपोर्ट" : "Onboarding and support included",
+  },
+];
+
+const contactCards = [
+  {
+    title: isHindi ? "फोन" : "Phone",
+    description: isHindi ? "तुरंत सहायता के लिए कॉल करें" : "Call for immediate assistance",
+    value: siteConfig.phone,
+    href: `tel:${siteConfig.phone}`,
+    accent: "border-brand-teal",
+  },
+  {
+    title: "WhatsApp",
+    description: isHindi ? "किसी भी समय संदेश भेजें" : "Message anytime",
+    value: siteConfig.whatsapp,
+    href: `https://wa.me/${whatsappNumber}`,
+    accent: "border-green-500",
+    external: true,
+  },
+  {
+    title: isHindi ? "ईमेल" : "Email",
+    description: isHindi ? "अपनी पूछताछ या फोटो भेजें" : "Send your inquiry or photos",
+    value: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
+    accent: "border-brand-teal",
+  },
+];
+
+const faqItems = isHindi
+  ? [
+      {
+        question: "कोट के लिए कितना समय लगता है?",
+        answer:
+          "हम सामान्य पूछताछ का जवाब आम तौर पर 2 घंटे के भीतर देने की कोशिश करते हैं। मिट्टी, लोकेशन और गहराई की जानकारी भेजने से सुझाव और तेज हो जाता है।",
+      },
+      {
+        question: "क्या आप इंस्टॉलेशन और ट्रेनिंग देते हैं?",
+        answer:
+          "हाँ। मशीन के साथ इंस्टॉलेशन गाइडेंस और ऑपरेटर onboarding support उपलब्ध रहता है ताकि शुरुआत आसान हो।",
+      },
+      {
+        question: "क्या मैं पहले व्हाट्सऐप पर अपनी जरूरत भेज सकता हूँ?",
+        answer:
+          "हाँ, यह सबसे तेज तरीका है। अपनी मिट्टी, अपेक्षित गहराई, लोकेशन और मशीन रुचि भेजें, हम उसी हिसाब से जवाब देंगे।",
+      },
+      {
+        question: "क्या आप उत्तर भारत के बाहर भी सपोर्ट करते हैं?",
+        answer:
+          "प्राथमिक फोकस उत्तर भारत है, लेकिन कई मामलों में दूरी और इंस्टॉलेशन जरूरत के अनुसार सपोर्ट योजना बनाई जा सकती है।",
+      },
+    ]
+  : [
+      {
+        question: "How quickly can I get a quote?",
+        answer:
+          "We usually respond to standard inquiries within about 2 hours. Sharing your soil type, location, and target depth helps us guide you faster.",
+      },
+      {
+        question: "Do you provide installation and training?",
+        answer:
+          "Yes. Installation guidance and operator onboarding are part of the support experience so the machine is easier to start using confidently.",
+      },
+      {
+        question: "Can I send my requirement on WhatsApp first?",
+        answer:
+          "Yes. That is usually the fastest route. Share your soil condition, expected depth, location, and machine interest for a more useful reply.",
+      },
+      {
+        question: "Do you support customers outside North India?",
+        answer:
+          "North India is the primary focus, but support can often be planned based on distance, installation scope, and project requirements.",
+      },
+    ];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <PageHero
+    eyebrow={isHindi ? "फैक्टरी-डायरेक्ट संपर्क" : "Factory-direct contact"}
+    title={isHindi ? "कीमत, मशीन सलाह और डिलीवरी जानकारी के लिए टीम से बात करें" : "Talk to the Team for Pricing, Machine Advice, and Delivery Guidance"}
+    description={isHindi ? "अपनी लोकेशन, मिट्टी और अपेक्षित गहराई साझा करें। हम आपको सही मशीन और अगला कदम समझाने में मदद करेंगे।" : "Share your location, soil condition, and expected depth. We can help you narrow the right machine and next step quickly."}
+    signals={heroSignals}
+    visualTitle={isHindi ? "तेज जवाब, साफ मार्गदर्शन" : "Fast reply, clear guidance"}
+    visualLines={[
+      isHindi
+        ? "व्हाट्सऐप पर मशीन सुझाव, कीमत और डिलीवरी चर्चा का सबसे तेज रास्ता मिलता है।"
+        : "WhatsApp is the fastest route for machine suggestions, pricing, and delivery discussion.",
+      isHindi
+        ? "यदि आप चाहें तो फॉर्म से structured inquiry भेज सकते हैं।"
+        : "You can also send a more structured inquiry through the form below.",
+      isHindi
+        ? "फैक्टरी बेस कानपुर में है, इसलिए उत्तर भारत के खरीदारों के लिए coordination आसान रहता है।"
+        : "The factory base in Kanpur helps keep coordination simple for North India buyers.",
+    ]}
+    actions={[
+      {
+        href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isHindi ? "नमस्ते! मुझे बोरिंग मशीन के बारे में जानकारी चाहिए।" : "Hi! I want details about your boring machines.")}`,
+        label: isHindi ? "व्हाट्सऐप पर पूछें" : "Ask on WhatsApp",
+        variant: "primary",
+        external: true,
+      },
+      {
+        href: `tel:${siteConfig.phone}`,
+        label: isHindi ? "कॉल करें" : "Call Now",
+        variant: "secondary",
+      },
+    ]}
+  />
+
+  <SignalStrip items={stripItems} sectionClass="bg-slate-950 py-10" />
+
+  <section class="section-shell bg-white">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <SectionHeading
+        title={isHindi ? "संपर्क के सबसे आसान तरीके" : "The Easiest Ways to Reach Us"}
+        subtitle={isHindi ? "जिस तरह से आपको जल्दी जवाब मिले, उसी तरीके से संपर्क करें।" : "Choose the route that gets you the fastest and clearest response."}
+      />
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {contactCards.map((card) => (
+          <a
+            href={card.href}
+            target={card.external ? "_blank" : undefined}
+            rel={card.external ? "noopener noreferrer" : undefined}
+            class:list={[
+              "surface-card border-t-4 bg-slate-50 p-8 text-center transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)]",
+              card.accent,
+            ]}
+          >
+            <h3 class="text-2xl font-bold text-slate-950">{card.title}</h3>
+            <p class="mt-3 text-slate-600">{card.description}</p>
+            <p class="mt-5 text-lg font-bold text-brand-teal">{card.value}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell bg-slate-50">
+    <div class="container mx-auto max-w-6xl px-4 md:px-8">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div class="surface-panel border border-slate-200 bg-white p-8">
+          <SectionHeading
+            title={isHindi ? "हमसे संदेश में क्या साझा करें" : "What to Share in Your Inquiry"}
+            subtitle={isHindi ? "कम संदेश में भी सही सलाह तभी मिलती है जब जरूरी जानकारी साफ हो।" : "Even a short message becomes more useful when the key project details are clear."}
+            align="left"
+          />
+
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div>
+                <label class="mb-2 block text-sm font-medium text-slate-900">
+                  {isHindi ? "आपका नाम *" : "Your Name *"}
+                </label>
+                <input
+                  type="text"
+                  id="form-name"
+                  required
+                  class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
+                  placeholder={isHindi ? "अपना नाम दर्ज करें" : "Enter your name"}
+                />
+              </div>
+              <div>
+                <label class="mb-2 block text-sm font-medium text-slate-900">
+                  {isHindi ? "फोन नंबर *" : "Phone Number *"}
+                </label>
+                <input
+                  type="tel"
+                  id="form-phone"
+                  required
+                  class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
+                  placeholder={isHindi ? "आपका फोन नंबर" : "Your phone number"}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="mb-2 block text-sm font-medium text-slate-900">
+                {isHindi ? "ईमेल" : "Email"}
+              </label>
+              <input
+                type="email"
+                id="form-email"
+                class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
+                placeholder={isHindi ? "आपका ईमेल पता" : "Your email address"}
+              />
+            </div>
+
+            <div>
+              <label class="mb-2 block text-sm font-medium text-slate-900">
+                {isHindi ? "लोकेशन / जिला *" : "Location / District *"}
+              </label>
+              <select
+                id="form-location"
+                required
+                class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
+              >
+                <option value="">
+                  {isHindi ? "अपना स्थान चुनें" : "Select your location"}
+                </option>
+                {locations.map((location) => (
+                  <option value={location}>{location}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label class="mb-2 block text-sm font-medium text-slate-900">
+                {isHindi ? "मशीन में रुचि (वैकल्पिक)" : "Machine Interest (Optional)"}
+              </label>
+              <select
+                id="form-machine"
+                class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
+              >
+                <option value="">
+                  {isHindi ? "मशीन चुनें" : "Select machine"}
+                </option>
+                {machineOptions.map((machine) => (
+                  <option value={machine}>{machine}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label class="mb-2 block text-sm font-medium text-slate-900">
+                {isHindi ? "आपकी जरूरत *" : "Your Requirement *"}
+              </label>
+              <textarea
+                id="form-message"
+                required
+                rows="5"
+                class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
+                placeholder={isHindi ? "मिट्टी का प्रकार, गहराई, उपयोग और कोई खास जरूरत लिखें..." : "Share your soil type, depth target, use case, and any important detail..."}
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-brand-teal to-brand-green px-6 py-4 font-bold text-white shadow-[0_18px_40px_rgba(15,118,110,0.24)] transition hover:shadow-[0_22px_50px_rgba(15,118,110,0.3)]"
+            >
+              {isHindi ? "व्हाट्सऐप पर भेजें" : "Send on WhatsApp"}
+            </button>
+
+            <p class="text-sm text-slate-500">
+              {isHindi
+                ? "ईमेल या फोटो भी साझा करने हैं तो उसी के साथ व्हाट्सऐप संदेश भेज सकते हैं।"
+                : "If you also want to share photos or documents, mention that in the WhatsApp message and we can continue there."}
+            </p>
+          </form>
+        </div>
+
+        <div class="space-y-6">
+          <article class="surface-panel border border-slate-200 bg-white p-8">
+            <SectionHeading
+              title={isHindi ? "फैक्टरी और संपर्क जानकारी" : "Factory and Contact Details"}
+              align="left"
+            />
+            <div class="space-y-5 text-slate-700">
+              <p>
+                <strong class="text-slate-950">
+                  {isHindi ? "फैक्टरी पता:" : "Factory Address:"}
+                </strong><br />
+                {siteConfig.address.streetAddress}<br />
+                {siteConfig.address.addressLocality}, {siteConfig.address.addressRegion} {siteConfig.address.postalCode}<br />
+                {isHindi ? "भारत" : "India"}
+              </p>
+              <p>
+                <strong class="text-slate-950">
+                  {isHindi ? "संपर्क:" : "Contact:"}
+                </strong><br />
+                {siteConfig.phone}<br />
+                {siteConfig.email}
+              </p>
+              <p>
+                <strong class="text-slate-950">
+                  {isHindi ? "कार्य समय:" : "Business Hours:"}
+                </strong><br />
+                {isHindi ? "सोमवार - शनिवार: सुबह 9:00 - शाम 6:00" : "Monday - Saturday: 9:00 AM - 6:00 PM"}<br />
+                {isHindi ? "रविवार: बंद" : "Sunday: Closed"}<br />
+                {isHindi ? "व्हाट्सऐप: 24/7" : "WhatsApp: 24/7"}
+              </p>
+            </div>
+          </article>
+
+          <article class="surface-panel overflow-hidden border border-slate-200 bg-white">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.5168749999996!2d80.1456!3d26.4589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sPukhrayan%2C%20Kanpur%2C%20Uttar%20Pradesh!2sIndia!5e0!3m2!1sen!2sin!4v1234567890"
+              width="100%"
+              height="420"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title={isHindi ? "ASR ड्रिलर्स फैक्टरी लोकेशन - पुखरायन, कानपुर" : "ASR Drillers Factory Location - Pukhrayan, Kanpur"}
+            ></iframe>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell bg-white">
+    <div class="container mx-auto max-w-4xl px-4 md:px-8">
+      <SectionHeading
+        title={isHindi ? "अक्सर पूछे जाने वाले प्रश्न" : "Frequently Asked Questions"}
+        subtitle={isHindi ? "संपर्क करने से पहले यह छोटे सवाल सबसे ज्यादा पूछे जाते हैं।" : "These are the short questions buyers usually ask before reaching out."}
+      />
+
+      <div class="space-y-6">
+        {faqItems.map((faq) => (
+          <details class="surface-card cursor-pointer border border-slate-200 bg-slate-50 p-6 group">
+            <summary class="flex items-center justify-between text-lg font-bold text-slate-900">
+              {faq.question}
+              <span class="text-brand-teal transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ whatsappNumber, isHindi }}>
+  const form = document.getElementById("contact-form");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const getValue = (id) =>
+      document.getElementById(id)?.value?.trim?.() ?? "";
+
+    const name = getValue("form-name");
+    const phone = getValue("form-phone");
+    const email = getValue("form-email");
+    const location = getValue("form-location");
+    const machine = getValue("form-machine");
+    const message = getValue("form-message");
+
+    let whatsappMessage = isHindi
+      ? "नमस्ते! मैं ASR ड्रिलर्स से संपर्क करना चाहता/चाहती हूँ।\n\n"
+      : "Hi! I want to contact ASR Drillers.\n\n";
+
+    whatsappMessage += `*Name:* ${name}\n`;
+    whatsappMessage += `*Phone:* ${phone}\n`;
+    if (email) whatsappMessage += `*Email:* ${email}\n`;
+    whatsappMessage += `*Location:* ${location}\n`;
+    if (machine) whatsappMessage += `*Machine Interest:* ${machine}\n`;
+    whatsappMessage += `*Message:* ${message}`;
+
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
+      "_blank",
+    );
+  });
+</script>

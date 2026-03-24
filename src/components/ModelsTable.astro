@@ -12,6 +12,11 @@ interface Props {
 const locale = getLocaleFromPath(Astro.url?.pathname || "/");
 const isHindi = locale === "hi";
 const whatsappNumber = getWhatsAppNumber();
+const localizedModelNames: Record<string, string> = {
+  "22 HP Submersible": "22 HP सबमर्सिबल",
+  "30 HP Hydraulic": "30 HP हाइड्रोलिक",
+  "38 HP Tractor-Mounted": "38 HP ट्रैक्टर-माउंटेड",
+};
 const {
   models = commonData.models,
   title = isHindi ? "हमारी बोरिंग मशीन मॉडल" : "Our Boring Machine Models",
@@ -48,7 +53,9 @@ const {
           {
             models.map((model, idx) => (
               <tr class={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                <td class="p-4 font-semibold text-gray-900">{model.name}</td>
+                <td class="p-4 font-semibold text-gray-900">
+                  {isHindi ? localizedModelNames[model.name] ?? model.name : model.name}
+                </td>
                 <td class="p-4 text-center text-lg font-bold text-brand-teal">
                   {model.hp}
                 </td>
@@ -62,7 +69,7 @@ const {
                 </td>
                 <td class="p-4 text-center">
                   <a
-                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isHindi ? `${model.name} के बारे में जानकारी चाहिए। कृपया विवरण भेजें।` : `Interested in ${model.name}. Please share details.`)}`}
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(isHindi ? `${localizedModelNames[model.name] ?? model.name} के बारे में जानकारी चाहिए। कृपया विवरण भेजें।` : `Interested in ${model.name}. Please share details.`)}`}
                     class="text-brand-teal hover:text-brand-green font-semibold text-sm"
                   >
                     {isHindi ? "कोट लें" : "Quote"}

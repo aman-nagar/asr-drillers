@@ -14,7 +14,7 @@ const isHindi = Astro.url?.pathname?.startsWith("/hi/") || false;
 
 <div
   id="floating-whatsapp"
-  class={`fixed ${position === "bottom-right" ? "right-4 md:right-6" : "left-4 md:left-6"} bottom-4 md:bottom-6 z-50 flex flex-col gap-3`}
+  class={`fixed ${position === "bottom-right" ? "right-4 md:right-6" : "left-4 md:left-6"} bottom-4 md:bottom-6 z-50 hidden md:flex flex-col gap-3`}
 >
   <!-- Tooltip -->
   <div
