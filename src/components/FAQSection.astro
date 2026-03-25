@@ -19,26 +19,31 @@ const {
 } = Astro.props;
 ---
 
-<section id={sectionId} class="py-16 bg-white">
+<section id={sectionId} class="section-shell section-tint">
   <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
-      {title}
-    </h2>
+    <div class="surface-panel border border-slate-200/80 bg-white/90 p-6 shadow-[0_30px_90px_rgba(15,23,42,0.08)] md:p-8">
+      <h2 class="mb-10 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+        {title}
+      </h2>
 
-    <div class="space-y-6">
-      {
-        faqs.map((faq, idx) => (
-          <details class="bg-gray-50 p-6 rounded-lg cursor-pointer group border-l-4 border-brand-teal hover:border-brand-green transition">
-            <summary class="font-bold text-lg text-gray-900 flex items-center gap-3">
-              <span class="group-open:rotate-180 transition text-brand-teal text-xl">
-                ▼
-              </span>
-              {faq.question}
-            </summary>
-            <p class="mt-4 text-gray-700 ml-6 leading-relaxed">{faq.answer}</p>
-          </details>
-        ))
-      }
+      <div class="space-y-4">
+        {
+          faqs.map((faq, idx) => (
+            <details class="surface-card cursor-pointer border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-5 group md:p-6">
+              <summary class="flex items-center gap-4 text-left text-lg font-bold text-gray-900 list-none">
+                <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-brand-teal/10 text-sm font-bold text-brand-teal">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+                <span class="flex-1">{faq.question}</span>
+                <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 text-brand-teal transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p class="mt-4 pl-14 leading-relaxed text-gray-700">{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

@@ -6,6 +6,15 @@ import {
   footerLocationLinks,
 } from "../data/navigation";
 import { getLocaleFromPath, withLocalePrefix } from "../lib/i18n";
+import {
+  Phone,
+  MessageCircle,
+  CheckCircle2,
+  Users,
+  MapPin,
+  Shield,
+  Share2,
+} from "@lucide/astro";
 
 const currentPath = Astro.url?.pathname || "/";
 const locale = getLocaleFromPath(currentPath);
@@ -13,150 +22,204 @@ const isHindi = locale === "hi";
 const whatsappNumber = getWhatsAppNumber();
 ---
 
-<footer class="bg-[linear-gradient(180deg,#0f172a_0%,#081117_100%)] text-slate-100">
+<footer
+  class="bg-linear-to-br from-slate-900 via-slate-900 to-slate-950 text-slate-100 border-t border-slate-800/30"
+>
   <div class="container mx-auto px-4 md:px-6 max-w-7xl">
-    <!-- Main Footer Grid -->
+    <!-- Main Grid -->
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12 md:py-16 border-b-2 border-slate-800"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 py-10 md:py-14"
     >
       <!-- Company Info -->
       <div class="space-y-4">
-        <div class="flex items-center gap-3 mb-6">
+        <div class="flex items-start gap-3">
           <img
             src={siteConfig.logoPath}
             alt="ASR Drillers"
-            class="h-12 w-12 rounded-2xl border border-white/10 bg-white p-1.5 shadow-[0_16px_35px_rgba(15,118,110,0.15)]"
+            class="h-12 w-12 rounded-lg border border-brand-teal/30 bg-white/5 p-2 shadow-md shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold text-white">ASR Drillers</h3>
+          <div class="min-w-0 flex-1">
+            <h3 class="text-lg font-bold text-white leading-tight">
+              ASR Drillers
+            </h3>
             <p
-              class="text-xs font-semibold text-brand-teal uppercase tracking-widest"
+              class="text-xs font-bold text-brand-teal uppercase tracking-wide"
             >
-              {isHindi ? "भरोसेमंद ड्रिलिंग" : "Boring Excellence"}
+              {isHindi ? "विश्वसनीय निर्माता" : "Trusted Brand"}
             </p>
           </div>
         </div>
+
         <p class="text-sm leading-relaxed text-slate-300">
           {
             isHindi
-              ? "भारत में बोरिंग मशीनों के अग्रणी निर्माता। 14+ वर्षों का अनुभव, 500+ संतुष्ट ग्राहक।"
-              : "Leading boring machine manufacturer in India. 14+ years of excellence, 500+ happy customers."
+              ? "भारत के सबसे विश्वसनीय बोरिंग मशीन निर्माता। 14+ वर्षों का अनुभव।"
+              : "India's most trusted boring machine manufacturer. 14+ years of excellence."
           }
         </p>
-        <div class="flex gap-3 pt-2">
-          <a
-            href={`tel:${siteConfig.phone}`}
-            class="inline-flex items-center gap-2 text-sm font-semibold text-brand-teal hover:text-brand-green transition-colors"
+
+        <!-- Stats -->
+        <div class="space-y-2 pt-2">
+          <div
+            class="flex items-center gap-2 text-xs font-semibold text-slate-200"
           >
-            <span>📞</span>
-            {siteConfig.phone}
-          </a>
+            <CheckCircle2 class="w-4 h-4 text-brand-teal shrink-0" />
+            <span
+              >{isHindi ? "14+ वर्षों का विश्वास" : "14+ Years Trusted"}</span
+            >
+          </div>
+          <div
+            class="flex items-center gap-2 text-xs font-semibold text-slate-200"
+          >
+            <Users class="w-4 h-4 text-brand-green shrink-0" />
+            <span>{isHindi ? "500+ संतुष्ट ग्राहक" : "500+ Happy Clients"}</span
+            >
+          </div>
         </div>
       </div>
 
-      <!-- Quick Links - Locations -->
+      <!-- Locations -->
       <div class="space-y-4">
-        <h4 class="text-lg font-bold text-white">
-          {isHindi ? "स्थान" : "Locations"}
+        <h4 class="text-base font-bold text-white flex items-center gap-2">
+          <MapPin class="w-5 h-5 text-brand-teal" />
+          {isHindi ? "हमारे स्थान" : "Locations"}
         </h4>
-        <nav class="flex flex-col gap-2.5">
+        <nav class="space-y-2 flex flex-col">
           {
             footerLocationLinks.map((link) => (
               <a
                 href={withLocalePrefix(link.path, locale)}
-                class="text-sm text-slate-300 hover:text-brand-teal hover:translate-x-1 transition-all font-semibold"
+                class="text-sm text-slate-300 hover:text-brand-teal transition-colors font-semibold group flex items-center gap-1.5"
               >
-                ➜ {link.label[locale]}
+                <span class="w-1 h-1 rounded-full bg-brand-teal/60 group-hover:bg-brand-teal transition-colors shrink-0" />
+                {link.label[locale]}
               </a>
             ))
           }
         </nav>
       </div>
 
-      <!-- Quick Links - Company -->
+      <!-- Company Links -->
       <div class="space-y-4">
-        <h4 class="text-lg font-bold text-white">
+        <h4 class="text-base font-bold text-white flex items-center gap-2">
+          <Shield class="w-5 h-5 text-brand-teal" />
           {isHindi ? "कंपनी" : "Company"}
         </h4>
-        <nav class="flex flex-col gap-2.5">
+        <nav class="space-y-2 flex flex-col">
           {
             footerCompanyLinks.map((link) => (
               <a
                 href={withLocalePrefix(link.path, locale)}
-                class="text-sm text-slate-300 hover:text-brand-teal hover:translate-x-1 transition-all font-semibold"
+                class="text-sm text-slate-300 hover:text-brand-teal transition-colors font-semibold group flex items-center gap-1.5"
               >
-                ➜ {link.label[locale]}
+                <span class="w-1 h-1 rounded-full bg-brand-teal/60 group-hover:bg-brand-teal transition-colors shrink-0" />
+                {link.label[locale]}
               </a>
             ))
           }
         </nav>
       </div>
 
-      <!-- Quick Links - Support -->
+      <!-- Contact -->
       <div class="space-y-4">
-        <h4 class="text-lg font-bold text-white">
-          {isHindi ? "सहायता" : "Support"}
+        <h4 class="text-base font-bold text-white flex items-center gap-2">
+          <Phone class="w-5 h-5 text-brand-teal" />
+          {isHindi ? "संपर्क करें" : "Contact"}
         </h4>
-        <div class="space-y-3">
-          <a
-            href={`tel:${siteConfig.phone}`}
-            class="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/5 p-3 transition-colors group hover:bg-brand-teal/20"
+
+        <!-- Call CTA -->
+        <a
+          href={`tel:${siteConfig.phone}`}
+          class="group flex items-center gap-3 rounded-lg bg-white/5 border border-slate-700/50 p-3 hover:bg-white/8 hover:border-brand-teal/50 transition-all"
+        >
+          <div
+            class="shrink-0 w-9 h-9 rounded-lg bg-brand-teal/20 flex items-center justify-center group-hover:bg-brand-teal/30 transition-colors"
           >
-            <span class="text-2xl">📞</span>
-            <div>
-              <p class="text-xs font-semibold text-slate-400">
-                {isHindi ? "कॉल करें" : "Call Now"}
-              </p>
-              <p
-                class="text-sm font-bold text-brand-teal group-hover:text-brand-green"
-              >
-                {siteConfig.phone}
-              </p>
-            </div>
-          </a>
-          <a
-            href={`https://wa.me/${whatsappNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-3 rounded-2xl bg-brand-green p-3 font-bold text-white transition-colors hover:bg-brand-green/90"
+            <Phone class="w-4 h-4 text-brand-teal" />
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="text-xs font-bold text-slate-400 uppercase">
+              {isHindi ? "फोन" : "Phone"}
+            </p>
+            <p
+              class="text-sm font-bold text-white group-hover:text-brand-teal transition-colors truncate"
+            >
+              {siteConfig.phone}
+            </p>
+          </div>
+        </a>
+
+        <!-- WhatsApp CTA -->
+        <a
+          href={`https://wa.me/${whatsappNumber}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-3 rounded-lg bg-brand-green/20 border border-brand-green/50 p-3 hover:bg-brand-green/30 hover:border-brand-green transition-all"
+        >
+          <div
+            class="shrink-0 w-9 h-9 rounded-lg bg-brand-green/40 flex items-center justify-center group-hover:bg-brand-green/50 transition-colors"
           >
-            <span class="text-2xl">💬</span>
-            <span>{isHindi ? "व्हाट्सऐप पर बात करें" : "Chat on WhatsApp"}</span>
-          </a>
-        </div>
+            <MessageCircle class="w-4 h-4 text-white" />
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="text-xs font-bold text-slate-300 uppercase">
+              {isHindi ? "व्हाट्सऐप" : "WhatsApp"}
+            </p>
+            <p class="text-sm font-bold text-white truncate">
+              {isHindi ? "अभी चैट करें" : "Chat Now"}
+            </p>
+          </div>
+        </a>
       </div>
     </div>
 
-    <!-- Bottom Footer -->
-    <div class="py-8 md:py-10 border-t-2 border-slate-800">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Divider -->
+    <div class="border-t border-slate-800/50"></div>
+
+    <!-- Bottom Section -->
+    <div class="py-6 md:py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <!-- Left: Copyright & Badges -->
         <div class="space-y-3">
-          <p class="text-sm text-slate-400">
+          <p class="text-xs md:text-sm text-slate-300 font-semibold">
             {
               isHindi
                 ? `© ${siteConfig.foundingYear}-${new Date().getFullYear()} ASR Drillers. सर्वाधिकार सुरक्षित।`
                 : `© ${siteConfig.foundingYear}-${new Date().getFullYear()} ASR Drillers. All rights reserved.`
             }
           </p>
-          <p class="text-xs text-slate-500">
-            {
-              isHindi
-                ? "भारत में निर्मित, विश्व-स्तरीय गुणवत्ता के साथ"
-                : "Made in India, with world-class quality"
-            }
-          </p>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold text-brand-teal bg-brand-teal/10"
+            >
+              <CheckCircle2 class="w-3 h-3" />
+              {isHindi ? "विश्वसनीय" : "Trusted"}
+            </span>
+            <span
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold text-brand-green bg-brand-green/10"
+            >
+              <Users class="w-3 h-3" />
+              {isHindi ? "500+ ग्राहक" : "500+ Clients"}
+            </span>
+          </div>
         </div>
-        <div class="flex gap-4 md:justify-end">
-          {
-            footerBottomLinks.map((link) => (
-              <a
-                href={withLocalePrefix(link.path, locale)}
-                class="text-sm text-slate-400 hover:text-brand-teal transition-colors font-semibold"
-              >
-                {link.label[locale]}
-              </a>
-            ))
-          }
+
+        <!-- Right: Social Links -->
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3"
+        >
+          <p class="text-xs text-slate-400">
+            {isHindi ? "भारत में निर्मित" : "Made in India"}
+          </p>
+          <a
+            href="https://www.facebook.com/asrdrillers"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-brand-teal/20 text-slate-300 hover:text-brand-teal transition-all"
+            aria-label="Facebook"
+          >
+            <Share2 class="w-4 h-4" />
+          </a>
         </div>
       </div>
     </div>

@@ -8,12 +8,12 @@ export const galleryContentByLocale = {
   en: {
     pageTitle: "Gallery | ASR Drillers Boring Machines",
     pageDescription:
-      "Explore ASR Drillers machine visuals, factory process frames, and field installation examples. Dummy image URLs are ready to be swapped with your final photos later.",
+      "Explore ASR Drillers machine visuals, factory process frames, and field installation examples. Photo slots are ready to be replaced with your final visuals later.",
     hero: {
       eyebrow: "Machine gallery and field proof",
       title: "A Better Gallery Structure for Machines, Factory Work, and Site Installations",
       description:
-        "This gallery is now arranged like a sales asset instead of a placeholder wall. You can replace the dummy URLs later with real machine, workshop, and project images without changing the layout.",
+        "This gallery is arranged to support real machine, workshop, and project photography without needing to redesign the page later.",
       primaryActionLabel: "Share Photos on WhatsApp",
       secondaryActionLabel: "Call the Team",
       whatsappMessage:
@@ -25,7 +25,7 @@ export const galleryContentByLocale = {
       ],
       visualTitle: "Gallery-ready content system",
       visualLines: [
-        "Dummy media URLs can be replaced one by one with final factory and field visuals.",
+        "Photo slots can be replaced one by one with final factory and field visuals.",
         "Sections are now grouped by machine, factory process, and installation proof.",
         "The page is designed to support both English and Hindi without separate layout drift.",
       ],
@@ -77,7 +77,7 @@ export const galleryContentByLocale = {
     showcaseSection: {
       title: "Showcase Frames",
       subtitle:
-        "These cards use dummy image URLs today, but the structure is ready for polished machine and site photography.",
+        "These cards are ready for polished machine, workshop, and site photography whenever your final visuals are available.",
       items: [
         {
           title: "22 HP Submersible Rig",
@@ -206,18 +206,18 @@ export const galleryContentByLocale = {
     cta: {
       headline: "Want this gallery connected to your real machine photos next?",
       subheadline:
-        "Send your factory, dispatch, and installation photos on WhatsApp and we can keep this layout while replacing each dummy image URL cleanly.",
+        "Send your factory, dispatch, and installation photos on WhatsApp and this layout can be updated cleanly with your final visuals.",
     },
   },
   hi: {
     pageTitle: "गैलरी | ASR ड्रिलर्स बोरिंग मशीनें",
     pageDescription:
-      "ASR ड्रिलर्स की मशीनें, फैक्टरी प्रक्रिया और फील्ड इंस्टॉलेशन उदाहरण देखें। अभी डमी इमेज URL लगे हैं, जिन्हें बाद में आपकी असली फोटो से बदला जा सकता है।",
+      "ASR ड्रिलर्स की मशीनें, फैक्टरी प्रक्रिया और फील्ड इंस्टॉलेशन उदाहरण देखें। फोटो स्लॉट बाद में आपकी असली विजुअल सामग्री से बदले जा सकते हैं।",
     hero: {
       eyebrow: "मशीन गैलरी और फील्ड प्रूफ",
       title: "मशीन, फैक्टरी और साइट इंस्टॉलेशन के लिए बेहतर गैलरी संरचना",
       description:
-        "यह गैलरी अब सिर्फ placeholder wall नहीं है। इसे ऐसे व्यवस्थित किया गया है कि बाद में असली फोटो जोड़ने पर भी लेआउट और बिक्री flow मजबूत बना रहे।",
+        "यह गैलरी ऐसे व्यवस्थित की गई है कि बाद में असली मशीन, वर्कशॉप और साइट फोटो जोड़ने पर भी लेआउट मजबूत बना रहे।",
       primaryActionLabel: "फोटो व्हाट्सऐप पर भेजें",
       secondaryActionLabel: "टीम को कॉल करें",
       whatsappMessage:
@@ -229,7 +229,7 @@ export const galleryContentByLocale = {
       ],
       visualTitle: "गैलरी-रेडी कंटेंट सिस्टम",
       visualLines: [
-        "अभी डमी मीडिया URL हैं, जिन्हें बाद में फैक्टरी और फील्ड फोटो से आसानी से बदला जा सकता है।",
+        "फोटो स्लॉट बाद में फैक्टरी और फील्ड विजुअल से आसानी से बदले जा सकते हैं।",
         "सेक्शन अब मशीन, फैक्टरी प्रक्रिया और इंस्टॉलेशन प्रूफ के हिसाब से समूहित हैं।",
         "एक ही लेआउट अंग्रेजी और हिंदी दोनों के लिए काम करता है।",
       ],
@@ -281,7 +281,7 @@ export const galleryContentByLocale = {
     showcaseSection: {
       title: "शोकेस फ्रेम",
       subtitle:
-        "आज यहां डमी इमेज URL हैं, लेकिन पूरी संरचना मशीन और साइट फोटो के लिए तैयार है।",
+        "यह सेक्शन मशीन, वर्कशॉप और साइट फोटो के लिए तैयार है और बाद में भी आसानी से अपडेट किया जा सकता है।",
       items: [
         {
           title: "22 HP सबमर्सिबल रिग",
@@ -410,7 +410,7 @@ export const galleryContentByLocale = {
     cta: {
       headline: "अब इस गैलरी में आपकी असली मशीन फोटो जोड़नी हैं?",
       subheadline:
-        "फैक्टरी, डिस्पैच और इंस्टॉलेशन फोटो व्हाट्सऐप पर भेजें। यही layout रखते हुए हम हर dummy image URL को आसानी से बदल सकते हैं।",
+        "फैक्टरी, डिस्पैच और इंस्टॉलेशन फोटो व्हाट्सऐप पर भेजें। यही layout रखते हुए हम इन्हें अंतिम विजुअल से आसानी से अपडेट कर सकते हैं।",
     },
   },
 } as const;

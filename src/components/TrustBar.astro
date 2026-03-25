@@ -1,57 +1,112 @@
 ---
+import { ShieldCheck, Award, Users, Truck, Clock } from "@lucide/astro";
 import { siteConfig } from "../config/site";
 import { getLocaleFromPath } from "../lib/i18n";
 
-const isHindi = getLocaleFromPath(Astro.url?.pathname || "/") === "hi";
+const currentPath = Astro.url?.pathname || "/";
+const isHindi = getLocaleFromPath(currentPath) === "hi";
 
 const trustItems = [
   {
-    icon: "🏭",
-    label: isHindi ? "14+ वर्षों का अनुभव" : "14+ Years Experience",
-    value: isHindi ? `सन् ${siteConfig.foundingYear} से` : `Since ${siteConfig.foundingYear}`,
-  },
-  {
-    icon: "👥",
-    label: isHindi ? "500+ संतुष्ट ग्राहक" : "500+ Happy Customers",
-    value: isHindi ? "पूरे भारत में" : "Across India",
-  },
-  {
-    icon: "⭐",
-    label: isHindi ? "4.8/5 ग्राहक रेटिंग" : "4.8/5 Customer Rating",
-    value: isHindi ? "ग्राहक समीक्षा" : "Customer Reviews",
-  },
-  {
-    icon: "🏆",
+    icon: ShieldCheck,
     label: isHindi ? "ISO 9001 प्रमाणित" : "ISO 9001 Certified",
     value: isHindi ? "गुणवत्ता आश्वासन" : "Quality Assured",
   },
   {
-    icon: "🚚",
-    label: isHindi ? "भारत भर में डिलीवरी" : "Delivery Across India",
-    value: isHindi ? "पैन इंडिया" : "Pan India",
+    icon: Award,
+    label: isHindi ? "14+ वर्षों का अनुभव" : "14+ Years Experience",
+    value: isHindi
+      ? `सन् ${siteConfig.foundingYear} से`
+      : `Since ${siteConfig.foundingYear}`,
   },
   {
-    icon: "📞",
-    label: isHindi ? "24/7 समर्थन" : "24/7 Support",
-    value: isHindi ? "व्हाट्सऐप" : "WhatsApp",
+    icon: Users,
+    label: isHindi ? "500+ संतुष्ट ग्राहक" : "500+ Happy Customers",
+    value: isHindi ? "पूरे भारत में" : "Across India",
+  },
+  {
+    icon: Truck,
+    label: isHindi ? "पैन इंडिया डिलीवरी" : "Pan India Delivery",
+    value: isHindi ? "24-48 घंटे" : "24-48 Hours",
+  },
+  {
+    icon: Clock,
+    label: isHindi ? "24/7 सपोर्ट" : "24/7 Support",
+    value: isHindi ? "व्हाट्सएप पर" : "Via WhatsApp",
   },
 ];
+
+// Duplicate the array so the CSS marquee loops seamlessly without snapping
+const marqueeItems = [...trustItems, ...trustItems];
 ---
 
-<div class="border-y border-slate-800 bg-[linear-gradient(135deg,#081c1f_0%,#0f172a_48%,#0b3b36_100%)] py-3">
-  <div class="container mx-auto max-w-7xl px-4 md:px-8">
-    <div class="flex snap-x gap-3 overflow-x-auto pb-1 md:flex-wrap md:justify-between md:overflow-visible">
-      {trustItems.map((item) => (
-        <div class="min-w-[13rem] snap-start rounded-2xl border border-white/10 bg-white/6 px-3 py-3 text-white backdrop-blur-sm md:min-w-0 md:flex-1">
-          <div class="flex items-center gap-3">
-            <span class="text-xl md:text-2xl">{item.icon}</span>
-            <div class="flex flex-col">
-              <span class="text-sm font-semibold leading-tight">{item.label}</span>
-              <span class="text-xs text-slate-300">{item.value}</span>
+<div
+  class=" bg-slate-950 p-2 md:py-4 border-b border-slate-800 relative z-[70] overflow-hidden"
+>
+  <div class="md:hidden flex overflow-hidden group">
+    <div
+      class="flex animate-marquee group-active:[animation-play-state:paused] w-max"
+    >
+      {
+        marqueeItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="flex items-center gap-3 text-white w-[210px] shrink-0 px-3 border-l border-white/5 first:border-l-0">
+              <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
+                <Icon class="w-4 h-4 text-brand-teal" />
+              </div>
+              <div class="flex flex-col">
+                <span class="font-bold text-[10px] uppercase tracking-wider leading-tight text-slate-200">
+                  {item.label}
+                </span>
+                <span class="text-[9px] text-slate-400 mt-0.5">
+                  {item.value}
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
-      ))}
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <div class="hidden md:block container mx-auto max-w-7xl px-4 md:px-6">
+    <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
+      {
+        trustItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div class="flex items-center gap-4 text-white group cursor-default">
+              <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-brand-teal/10 group-hover:border-brand-teal/30 transition-all duration-300">
+                <Icon class="w-5 h-5 text-brand-teal group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <div>
+                <p class="font-bold text-[12px] uppercase tracking-wider leading-tight text-slate-200">
+                  {item.label}
+                </p>
+                <p class="text-xs text-slate-400 mt-1">{item.value}</p>
+              </div>
+            </div>
+          );
+        })
+      }
     </div>
   </div>
 </div>
+
+<style>
+  /* CSS-only infinite marquee animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    /* Adjust '25s' to make the slider faster or slower */
+    animation: marquee 25s linear infinite;
+  }
+</style>

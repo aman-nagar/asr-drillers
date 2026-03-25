@@ -209,7 +209,7 @@ export const productPages = [
             "बड़े मॉडल की तुलना में कम दैनिक ईंधन खर्च",
             "कम काम प्रति माह वाले खरीदार के लिए तेज ROI",
           ],
-          visualLabel: "डमी मशीन फोटो स्लॉट",
+          visualLabel: "मशीन फोटो स्लॉट",
         },
         buyersTitle: "किन खरीदारों के लिए सही",
         buyers: [
@@ -518,7 +518,7 @@ export const productPages = [
             "कॉन्ट्रैक्टर बिजनेस के लिए मजबूत economics",
             "ज्यादा challenging drilling conditions में ज्यादा भरोसा",
           ],
-          visualLabel: "डमी हाइड्रोलिक मशीन फोटो स्लॉट",
+          visualLabel: "हाइड्रोलिक मशीन फोटो स्लॉट",
         },
         buyersTitle: "किन खरीदारों के लिए सही",
         buyers: [
