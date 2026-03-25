@@ -3,12 +3,7 @@ import PageHero from "../sections/PageHero.astro";
 import SignalStrip from "../sections/SignalStrip.astro";
 import SectionHeading from "../sections/SectionHeading.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getWhatsAppNumber, siteConfig } from "../../config/site";
-import type { Locale } from "../../lib/i18n";
-
-interface Props {
-  locale: Locale;
-}
+import { getWhatsAppNumber, siteConfig } from "../../config/site.js";
 
 const { locale } = Astro.props;
 const isHindi = locale === "hi";
@@ -98,7 +93,9 @@ const stripItems = [
 const contactCards = [
   {
     title: isHindi ? "फोन" : "Phone",
-    description: isHindi ? "तुरंत सहायता के लिए कॉल करें" : "Call for immediate assistance",
+    description: isHindi
+      ? "तुरंत सहायता के लिए कॉल करें"
+      : "Call for immediate assistance",
     value: siteConfig.phone,
     href: `tel:${siteConfig.phone}`,
     accent: "border-brand-teal",
@@ -113,7 +110,9 @@ const contactCards = [
   },
   {
     title: isHindi ? "ईमेल" : "Email",
-    description: isHindi ? "अपनी पूछताछ या फोटो भेजें" : "Send your inquiry or photos",
+    description: isHindi
+      ? "अपनी पूछताछ या फोटो भेजें"
+      : "Send your inquiry or photos",
     value: siteConfig.email,
     href: `mailto:${siteConfig.email}`,
     accent: "border-brand-teal",
@@ -170,10 +169,16 @@ const faqItems = isHindi
 <Layout title={pageTitle} description={pageDescription}>
   <PageHero
     eyebrow={isHindi ? "फैक्टरी-डायरेक्ट संपर्क" : "Factory-direct contact"}
-    title={isHindi ? "कीमत, मशीन सलाह और डिलीवरी जानकारी के लिए टीम से बात करें" : "Talk to the Team for Pricing, Machine Advice, and Delivery Guidance"}
-    description={isHindi ? "अपनी लोकेशन, मिट्टी और अपेक्षित गहराई साझा करें। हम आपको सही मशीन और अगला कदम समझाने में मदद करेंगे।" : "Share your location, soil condition, and expected depth. We can help you narrow the right machine and next step quickly."}
+    title={isHindi
+      ? "कीमत, मशीन सलाह और डिलीवरी जानकारी के लिए टीम से बात करें"
+      : "Talk to the Team for Pricing, Machine Advice, and Delivery Guidance"}
+    description={isHindi
+      ? "अपनी लोकेशन, मिट्टी और अपेक्षित गहराई साझा करें। हम आपको सही मशीन और अगला कदम समझाने में मदद करेंगे।"
+      : "Share your location, soil condition, and expected depth. We can help you narrow the right machine and next step quickly."}
     signals={heroSignals}
-    visualTitle={isHindi ? "तेज जवाब, साफ मार्गदर्शन" : "Fast reply, clear guidance"}
+    visualTitle={isHindi
+      ? "तेज जवाब, साफ मार्गदर्शन"
+      : "Fast reply, clear guidance"}
     visualLines={[
       isHindi
         ? "व्हाट्सऐप पर मशीन सुझाव, कीमत और डिलीवरी चर्चा का सबसे तेज रास्ता मिलता है।"
@@ -205,37 +210,51 @@ const faqItems = isHindi
   <section class="section-shell section-tint">
     <div class="container mx-auto max-w-6xl px-4 md:px-8">
       <SectionHeading
-        title={isHindi ? "संपर्क के सबसे आसान तरीके" : "The Easiest Ways to Reach Us"}
-        subtitle={isHindi ? "जिस तरह से आपको जल्दी जवाब मिले, उसी तरीके से संपर्क करें।" : "Choose the route that gets you the fastest and clearest response."}
+        title={isHindi
+          ? "संपर्क के सबसे आसान तरीके"
+          : "The Easiest Ways to Reach Us"}
+        subtitle={isHindi
+          ? "जिस तरह से आपको जल्दी जवाब मिले, उसी तरीके से संपर्क करें।"
+          : "Choose the route that gets you the fastest and clearest response."}
       />
 
       <div class="grid gap-5 md:grid-cols-3 md:gap-6">
-        {contactCards.map((card) => (
-          <a
-            href={card.href}
-            target={card.external ? "_blank" : undefined}
-            rel={card.external ? "noopener noreferrer" : undefined}
-            class:list={[
-              "surface-card border-t-4 bg-white p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)] md:p-8",
-              card.accent,
-            ]}
-          >
-            <h3 class="text-2xl font-bold text-slate-950">{card.title}</h3>
-            <p class="mt-3 text-slate-600">{card.description}</p>
-            <p class="mt-5 text-lg font-bold text-brand-teal">{card.value}</p>
-          </a>
-        ))}
+        {
+          contactCards.map((card) => (
+            <a
+              href={card.href}
+              target={card.external ? "_blank" : undefined}
+              rel={card.external ? "noopener noreferrer" : undefined}
+              class:list={[
+                "surface-card border-t-4 bg-white p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(15,23,42,0.12)] md:p-8",
+                card.accent,
+              ]}
+            >
+              <h3 class="text-2xl font-bold text-slate-950">{card.title}</h3>
+              <p class="mt-3 text-slate-600">{card.description}</p>
+              <p class="mt-5 text-lg font-bold text-brand-teal">{card.value}</p>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
 
   <section class="section-shell bg-white">
     <div class="container mx-auto max-w-6xl px-4 md:px-8">
-      <div class="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-        <div class="surface-panel border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-8">
+      <div
+        class="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]"
+      >
+        <div
+          class="surface-panel border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-8"
+        >
           <SectionHeading
-            title={isHindi ? "हमसे संदेश में क्या साझा करें" : "What to Share in Your Inquiry"}
-            subtitle={isHindi ? "कम संदेश में भी सही सलाह तभी मिलती है जब जरूरी जानकारी साफ हो।" : "Even a short message becomes more useful when the key project details are clear."}
+            title={isHindi
+              ? "हमसे संदेश में क्या साझा करें"
+              : "What to Share in Your Inquiry"}
+            subtitle={isHindi
+              ? "कम संदेश में भी सही सलाह तभी मिलती है जब जरूरी जानकारी साफ हो।"
+              : "Even a short message becomes more useful when the key project details are clear."}
             align="left"
           />
 
@@ -250,7 +269,9 @@ const faqItems = isHindi
                   id="form-name"
                   required
                   class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
-                  placeholder={isHindi ? "अपना नाम दर्ज करें" : "Enter your name"}
+                  placeholder={isHindi
+                    ? "अपना नाम दर्ज करें"
+                    : "Enter your name"}
                 />
               </div>
               <div>
@@ -291,15 +312,21 @@ const faqItems = isHindi
                 <option value="">
                   {isHindi ? "अपना स्थान चुनें" : "Select your location"}
                 </option>
-                {locations.map((location) => (
-                  <option value={location}>{location}</option>
-                ))}
+                {
+                  locations.map((location) => (
+                    <option value={location}>{location}</option>
+                  ))
+                }
               </select>
             </div>
 
             <div>
               <label class="mb-2 block text-sm font-medium text-slate-900">
-                {isHindi ? "मशीन में रुचि (वैकल्पिक)" : "Machine Interest (Optional)"}
+                {
+                  isHindi
+                    ? "मशीन में रुचि (वैकल्पिक)"
+                    : "Machine Interest (Optional)"
+                }
               </label>
               <select
                 id="form-machine"
@@ -308,9 +335,11 @@ const faqItems = isHindi
                 <option value="">
                   {isHindi ? "मशीन चुनें" : "Select machine"}
                 </option>
-                {machineOptions.map((machine) => (
-                  <option value={machine}>{machine}</option>
-                ))}
+                {
+                  machineOptions.map((machine) => (
+                    <option value={machine}>{machine}</option>
+                  ))
+                }
               </select>
             </div>
 
@@ -323,7 +352,9 @@ const faqItems = isHindi
                 required
                 rows="5"
                 class="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
-                placeholder={isHindi ? "मिट्टी का प्रकार, गहराई, उपयोग और कोई खास जरूरत लिखें..." : "Share your soil type, depth target, use case, and any important detail..."}
+                placeholder={isHindi
+                  ? "मिट्टी का प्रकार, गहराई, उपयोग और कोई खास जरूरत लिखें..."
+                  : "Share your soil type, depth target, use case, and any important detail..."}
               ></textarea>
             </div>
 
@@ -335,42 +366,55 @@ const faqItems = isHindi
             </button>
 
             <p class="text-sm text-slate-500">
-              {isHindi
-                ? "ईमेल या फोटो भी साझा करने हैं तो उसी के साथ व्हाट्सऐप संदेश भेज सकते हैं।"
-                : "If you also want to share photos or documents, mention that in the WhatsApp message and we can continue there."}
+              {
+                isHindi
+                  ? "ईमेल या फोटो भी साझा करने हैं तो उसी के साथ व्हाट्सऐप संदेश भेज सकते हैं।"
+                  : "If you also want to share photos or documents, mention that in the WhatsApp message and we can continue there."
+              }
             </p>
           </form>
         </div>
 
         <div class="space-y-5 md:space-y-6">
-          <article class="surface-panel border border-slate-200 bg-slate-950 p-6 text-white md:p-8">
-            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/80">
+          <article
+            class="surface-panel border border-slate-200 bg-slate-950 p-6 text-white md:p-8"
+          >
+            <p
+              class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/80"
+            >
               {isHindi ? "जवाब को तेज़ बनाने के लिए" : "To Get a Faster Reply"}
             </p>
             <div class="mt-5 space-y-3">
-              {(isHindi
-                ? [
-                    "लोकेशन या जिला लिखें",
-                    "अनुमानित गहराई बताएं",
-                    "मिट्टी या उपयोग का प्रकार लिखें",
-                    "बजट या मशीन रुचि जोड़ें",
-                  ]
-                : [
-                    "Mention your location or district",
-                    "Share your expected drilling depth",
-                    "Describe soil type or use case",
-                    "Add budget range or machine interest",
-                  ]).map((item) => (
-                <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100">
-                  {item}
-                </div>
-              ))}
+              {
+                (isHindi
+                  ? [
+                      "लोकेशन या जिला लिखें",
+                      "अनुमानित गहराई बताएं",
+                      "मिट्टी या उपयोग का प्रकार लिखें",
+                      "बजट या मशीन रुचि जोड़ें",
+                    ]
+                  : [
+                      "Mention your location or district",
+                      "Share your expected drilling depth",
+                      "Describe soil type or use case",
+                      "Add budget range or machine interest",
+                    ]
+                ).map((item) => (
+                  <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100">
+                    {item}
+                  </div>
+                ))
+              }
             </div>
           </article>
 
-          <article class="surface-panel border border-slate-200 bg-white p-6 md:p-8">
+          <article
+            class="surface-panel border border-slate-200 bg-white p-6 md:p-8"
+          >
             <SectionHeading
-              title={isHindi ? "फैक्टरी और संपर्क जानकारी" : "Factory and Contact Details"}
+              title={isHindi
+                ? "फैक्टरी और संपर्क जानकारी"
+                : "Factory and Contact Details"}
               align="left"
             />
             <div class="space-y-5 text-slate-700">
@@ -379,7 +423,10 @@ const faqItems = isHindi
                   {isHindi ? "फैक्टरी पता:" : "Factory Address:"}
                 </strong><br />
                 {siteConfig.address.streetAddress}<br />
-                {siteConfig.address.addressLocality}, {siteConfig.address.addressRegion} {siteConfig.address.postalCode}<br />
+                {siteConfig.address.addressLocality}, {
+                  siteConfig.address.addressRegion
+                }
+                {siteConfig.address.postalCode}<br />
                 {isHindi ? "भारत" : "India"}
               </p>
               <p>
@@ -393,14 +440,20 @@ const faqItems = isHindi
                 <strong class="text-slate-950">
                   {isHindi ? "कार्य समय:" : "Business Hours:"}
                 </strong><br />
-                {isHindi ? "सोमवार - शनिवार: सुबह 9:00 - शाम 6:00" : "Monday - Saturday: 9:00 AM - 6:00 PM"}<br />
+                {
+                  isHindi
+                    ? "सोमवार - शनिवार: सुबह 9:00 - शाम 6:00"
+                    : "Monday - Saturday: 9:00 AM - 6:00 PM"
+                }<br />
                 {isHindi ? "रविवार: बंद" : "Sunday: Closed"}<br />
                 {isHindi ? "व्हाट्सऐप: 24/7" : "WhatsApp: 24/7"}
               </p>
             </div>
           </article>
 
-          <article class="surface-panel overflow-hidden border border-slate-200 bg-white">
+          <article
+            class="surface-panel overflow-hidden border border-slate-200 bg-white"
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.5168749999996!2d80.1456!3d26.4589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sPukhrayan%2C%20Kanpur%2C%20Uttar%20Pradesh!2sIndia!5e0!3m2!1sen!2sin!4v1234567890"
               width="100%"
@@ -409,8 +462,9 @@ const faqItems = isHindi
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title={isHindi ? "ASR ड्रिलर्स फैक्टरी लोकेशन - पुखरायन, कानपुर" : "ASR Drillers Factory Location - Pukhrayan, Kanpur"}
-            ></iframe>
+              title={isHindi
+                ? "ASR ड्रिलर्स फैक्टरी लोकेशन - पुखरायन, कानपुर"
+                : "ASR Drillers Factory Location - Pukhrayan, Kanpur"}></iframe>
           </article>
         </div>
       </div>
@@ -420,20 +474,28 @@ const faqItems = isHindi
   <section class="section-shell section-tint">
     <div class="container mx-auto max-w-4xl px-4 md:px-8">
       <SectionHeading
-        title={isHindi ? "अक्सर पूछे जाने वाले प्रश्न" : "Frequently Asked Questions"}
-        subtitle={isHindi ? "संपर्क करने से पहले यह छोटे सवाल सबसे ज्यादा पूछे जाते हैं।" : "These are the short questions buyers usually ask before reaching out."}
+        title={isHindi
+          ? "अक्सर पूछे जाने वाले प्रश्न"
+          : "Frequently Asked Questions"}
+        subtitle={isHindi
+          ? "संपर्क करने से पहले यह छोटे सवाल सबसे ज्यादा पूछे जाते हैं।"
+          : "These are the short questions buyers usually ask before reaching out."}
       />
 
       <div class="space-y-4 md:space-y-6">
-        {faqItems.map((faq) => (
-          <details class="surface-card cursor-pointer border border-slate-200 bg-white p-5 group md:p-6">
-            <summary class="flex items-center justify-between text-lg font-bold text-slate-900">
-              {faq.question}
-              <span class="text-brand-teal transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <p class="mt-4 text-slate-600">{faq.answer}</p>
-          </details>
-        ))}
+        {
+          faqItems.map((faq) => (
+            <details class="surface-card cursor-pointer border border-slate-200 bg-white p-5 group md:p-6">
+              <summary class="flex items-center justify-between text-lg font-bold text-slate-900">
+                {faq.question}
+                <span class="text-brand-teal transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p class="mt-4 text-slate-600">{faq.answer}</p>
+            </details>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -445,8 +507,7 @@ const faqItems = isHindi
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const getValue = (id) =>
-      document.getElementById(id)?.value?.trim?.() ?? "";
+    const getValue = (id) => document.getElementById(id)?.value?.trim?.() ?? "";
 
     const name = getValue("form-name");
     const phone = getValue("form-phone");

@@ -1,12 +1,10 @@
-export const LOCALES = ["en", "hi"] as const;
+export const LOCALES = ["en", "hi"];
 
-export type Locale = (typeof LOCALES)[number];
-
-export function getLocaleFromPath(pathname: string) {
+export function getLocaleFromPath(pathname) {
   return pathname === "/hi" || pathname.startsWith("/hi/") ? "hi" : "en";
 }
 
-export function stripLocalePrefix(pathname: string) {
+export function stripLocalePrefix(pathname) {
   if (!pathname || pathname === "/") {
     return "/";
   }
@@ -22,7 +20,7 @@ export function stripLocalePrefix(pathname: string) {
   return pathname;
 }
 
-export function withLocalePrefix(pathWithSuffix: string, locale: Locale) {
+export function withLocalePrefix(pathWithSuffix, locale) {
   const match = pathWithSuffix.match(/^([^?#]*)(.*)$/);
   const rawPath = match?.[1] || "/";
   const suffix = match?.[2] || "";
@@ -35,7 +33,7 @@ export function withLocalePrefix(pathWithSuffix: string, locale: Locale) {
   return `${normalizedPath === "/" ? "/hi/" : `/hi${normalizedPath}`}${suffix}`;
 }
 
-export function getAlternateLocalePath(pathname: string) {
+export function getAlternateLocalePath(pathname) {
   const locale = getLocaleFromPath(pathname);
   const basePath = stripLocalePrefix(pathname);
 

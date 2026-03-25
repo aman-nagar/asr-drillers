@@ -1,6 +1,6 @@
 ---
 import ProductPageTemplate from "../../components/templates/ProductPageTemplate.astro";
-import { productPages } from "../../data/products";
+import { productPages } from "../../data/products.js";
 
 export function getStaticPaths() {
   return productPages.map((product) => ({

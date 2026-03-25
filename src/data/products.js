@@ -1,6 +1,6 @@
 import { commonData } from "./locations-i18n.js";
 
-function createDummyImage(label: string) {
+function createDummyImage(label) {
   return `https://dummyimage.com/1400x900/0f172a/e2e8f0&text=${encodeURIComponent(label).replace(/%20/g, "+")}`;
 }
 
@@ -22,7 +22,8 @@ export const productPages = [
         breadcrumbLabel: "22 HP Submersible",
         hero: {
           eyebrow: "Affordable entry model for field drilling",
-          title: "22 HP Submersible Boring Machine for Farmers and Lean Drilling Teams",
+          title:
+            "22 HP Submersible Boring Machine for Farmers and Lean Drilling Teams",
           description:
             "This model is built for buyers who need dependable drilling without stepping into a heavy-duty budget. It is the easiest ASR machine to own, transport, and run in day-to-day field work.",
           primaryActionLabel: "Ask Price on WhatsApp",
@@ -43,9 +44,21 @@ export const productPages = [
         },
         stripItems: [
           { value: "22 HP", label: "Power", note: "Kirloskar diesel engine" },
-          { value: "4-6 inch", label: "Bore Diameter", note: "Best for standard tubewell work" },
-          { value: "Portable", label: "Field Setup", note: "Easier transport and deployment" },
-          { value: "1-2 Years", label: "Warranty", note: "Factory-backed support" },
+          {
+            value: "4-6 inch",
+            label: "Bore Diameter",
+            note: "Best for standard tubewell work",
+          },
+          {
+            value: "Portable",
+            label: "Field Setup",
+            note: "Easier transport and deployment",
+          },
+          {
+            value: "1-2 Years",
+            label: "Warranty",
+            note: "Factory-backed support",
+          },
         ],
         summary: {
           title: "Who this machine is made for",
@@ -98,7 +111,10 @@ export const productPages = [
             title: "Power and drilling",
             items: [
               { label: "Engine", value: baseModels.submersible22.engine },
-              { label: "Depth Band", value: `${baseModels.submersible22.minDepth}-${baseModels.submersible22.maxDepth}` },
+              {
+                label: "Depth Band",
+                value: `${baseModels.submersible22.minDepth}-${baseModels.submersible22.maxDepth}`,
+              },
               { label: "Diameter", value: baseModels.submersible22.diameter },
               { label: "Torque", value: baseModels.submersible22.torque },
             ],
@@ -107,9 +123,15 @@ export const productPages = [
             title: "Ownership profile",
             items: [
               { label: "Price", value: baseModels.submersible22.price },
-              { label: "Fuel / Day", value: baseModels.submersible22.fuelPerDay },
+              {
+                label: "Fuel / Day",
+                value: baseModels.submersible22.fuelPerDay,
+              },
               { label: "Best For", value: baseModels.submersible22.bestFor },
-              { label: "Core Benefit", value: "Lower operating cost and easier portability" },
+              {
+                label: "Core Benefit",
+                value: "Lower operating cost and easier portability",
+              },
             ],
           },
         ],
@@ -161,7 +183,8 @@ export const productPages = [
         modelsSubtitle:
           "Use the table below to see when the 22 HP is the right fit and when a buyer should step up to a bigger model.",
         cta: {
-          headline: "Want to know if the 22 HP is enough for your soil and target depth?",
+          headline:
+            "Want to know if the 22 HP is enough for your soil and target depth?",
           subheadline:
             "Send your location, expected depth, and soil condition on WhatsApp. We can tell you honestly if this is the right model or if you should step up to the 30 HP.",
         },
@@ -173,7 +196,8 @@ export const productPages = [
         breadcrumbLabel: "22 HP सबमर्सिबल",
         hero: {
           eyebrow: "किफायती एंट्री मॉडल",
-          title: "किसानों और छोटे ड्रिलिंग टीमों के लिए 22 HP सबमर्सिबल बोरिंग मशीन",
+          title:
+            "किसानों और छोटे ड्रिलिंग टीमों के लिए 22 HP सबमर्सिबल बोरिंग मशीन",
           description:
             "यह मॉडल उन खरीदारों के लिए है जिन्हें भरोसेमंद ड्रिलिंग चाहिए, लेकिन heavy-duty budget नहीं चाहिए। इसे चलाना, संभालना और maintain करना बाकी बड़े मॉडल की तुलना में आसान है।",
           primaryActionLabel: "व्हाट्सऐप पर कीमत पूछें",
@@ -194,8 +218,16 @@ export const productPages = [
         },
         stripItems: [
           { value: "22 HP", label: "पावर", note: "किर्लोस्कर डीजल इंजन" },
-          { value: "4-6 इंच", label: "बोर व्यास", note: "सामान्य ट्यूबवेल काम के लिए" },
-          { value: "पोर्टेबल", label: "फील्ड सेटअप", note: "आसान ट्रांसपोर्ट और तैनाती" },
+          {
+            value: "4-6 इंच",
+            label: "बोर व्यास",
+            note: "सामान्य ट्यूबवेल काम के लिए",
+          },
+          {
+            value: "पोर्टेबल",
+            label: "फील्ड सेटअप",
+            note: "आसान ट्रांसपोर्ट और तैनाती",
+          },
           { value: "1-2 वर्ष", label: "वारंटी", note: "फैक्टरी सपोर्ट के साथ" },
         ],
         summary: {
@@ -249,7 +281,10 @@ export const productPages = [
             title: "पावर और ड्रिलिंग",
             items: [
               { label: "इंजन", value: baseModels.submersible22.engine },
-              { label: "गहराई", value: `${baseModels.submersible22.minDepth}-${baseModels.submersible22.maxDepth}` },
+              {
+                label: "गहराई",
+                value: `${baseModels.submersible22.minDepth}-${baseModels.submersible22.maxDepth}`,
+              },
               { label: "व्यास", value: baseModels.submersible22.diameter },
               { label: "टॉर्क", value: baseModels.submersible22.torque },
             ],
@@ -258,9 +293,15 @@ export const productPages = [
             title: "ownership profile",
             items: [
               { label: "कीमत", value: baseModels.submersible22.price },
-              { label: "ईंधन / दिन", value: baseModels.submersible22.fuelPerDay },
+              {
+                label: "ईंधन / दिन",
+                value: baseModels.submersible22.fuelPerDay,
+              },
               { label: "किसके लिए", value: "किसान, छोटे ठेकेदार" },
-              { label: "मुख्य लाभ", value: "कम रनिंग कॉस्ट और आसान portability" },
+              {
+                label: "मुख्य लाभ",
+                value: "कम रनिंग कॉस्ट और आसान portability",
+              },
             ],
           },
         ],
@@ -312,7 +353,8 @@ export const productPages = [
         modelsSubtitle:
           "नीचे देखें कि कब 22 HP सही विकल्प है और कब खरीदार को बड़े मॉडल की तरफ जाना चाहिए।",
         cta: {
-          headline: "जानना चाहते हैं कि आपकी मिट्टी और गहराई के लिए 22 HP पर्याप्त है या नहीं?",
+          headline:
+            "जानना चाहते हैं कि आपकी मिट्टी और गहराई के लिए 22 HP पर्याप्त है या नहीं?",
           subheadline:
             "अपनी लोकेशन, अपेक्षित गहराई और मिट्टी की जानकारी व्हाट्सऐप पर भेजें। हम ईमानदारी से बताएंगे कि 22 HP सही रहेगा या 30 HP लेना बेहतर होगा।",
         },
@@ -331,7 +373,8 @@ export const productPages = [
         breadcrumbLabel: "30 HP Hydraulic",
         hero: {
           eyebrow: "Contractor-grade hydraulic drilling system",
-          title: "30 HP Hydraulic Boring Machine for Tougher Ground and Higher Output",
+          title:
+            "30 HP Hydraulic Boring Machine for Tougher Ground and Higher Output",
           description:
             "This is the lineup choice for buyers who want more depth, more control, and a machine that can support a serious drilling business. It is built for mixed soil, harder formations, and higher-value jobs.",
           primaryActionLabel: "Ask for Contractor Pricing",
@@ -352,9 +395,21 @@ export const productPages = [
         },
         stripItems: [
           { value: "30 HP", label: "Power", note: "Kirloskar diesel engine" },
-          { value: "6-10 inch", label: "Bore Diameter", note: "For larger and deeper work" },
-          { value: "Hydraulic", label: "Control Type", note: "Better adjustment during drilling" },
-          { value: "24/7", label: "Support", note: "Fast response from the factory team" },
+          {
+            value: "6-10 inch",
+            label: "Bore Diameter",
+            note: "For larger and deeper work",
+          },
+          {
+            value: "Hydraulic",
+            label: "Control Type",
+            note: "Better adjustment during drilling",
+          },
+          {
+            value: "24/7",
+            label: "Support",
+            note: "Fast response from the factory team",
+          },
         ],
         summary: {
           title: "Why contractors move up to this model",
@@ -407,7 +462,10 @@ export const productPages = [
             title: "Power and drilling",
             items: [
               { label: "Engine", value: baseModels.hydraulic30.engine },
-              { label: "Depth Band", value: `${baseModels.hydraulic30.minDepth}-${baseModels.hydraulic30.maxDepth}` },
+              {
+                label: "Depth Band",
+                value: `${baseModels.hydraulic30.minDepth}-${baseModels.hydraulic30.maxDepth}`,
+              },
               { label: "Diameter", value: baseModels.hydraulic30.diameter },
               { label: "Torque", value: baseModels.hydraulic30.torque },
             ],
@@ -417,8 +475,14 @@ export const productPages = [
             items: [
               { label: "Price", value: baseModels.hydraulic30.price },
               { label: "Fuel / Day", value: baseModels.hydraulic30.fuelPerDay },
-              { label: "Best For", value: "Contractors and deeper drilling jobs" },
-              { label: "Core Benefit", value: "More depth, more control, stronger contractor use case" },
+              {
+                label: "Best For",
+                value: "Contractors and deeper drilling jobs",
+              },
+              {
+                label: "Core Benefit",
+                value: "More depth, more control, stronger contractor use case",
+              },
             ],
           },
         ],
@@ -470,7 +534,8 @@ export const productPages = [
         modelsSubtitle:
           "Use the comparison table to judge whether the 30 HP is the right business model for your workload or if another machine fits better.",
         cta: {
-          headline: "Need to know whether the 30 HP is the right contractor machine for your jobs?",
+          headline:
+            "Need to know whether the 30 HP is the right contractor machine for your jobs?",
           subheadline:
             "Send the type of soil, expected depth, and how many jobs you handle in a month. We can help you compare the 30 HP against the 22 HP and 38 HP honestly.",
         },
@@ -482,7 +547,8 @@ export const productPages = [
         breadcrumbLabel: "30 HP हाइड्रोलिक",
         hero: {
           eyebrow: "कॉन्ट्रैक्टर-ग्रेड हाइड्रोलिक सिस्टम",
-          title: "कठिन जमीन और ज्यादा आउटपुट के लिए 30 HP हाइड्रोलिक बोरिंग मशीन",
+          title:
+            "कठिन जमीन और ज्यादा आउटपुट के लिए 30 HP हाइड्रोलिक बोरिंग मशीन",
           description:
             "यह मॉडल उन खरीदारों के लिए है जिन्हें अधिक गहराई, बेहतर कंट्रोल और ऐसा सेटअप चाहिए जो गंभीर ड्रिलिंग बिजनेस को सपोर्ट कर सके।",
           primaryActionLabel: "कॉन्ट्रैक्टर कीमत पूछें",
@@ -503,9 +569,21 @@ export const productPages = [
         },
         stripItems: [
           { value: "30 HP", label: "पावर", note: "किर्लोस्कर डीजल इंजन" },
-          { value: "6-10 इंच", label: "बोर व्यास", note: "बड़े और गहरे काम के लिए" },
-          { value: "हाइड्रोलिक", label: "कंट्रोल सिस्टम", note: "ड्रिलिंग के दौरान बेहतर adjustment" },
-          { value: "24/7", label: "सपोर्ट", note: "फैक्टरी टीम से तेज response" },
+          {
+            value: "6-10 इंच",
+            label: "बोर व्यास",
+            note: "बड़े और गहरे काम के लिए",
+          },
+          {
+            value: "हाइड्रोलिक",
+            label: "कंट्रोल सिस्टम",
+            note: "ड्रिलिंग के दौरान बेहतर adjustment",
+          },
+          {
+            value: "24/7",
+            label: "सपोर्ट",
+            note: "फैक्टरी टीम से तेज response",
+          },
         ],
         summary: {
           title: "ठेकेदार इस मॉडल पर क्यों आते हैं",
@@ -558,7 +636,10 @@ export const productPages = [
             title: "पावर और ड्रिलिंग",
             items: [
               { label: "इंजन", value: baseModels.hydraulic30.engine },
-              { label: "गहराई", value: `${baseModels.hydraulic30.minDepth}-${baseModels.hydraulic30.maxDepth}` },
+              {
+                label: "गहराई",
+                value: `${baseModels.hydraulic30.minDepth}-${baseModels.hydraulic30.maxDepth}`,
+              },
               { label: "व्यास", value: baseModels.hydraulic30.diameter },
               { label: "टॉर्क", value: baseModels.hydraulic30.torque },
             ],
@@ -569,7 +650,11 @@ export const productPages = [
               { label: "कीमत", value: baseModels.hydraulic30.price },
               { label: "ईंधन / दिन", value: baseModels.hydraulic30.fuelPerDay },
               { label: "किसके लिए", value: "ठेकेदार और गहरे ड्रिलिंग काम" },
-              { label: "मुख्य लाभ", value: "ज्यादा गहराई, ज्यादा कंट्रोल, मजबूत contractor use case" },
+              {
+                label: "मुख्य लाभ",
+                value:
+                  "ज्यादा गहराई, ज्यादा कंट्रोल, मजबूत contractor use case",
+              },
             ],
           },
         ],
@@ -612,7 +697,8 @@ export const productPages = [
               "लगातार ड्रिलिंग में लगभग 12-14 लीटर/दिन मान सकते हैं, हालांकि वास्तविक खपत मिट्टी और काम के तरीके पर निर्भर करेगी।",
           },
           {
-            question: "क्या आप 30 HP और 38 HP के बीच फैसला करने में मदद करेंगे?",
+            question:
+              "क्या आप 30 HP और 38 HP के बीच फैसला करने में मदद करेंगे?",
             answer:
               "हाँ। अपनी target depth, मिट्टी की condition और monthly workload भेजें, हम बताएंगे कि 30 HP पर्याप्त है या heavy model लेना चाहिए।",
           },
@@ -621,13 +707,12 @@ export const productPages = [
         modelsSubtitle:
           "टेबल देखकर तय करें कि 30 HP आपके workload के लिए सही बिजनेस मॉडल है या कोई दूसरा मॉडल ज्यादा उपयुक्त है।",
         cta: {
-          headline: "जानना चाहते हैं कि 30 HP आपके काम के लिए सही contractor machine है या नहीं?",
+          headline:
+            "जानना चाहते हैं कि 30 HP आपके काम के लिए सही contractor machine है या नहीं?",
           subheadline:
             "मिट्टी का प्रकार, अपेक्षित गहराई और महीने के jobs की संख्या भेजें। हम 22 HP, 30 HP और 38 HP के बीच साफ तुलना करके सलाह देंगे।",
         },
       },
     },
   },
-] as const;
-
-export type ProductPage = (typeof productPages)[number];
+];

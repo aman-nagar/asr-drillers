@@ -5,8 +5,8 @@ import PageHero from "../sections/PageHero.astro";
 import SectionHeading from "../sections/SectionHeading.astro";
 import SignalStrip from "../sections/SignalStrip.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getWhatsAppNumber, siteConfig } from "../../config/site";
-import { withLocalePrefix, type Locale } from "../../lib/i18n";
+import { getWhatsAppNumber, siteConfig } from "../../config/site.js";
+import { withLocalePrefix, type Locale } from "../../lib/i18n.js";
 
 interface Props {
   locale: Locale;

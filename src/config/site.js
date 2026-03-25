@@ -18,9 +18,9 @@ export const siteConfig = {
     postalCode: "208201",
     addressCountry: "IN",
   },
-} as const;
+};
 
-export function getAbsoluteUrl(path: string) {
+export function getAbsoluteUrl(path) {
   return new URL(path, siteConfig.siteUrl).toString();
 }
 

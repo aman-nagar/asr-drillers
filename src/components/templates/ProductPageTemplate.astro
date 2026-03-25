@@ -9,14 +9,12 @@ import PageHero from "../sections/PageHero.astro";
 import SectionHeading from "../sections/SectionHeading.astro";
 import SignalStrip from "../sections/SignalStrip.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getAbsoluteUrl, getWhatsAppNumber, siteConfig } from "../../config/site";
-import { withLocalePrefix, type Locale } from "../../lib/i18n";
-import type { ProductPage } from "../../data/products";
-
-interface Props {
-  product: ProductPage;
-  locale: Locale;
-}
+import {
+  getAbsoluteUrl,
+  getWhatsAppNumber,
+  siteConfig,
+} from "../../config/site.js";
+import { withLocalePrefix } from "../../lib/i18n.js";
 
 const { product, locale } = Astro.props;
 const isHindi = locale === "hi";
@@ -95,12 +93,19 @@ const faqSchema = {
     ]}
   />
 
-  <SignalStrip items={content.stripItems} sectionClass="bg-slate-950 py-8 md:py-10" />
+  <SignalStrip
+    items={content.stripItems}
+    sectionClass="bg-slate-950 py-8 md:py-10"
+  />
 
   <section class="section-shell section-tint">
     <div class="container mx-auto max-w-6xl px-4 md:px-8">
-      <div class="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
-        <div class="surface-panel border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-8">
+      <div
+        class="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]"
+      >
+        <div
+          class="surface-panel border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-8"
+        >
           <SectionHeading
             title={content.summary.title}
             align="left"
@@ -108,31 +113,45 @@ const faqSchema = {
             subtitleClass="text-slate-700"
           />
           <div class="space-y-4 text-slate-700">
-            {content.summary.paragraphs.map((paragraph) => (
-              <p class="leading-relaxed">{paragraph}</p>
-            ))}
+            {
+              content.summary.paragraphs.map((paragraph) => (
+                <p class="leading-relaxed">{paragraph}</p>
+              ))
+            }
           </div>
           <div class="mt-8 space-y-3">
-            {content.summary.bullets.map((bullet) => (
-              <div class="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
-                <span class="mt-0.5 text-emerald-600">+</span>
-                <p class="text-sm text-slate-700">{bullet}</p>
-              </div>
-            ))}
+            {
+              content.summary.bullets.map((bullet) => (
+                <div class="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                  <span class="mt-0.5 text-emerald-600">+</span>
+                  <p class="text-sm text-slate-700">{bullet}</p>
+                </div>
+              ))
+            }
           </div>
         </div>
 
         <div class="grid gap-5">
-          <div class="surface-panel overflow-hidden border border-slate-200 bg-slate-950">
+          <div
+            class="surface-panel overflow-hidden border border-slate-200 bg-slate-950"
+          >
             <div
               class="min-h-[18rem] bg-cover bg-center md:min-h-[22rem]"
               style={`background-image:url('${product.imageUrl}')`}
             >
-              <div class="flex min-h-[18rem] flex-col justify-end bg-[linear-gradient(180deg,rgba(2,6,23,0.14)_0%,rgba(2,6,23,0.9)_100%)] p-5 md:min-h-[22rem] md:p-8">
-                <span class="inline-flex w-fit rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
+              <div
+                class="flex min-h-[18rem] flex-col justify-end bg-[linear-gradient(180deg,rgba(2,6,23,0.14)_0%,rgba(2,6,23,0.9)_100%)] p-5 md:min-h-[22rem] md:p-8"
+              >
+                <span
+                  class="inline-flex w-fit rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90"
+                >
                   {content.summary.visualLabel}
                 </span>
-                <h2 class="mt-4 text-2xl font-bold text-white md:mt-5 md:text-3xl">{content.breadcrumbLabel}</h2>
+                <h2
+                  class="mt-4 text-2xl font-bold text-white md:mt-5 md:text-3xl"
+                >
+                  {content.breadcrumbLabel}
+                </h2>
                 <p class="mt-3 max-w-xl text-sm leading-relaxed text-slate-100">
                   {content.pageDescription}
                 </p>
@@ -141,15 +160,21 @@ const faqSchema = {
           </div>
 
           <div class="grid gap-4 sm:grid-cols-2">
-            {content.stripItems.slice(0, 4).map((item) => (
-              <div class="surface-card border border-slate-200 bg-white px-5 py-4">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                  {item.label}
-                </p>
-                <p class="mt-3 text-2xl font-bold text-slate-950">{item.value}</p>
-                {item.note && <p class="mt-2 text-sm text-slate-600">{item.note}</p>}
-              </div>
-            ))}
+            {
+              content.stripItems.slice(0, 4).map((item) => (
+                <div class="surface-card border border-slate-200 bg-white px-5 py-4">
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    {item.label}
+                  </p>
+                  <p class="mt-3 text-2xl font-bold text-slate-950">
+                    {item.value}
+                  </p>
+                  {item.note && (
+                    <p class="mt-2 text-sm text-slate-600">{item.note}</p>
+                  )}
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -165,34 +190,50 @@ const faqSchema = {
 
   <section class="section-shell section-tint">
     <div class="container mx-auto max-w-6xl px-4 md:px-8">
-      <div class="surface-panel overflow-hidden border border-slate-200 bg-slate-950 text-white">
-        <div class="grid gap-6 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.95fr)]">
+      <div
+        class="surface-panel overflow-hidden border border-slate-200 bg-slate-950 text-white"
+      >
+        <div
+          class="grid gap-6 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.95fr)]"
+        >
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/80">
+            <p
+              class="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200/80"
+            >
               {isHindi ? "खरीदने का शॉर्टकट" : "Buying Shortcut"}
             </p>
             <h2 class="mt-4 text-3xl font-bold">
-              {isHindi
-                ? "लोकेशन, गहराई और बजट भेजें. हम सही मॉडल जल्दी शॉर्टलिस्ट करने में मदद करेंगे।"
-                : "Send your location, target depth, and budget. We will help shortlist the right model faster."}
+              {
+                isHindi
+                  ? "लोकेशन, गहराई और बजट भेजें. हम सही मॉडल जल्दी शॉर्टलिस्ट करने में मदद करेंगे।"
+                  : "Send your location, target depth, and budget. We will help shortlist the right model faster."
+              }
             </h2>
-            <p class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
-              {isHindi
-                ? "यह पेज जानकारी देता है, लेकिन तेज़ निर्णय के लिए व्हाट्सऐप पर सीधे मशीन सलाह लेना बेहतर रहेगा।"
-                : "This page gives you the details, but the fastest buying path is still a direct WhatsApp conversation with your project details."}
+            <p
+              class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base"
+            >
+              {
+                isHindi
+                  ? "यह पेज जानकारी देता है, लेकिन तेज़ निर्णय के लिए व्हाट्सऐप पर सीधे मशीन सलाह लेना बेहतर रहेगा।"
+                  : "This page gives you the details, but the fastest buying path is still a direct WhatsApp conversation with your project details."
+              }
             </p>
           </div>
 
           <div class="grid gap-4">
             <div class="grid gap-4 sm:grid-cols-3">
-              {content.stripItems.slice(0, 3).map((item) => (
-                <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
-                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200/70">
-                    {item.label}
-                  </p>
-                  <p class="mt-2 text-xl font-bold text-white">{item.value}</p>
-                </div>
-              ))}
+              {
+                content.stripItems.slice(0, 3).map((item) => (
+                  <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200/70">
+                      {item.label}
+                    </p>
+                    <p class="mt-2 text-xl font-bold text-white">
+                      {item.value}
+                    </p>
+                  </div>
+                ))
+              }
             </div>
 
             <div class="flex flex-col gap-3 sm:flex-row">
@@ -225,24 +266,30 @@ const faqSchema = {
       />
 
       <div class="grid gap-6 lg:grid-cols-2">
-        {content.specGroups.map((group) => (
-          <article class="surface-card border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-7">
-            <div class="inline-flex rounded-full bg-brand-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal">
-              {isHindi ? "स्पेक ग्रुप" : "Spec Group"}
-            </div>
-            <h3 class="mt-4 text-2xl font-bold text-slate-950">{group.title}</h3>
-            <div class="mt-6 space-y-4">
-              {group.items.map((item) => (
-                <div class="flex items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-4">
-                  <span class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">
-                    {item.label}
-                  </span>
-                  <span class="text-right font-semibold text-slate-900">{item.value}</span>
-                </div>
-              ))}
-            </div>
-          </article>
-        ))}
+        {
+          content.specGroups.map((group) => (
+            <article class="surface-card border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-7">
+              <div class="inline-flex rounded-full bg-brand-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal">
+                {isHindi ? "स्पेक ग्रुप" : "Spec Group"}
+              </div>
+              <h3 class="mt-4 text-2xl font-bold text-slate-950">
+                {group.title}
+              </h3>
+              <div class="mt-6 space-y-4">
+                {group.items.map((item) => (
+                  <div class="flex items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-4">
+                    <span class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">
+                      {item.label}
+                    </span>
+                    <span class="text-right font-semibold text-slate-900">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>

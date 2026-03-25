@@ -1,6 +1,6 @@
 import { commonData } from "./locations-i18n.js";
 
-function createDummyImage(label: string) {
+function createDummyImage(label) {
   return `https://dummyimage.com/1200x800/0f172a/e2e8f0&text=${encodeURIComponent(label).replace(/%20/g, "+")}`;
 }
 
@@ -413,4 +413,4 @@ export const galleryContentByLocale = {
         "फैक्टरी, डिस्पैच और इंस्टॉलेशन फोटो व्हाट्सऐप पर भेजें। यही layout रखते हुए हम इन्हें अंतिम विजुअल से आसानी से अपडेट कर सकते हैं।",
     },
   },
-} as const;
+};

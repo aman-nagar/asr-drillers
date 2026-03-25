@@ -1,7 +1,7 @@
 ---
 import { ShieldCheck, Award, Users, Truck, Clock } from "@lucide/astro";
-import { siteConfig } from "../config/site";
-import { getLocaleFromPath } from "../lib/i18n";
+import { siteConfig } from "../config/site.js";
+import { getLocaleFromPath } from "../lib/i18n.js";
 
 const currentPath = Astro.url?.pathname || "/";
 const isHindi = getLocaleFromPath(currentPath) === "hi";
