@@ -28,35 +28,35 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
   class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm"
 >
   <div class="container mx-auto px-4 md:px-6 max-w-7xl">
-    <div class="flex items-center justify-between h-16 md:h-20">
+    <div class="flex items-center justify-between h-14 md:h-18">
       <a
         href={withLocalePrefix("/", locale)}
-        class="flex items-center gap-3 group shrink-0"
+        class="flex items-center gap-2 md:gap-3 group shrink-0 min-w-0"
       >
         <div
-          class="bg-brand-teal p-1.5 sm:p-2 rounded-lg sm:rounded-xl shadow-md group-hover:shadow-brand-teal/20 transition-all"
+          class="bg-brand-teal p-1 md:p-2 rounded-lg shadow-md group-hover:shadow-brand-teal/20 transition-all shrink-0"
         >
           <img
             src={siteConfig.logoPath}
             alt="ASR Logo"
-            class="h-7 w-7 sm:h-9 sm:w-9 brightness-0 invert object-contain"
+            class="h-6 w-6 md:h-8 md:w-8 brightness-0 invert object-contain"
           />
         </div>
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center min-w-0">
           <span
-            class="text-lg md:text-2xl font-black text-slate-900 leading-none tracking-tight uppercase"
+            class="text-sm md:text-xl font-black text-slate-900 leading-none tracking-tight uppercase"
           >
             ASR <span class="text-brand-teal">Drillers</span>
           </span>
           <span
-            class="text-[8px] md:text-[10px] uppercase font-extrabold tracking-[0.2em] text-slate-500 mt-0.5"
+            class="text-[7px] md:text-[9px] uppercase font-extrabold tracking-[0.15em] text-slate-500 mt-0.5"
           >
             {isHindi ? "बोरवेल विशेषज्ञ" : "Borewell Specialists"}
           </span>
         </div>
       </a>
 
-      <nav class="hidden xl:flex items-center gap-2">
+      <nav class="hidden xl:flex items-center gap-1">
         {
           primaryNavLinks.map((link) => (
             <a
@@ -69,42 +69,34 @@ const languageTogglePath = getAlternateLocalePath(currentPath);
         }
       </nav>
 
-      <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+      <div class="flex items-center gap-1 md:gap-2 shrink-0">
         <a
           href={`tel:${siteConfig.phone}`}
-          class="hidden lg:flex items-center gap-2 px-3 py-2 text-slate-700 font-bold text-sm hover:text-brand-teal transition-all"
+          class="hidden lg:inline-flex items-center gap-1.5 px-2 md:px-3 py-1.5 text-slate-700 font-bold text-xs md:text-sm hover:text-brand-teal transition-all"
         >
-          <Phone class="w-4 h-4 text-brand-teal" />
-          {siteConfig.phone}
+          <Phone class="w-4 h-4 text-brand-teal shrink-0" />
+          <span class="hidden xl:inline">{siteConfig.phone}</span>
         </a>
 
         <a
-          href={`https://wa.me/${whatsappNumber}`}
-          class="flex items-center gap-2 bg-brand-green text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-extrabold shadow-md shadow-brand-green/20 hover:bg-[#155e30] transition-all active:scale-95"
-        >
-          <MessageCircle class="w-4 h-4" />
-          <span class="hidden sm:inline"
-            >{isHindi ? "पूछताछ करें" : "Contact Now"}</span
-          >
-          <span class="sm:hidden">{isHindi ? "चैट" : "Chat"}</span>
-        </a>
-        <a
           href={languageTogglePath}
-          class="flex items-center gap-1.5 text-brand-green hover:text-brand-teal transition-colors group h-full"
+          class="hidden md:inline-flex items-center gap-1 text-brand-green hover:text-brand-teal transition-colors group h-full px-2 py-1.5 text-xs md:text-sm font-bold"
         >
           <Globe
-            class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-300"
+            class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-300 shrink-0"
           />
-          <span>{isHindi ? "English" : "हिंदी में"}</span>
+          <span class="hidden lg:inline"
+            >{isHindi ? "English" : "हिंदी में"}</span
+          >
         </a>
 
         <button
           id="menu-toggle"
-          class="xl:hidden p-2 text-slate-900 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors focus:ring-2 focus:ring-brand-teal/50 outline-none"
+          class="md:hidden p-1.5 text-slate-900 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors focus:ring-2 focus:ring-brand-teal/50 outline-none shrink-0"
           aria-label="Toggle Menu"
         >
-          <Menu id="icon-open" class="w-5 h-5 sm:w-6 sm:h-6 block" />
-          <X id="icon-close" class="w-5 h-5 sm:w-6 sm:h-6 hidden" />
+          <Menu id="icon-open" class="w-5 h-5 block" />
+          <X id="icon-close" class="w-5 h-5 hidden" />
         </button>
       </div>
     </div>
