@@ -18,8 +18,8 @@ const {
 const alignmentClass = align === "left" ? "text-left" : "text-center";
 ---
 
-<div class={`mb-10 md:mb-12 ${alignmentClass}`}>
-  <h2 class={`text-2xl leading-tight md:text-4xl font-bold mb-4 ${titleClass}`}>{title}</h2>
+<div class={`mb-8 md:mb-10 ${alignmentClass}`}>
+  <h2 class={`mb-3 text-2xl leading-tight font-bold md:mb-4 md:text-4xl ${titleClass}`}>{title}</h2>
   {subtitle && (
     <p class={`text-base leading-relaxed md:text-lg max-w-3xl ${align === "center" ? "mx-auto" : ""} ${subtitleClass}`}>
       {subtitle}

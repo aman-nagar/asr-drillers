@@ -6,13 +6,13 @@ const locale = getLocaleFromPath(Astro.url?.pathname || "/");
 const isHindi = locale === "hi";
 ---
 
-<section class="py-16 bg-gray-50">
+<section class="section-shell section-tint">
   <div class="container mx-auto px-4 md:px-8 max-w-6xl">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900">
+    <h2 class="mb-10 text-center text-3xl font-bold text-gray-900 md:mb-12 md:text-4xl">
       {isHindi ? "ASR ड्रिलर्स क्यों बेहतर लगता है" : "Why ASR Drillers Wins"}
     </h2>
 
-    <div class="grid md:grid-cols-2 gap-12 mb-12">
+    <div class="mb-10 grid gap-8 md:grid-cols-2 lg:mb-12 lg:gap-10">
       <div>
         <h3 class="text-2xl font-bold mb-6 text-brand-teal">
           {isHindi ? "ASR को क्यों चुनें?" : "Why Choose ASR?"}
@@ -67,9 +67,9 @@ const isHindi = locale === "hi";
       </div>
 
       <div
-        class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-brand-teal"
+        class="surface-panel border border-slate-200 bg-white p-6 md:p-8"
       >
-        <h3 class="text-2xl font-bold mb-6 text-gray-900">
+        <h3 class="mb-6 text-2xl font-bold text-gray-900">
           {isHindi ? "क्विक स्पेक्स" : "Quick Specs"}
         </h3>
         <div class="space-y-4">
@@ -109,7 +109,7 @@ const isHindi = locale === "hi";
           href={`https://wa.me/${commonData.whatsapp.replace("+", "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="block mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded text-center transition"
+          class="mt-6 inline-flex min-h-[3.5rem] w-full items-center justify-center rounded-2xl bg-green-500 px-6 py-3 text-center font-bold text-white transition hover:bg-green-600"
         >
           {isHindi ? "कस्टम कोट लें" : "Get Custom Quote"}
         </a>
