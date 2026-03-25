@@ -99,7 +99,7 @@ const faqSchema = {
 
   <section class="section-shell section-tint">
     <div class="container mx-auto max-w-6xl px-4 md:px-8">
-      <div class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
+      <div class="grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
         <div class="surface-panel border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-6 md:p-8">
           <SectionHeading
             title={content.summary.title}
@@ -125,14 +125,14 @@ const faqSchema = {
         <div class="grid gap-5">
           <div class="surface-panel overflow-hidden border border-slate-200 bg-slate-950">
             <div
-              class="min-h-[22rem] bg-cover bg-center"
+              class="min-h-[18rem] bg-cover bg-center md:min-h-[22rem]"
               style={`background-image:url('${product.imageUrl}')`}
             >
-              <div class="flex min-h-[22rem] flex-col justify-end bg-[linear-gradient(180deg,rgba(2,6,23,0.14)_0%,rgba(2,6,23,0.9)_100%)] p-6 md:p-8">
+              <div class="flex min-h-[18rem] flex-col justify-end bg-[linear-gradient(180deg,rgba(2,6,23,0.14)_0%,rgba(2,6,23,0.9)_100%)] p-5 md:min-h-[22rem] md:p-8">
                 <span class="inline-flex w-fit rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
                   {content.summary.visualLabel}
                 </span>
-                <h2 class="mt-5 text-3xl font-bold text-white">{content.breadcrumbLabel}</h2>
+                <h2 class="mt-4 text-2xl font-bold text-white md:mt-5 md:text-3xl">{content.breadcrumbLabel}</h2>
                 <p class="mt-3 max-w-xl text-sm leading-relaxed text-slate-100">
                   {content.pageDescription}
                 </p>

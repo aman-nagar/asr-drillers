@@ -3,8 +3,8 @@
 
 export const commonData = {
   // Contact Info
-  phone: "+91-98765-43210",
-  whatsapp: "+919876543210",
+  phone: "+91-9695041919",
+  whatsapp: "+919695041919",
 
   // Company Info
   companyName: "ASR Drillers",

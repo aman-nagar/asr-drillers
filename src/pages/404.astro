@@ -29,23 +29,23 @@ const pageDescription = isHindi
   }}
 >
   <!-- 404 Hero -->
-  <section class="min-h-[70vh] flex items-center justify-center py-16 bg-gradient-to-br from-brand-teal to-brand-green">
+  <section class="flex min-h-[70vh] items-center justify-center bg-gradient-to-br from-brand-teal to-brand-green py-14 md:py-16">
     <div class="container mx-auto px-4 text-center text-white">
-      <div class="mb-8">
-        <span class="text-9xl font-bold opacity-20">404</span>
+      <div class="mb-6 md:mb-8">
+        <span class="text-7xl font-bold opacity-20 md:text-9xl">404</span>
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+      <h1 class="mb-5 text-4xl font-bold md:mb-6 md:text-5xl">
         {isHindi ? "पेज नहीं मिला" : "Page Not Found"}
       </h1>
-      <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl mx-auto">
+      <p class="mx-auto mb-7 max-w-2xl text-xl opacity-90 md:mb-8 md:text-2xl">
         {isHindi
           ? "क्षमा करें, जिस पेज को आप खोज रहे हैं वह मौजूद नहीं है।"
           : "Sorry, the page you're looking for doesn't exist or has been moved."}
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
         <a
           href={withLocalePrefix("/", locale)}
-          class="bg-white text-brand-teal hover:bg-gray-100 font-bold py-4 px-8 rounded-lg text-lg transition"
+          class="rounded-2xl bg-white px-8 py-4 text-lg font-bold text-brand-teal transition hover:bg-gray-100"
         >
           {isHindi ? "🏠 होम पेज पर जाएं" : "🏠 Go to Homepage"}
         </a>
@@ -53,7 +53,7 @@ const pageDescription = isHindi
           href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-brand-green hover:bg-brand-green/90 text-white font-bold py-4 px-8 rounded-lg text-lg transition"
+          class="rounded-2xl bg-brand-green px-8 py-4 text-lg font-bold text-white transition hover:bg-brand-green/90"
         >
           {isHindi ? "💬 WhatsApp पर संपर्क करें" : "💬 Contact on WhatsApp"}
         </a>
@@ -62,15 +62,15 @@ const pageDescription = isHindi
   </section>
 
   <!-- Quick Links -->
-  <section class="py-16 bg-white">
+  <section class="section-shell bg-white">
     <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900">
+      <h2 class="mb-6 text-center text-2xl font-bold text-gray-900 md:mb-8 md:text-3xl">
         {isHindi ? "लोकप्रिय पेज" : "Popular Pages"}
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
         <a
           href={withLocalePrefix("/", locale)}
-          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+          class="group rounded-2xl bg-gray-50 p-5 transition hover:bg-brand-teal/10 md:p-6"
         >
           <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
             {isHindi ? "🏠 होमपेज" : "🏠 Homepage"}
@@ -81,7 +81,7 @@ const pageDescription = isHindi
         </a>
         <a
           href={withLocalePrefix("/kanpur", locale)}
-          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+          class="group rounded-2xl bg-gray-50 p-5 transition hover:bg-brand-teal/10 md:p-6"
         >
           <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
             📍 Kanpur
@@ -92,7 +92,7 @@ const pageDescription = isHindi
         </a>
         <a
           href="/products/22-hp-submersible"
-          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+          class="group rounded-2xl bg-gray-50 p-5 transition hover:bg-brand-teal/10 md:p-6"
         >
           <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
             ⚙️ 22 HP Submersible
@@ -103,7 +103,7 @@ const pageDescription = isHindi
         </a>
         <a
           href={withLocalePrefix("/contact", locale)}
-          class="p-6 bg-gray-50 rounded-lg hover:bg-brand-teal/10 transition group"
+          class="group rounded-2xl bg-gray-50 p-5 transition hover:bg-brand-teal/10 md:p-6"
         >
           <h3 class="font-bold text-lg text-brand-teal group-hover:text-brand-green">
             📞 {isHindi ? "संपर्क करें" : "Contact Us"}
@@ -118,21 +118,21 @@ const pageDescription = isHindi
 
   <!-- CTA -->
   <section
-    class="py-12 bg-gradient-to-r from-brand-teal to-brand-green text-white"
+    class="bg-gradient-to-r from-brand-teal to-brand-green py-10 text-white md:py-12"
   >
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+      <h2 class="mb-3 text-2xl font-bold md:mb-4 md:text-3xl">
         {isHindi ? "क्या आपको मदद चाहिए?" : "Need Help Finding Something?"}
       </h2>
-      <p class="text-lg mb-6 opacity-90">
+      <p class="mb-5 text-lg opacity-90 md:mb-6">
         {isHindi
           ? "हमारी टीम आपकी मदद के लिए उपलब्ध है।"
           : "Our team is available to help you."}
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
         <a
           href={`tel:${phone}`}
-          class="bg-white text-brand-teal hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition"
+          class="rounded-2xl bg-white px-6 py-3 font-bold text-brand-teal transition hover:bg-gray-100"
         >
           📞 {phone}
         </a>
@@ -140,7 +140,7 @@ const pageDescription = isHindi
           href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-brand-green hover:bg-brand-green/90 text-white font-bold py-3 px-6 rounded-lg transition"
+          class="rounded-2xl bg-brand-green px-6 py-3 font-bold text-white transition hover:bg-brand-green/90"
         >
           💬 WhatsApp
         </a>
